@@ -1,21 +1,38 @@
 <?php
-echo "Hallo Welt!";
-echo "Hallo Welt! - Zeile zwei";
 
-echo "ahoi ahoi";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>fu_ma_si</title>
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>fu_ma_si</title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
 
-    <h1>fu_ma_si</h1>
-    <h2>tobi_stefan_tobi</h2>
-123
-</body>
+    <body onload="show_login();">
+
+        <button id="btn_login" class="buttons">login</button>
+        <button id="btn_regist" class="buttons">registrieren</button>
+
+        <div id="div_login" class="index_content">login
+            <form action="home.php" method="post">
+                <input type="text" name="name" placeholder="***username***"><br>
+                <input type="text" name="passwort" placeholder="***passwort***"><br>
+                <input type="submit" class="buttons" value="spielen">
+            </form>
+        </div>
+
+        <div id="div_regist" class="index_content">registrieren
+            <form action="init.php" method="post">
+                <input type="text" name="email" placeholder="***email***"><br>
+                <input type="text" name="name" placeholder="***username***"><br>
+                <input type="text" name="passwort" placeholder="***passwort***"><br>
+                <input type="text" name="passwort_2" placeholder="***passwort***"><br>
+                <input type="submit" class="buttons" value="anmelden">
+            </form>
+        </div>
+
+    <script src="scripte/js/index.js"></script>
+    </body>
 </html>

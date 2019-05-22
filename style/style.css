@@ -2,4 +2,39 @@ body
 {
     background-image: url("../bilder/rasen.jpeg");
     background-size: cover;
+    text-align: center;
+}
+
+.buttons
+{
+    width: 125px;
+    color: white;
+    font-size: medium;
+    font-weight: normal;
+    background: gray;
+}
+
+.buttons:hover
+{
+    font-weight: bolder;
+}
+
+#div_login
+{
+    background: fuchsia;
+}
+
+#div_regist
+{
+    background: aqua;
+}
+
+.index_content
+{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50px;
+    left: 500px;
+    padding: 10px;
 }

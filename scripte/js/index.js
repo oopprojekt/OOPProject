@@ -6,12 +6,12 @@ let div_login  = document.getElementById("div_login");
 
 //funktionsdefinitionen
 show_login = () => {
-    div_login.style.display = "block";
+    div_login.style.display  = "block";
     div_regist.style.display = "none";
 };
 
 show_registrierung = () => {
-    div_login.style.display = "none";
+    div_login.style.display  = "none";
     div_regist.style.display = "block";
 };
 

@@ -3,7 +3,6 @@
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
 
- error_reporting(0); ?><?php
 session_start();
 
 $_SESSION['username'] = $_POST['name'];

@@ -1,16 +1,11 @@
 <?php
-//an dieser stelle kommt immer das benötigte php zeugs
-//welches ja auf jeder seite anders ist und immer auch nur den content
-//betrifft
 
-error_reporting(0);
+//datenbankanbindungstetst
+include_once "./scripte/php/DB.php";
 
-session_start();
+$foo = new DB();
 
-$_SESSION['username'] = $_POST['name'];
-$_SESSION['passwort'] = $_POST['passwort'];
 ?>
-
 <!--dieses komplette html dokument wird immer so unveränderd für jede seite genutzt
 nur im content werden die dinge geschrieben die man sehen soll
 der rest wird ja aus den anderen templates gezogen-->
@@ -72,6 +67,33 @@ der rest wird ja aus den anderen templates gezogen-->
       
     </div>
         <div class="col-sm login_div_4">
+      
+
+ <body onload="show_login();">
+
+        <button id="btn_login" class="buttons">login</button>
+        <button id="btn_regist" class="buttons">registrieren</button>
+
+        <div id="div_login" class="index_content">login
+            <form action="home.php" method="post">
+                <input type="text" name="name" placeholder="***username***"><br>
+                <input type="text" name="passwort" placeholder="***passwort***"><br>
+                <input type="submit" class="buttons" value="spielen">
+            </form>
+        </div>
+
+        <div id="div_regist" class="index_content">registrieren
+            <form action="init.php" method="post">
+                <input type="text" name="email" placeholder="***email***"><br>
+                <input type="text" name="name" placeholder="***username***"><br>
+                <input type="text" name="passwort" placeholder="***passwort***"><br>
+                <input type="text" name="passwort_2" placeholder="***passwort***"><br>
+                <input type="submit" class="buttons" value="anmelden">
+            </form>
+        </div>
+
+    <script src="scripte/js/index.js"></script>
+
       
     </div>
   </div>

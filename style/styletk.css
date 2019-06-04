@@ -1,3 +1,41 @@
+/* start.php */
+
+
+.uibereichstart {
+    background-color: #ccc;
+        margin-left: 10%;
+        margin-right: 10%;
+        height: 950px;
+        margin-top: 45px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        width: auto;
+    }
+
+.logindiv {
+    height: 450px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: 30px;
+
+    margin-top: 270px;
+}
+
+.login_div_2 {
+    background-color: #ccc;
+        height: 450px;
+}
+
+ .login_div_3  {
+    background-color: #ccc;
+        height: 450px;
+}
+
+.login_div_4 {
+    background-color: #999;
+        height: 450px;
+        min-width: 800px;
+}
 
 body {
         background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");
@@ -38,13 +76,13 @@ body {
 
     .ro {
         background-color: #ccc;
-        height: 100px;
+        height: 60px;
         margin-bottom: 3px;
     }
 
     .ru {
         background-color: #ccc;    
-        height: 550px;
+        height: 590px;
         margin-top: 3px;
     }
 

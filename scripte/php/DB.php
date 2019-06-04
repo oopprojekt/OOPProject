@@ -13,6 +13,10 @@ class DB
         {
             die("problem -> " . $this->db->connect_error);
         }
+        else
+        {
+            echo "das geht";
+        }
     }
 
     public function execute($sql)

@@ -3,7 +3,7 @@
 class Config
 {
     public static $HOST     = "localhost";
-    public static $DB       = "oop-projekt-1";
-    public static $NUTZER   = "oop-projekt";
-    public static $PASSWORT = "HerrHaraisttoll#1";
+    public static $DB       = "oop-projekt_fumasi";
+    public static $NUTZER   = "oop-projekt_admin";
+    public static $PASSWORT = "root";
 }

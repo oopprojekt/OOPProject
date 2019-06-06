@@ -34,6 +34,9 @@ $foo = new DB();
                 <input type="text" name="name" placeholder="***username***"><br>
                 <input type="text" name="passwort" placeholder="***passwort***"><br>
                 <input type="text" name="passwort_2" placeholder="***passwort***"><br>
+                <input type="hidden" name="id">
+                <input type="hidden" name="team">
+                <input type="hidden" name="transfer">
                 <input type="submit" class="buttons" value="anmelden">
             </form>
         </div>

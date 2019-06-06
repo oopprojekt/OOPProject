@@ -7,7 +7,19 @@
     $_SESSION['email']    = $_POST['email'];
     $_SESSION['username'] = $_POST['name'];
     $_SESSION['passwort'] = $_POST['passwort'];
-    $_SESSION['passw_2']  = $_POST['passwort_2'];
+    $_SESSION['passwort_2']  = $_POST['passwort_2'];
+
+    include_once "./scripte/php/DB.php";
+
+    $foo = new DB();
+
+    $foo->create_user($_POST['name'], $_POST['email'], $_POST['passwort'], $_POST['passwort_2']);
+
+    $res = $foo->get_user_id($_POST['email']);
+
+    $foo->get_user_color();
+
+
 
 
     //an der stelle kommt der eintrag in die datenbank
@@ -20,7 +32,7 @@
     echo $_SESSION['email'];
     echo $_SESSION['username'];
     echo $_SESSION['passwort'];
-    echo $_SESSION['passw_2'];
+    echo $_SESSION['passwort_2'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

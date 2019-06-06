@@ -62,7 +62,7 @@ $_SESSION['passwort'] = $_POST['passwort'];
                 <?php include_once "./templatestk/navtk.php"; ?>
             </div>
             <div class="container_content col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                gggg
+                Inhalt Karriere Statistik
             </div>
         </div>
     </div>

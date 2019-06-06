@@ -3,102 +3,104 @@
 
 .uibereichstart {
     background-color: #ccc;
-        margin-left: 10%;
-        margin-right: 10%;
-        height: 950px;
-        margin-top: 45px;
-        margin-bottom: 30px;
-        overflow: hidden;
-        width: auto;
-    }
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 950px;
+    margin-top: 45px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    width: auto;
+}
 
 .logindiv {
     height: 450px;
     width: 100%;
     margin-left: auto;
     margin-right: 30px;
-
     margin-top: 270px;
 }
 
 .login_div_2 {
     background-color: #ccc;
-        height: 450px;
+    height: 450px;
 }
 
- .login_div_3  {
+.login_div_3 {
     background-color: #ccc;
-        height: 450px;
+    height: 450px;
 }
 
 .login_div_4 {
     background-color: #999;
-        height: 450px;
-        min-width: 800px;
+    height: 450px;
+    min-width: 800px;
 }
 
 body {
-        background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");
-        background-color: #000;
-        background-repeat: no-repeat;
-        background-size: 100% 100%; 
-        background-size: cover;
-    }
+    background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-size: cover;
+}
 
-    .kalender {
-        background-color: #ccc;
-        height: 150px;
-        background-color: #ccc;
-        background-image: url("kalender.png");
-        background-size:  15% 100%;
-        margin-top: 45px;
-        margin-bottom: 5px;
-    }
+.container_calendar {
+    background-color: #ccc;
+    height: 150px;
+    background-image: url("kalender.png");
+    background-size: 15% 100%;
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
 
-    .row {
+.ui {
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 80%;
+}
 
-    }
+.grid {
+    width: 80%;
+}
 
-    .uibereich {
-        margin-left: 10%;
-        margin-right: 10%;
-        height: 80%;  
-    }
+.container_info {
+    background-color: #ccc;
+    height: 653px;
+}
 
-    .grid {
-        width: 80%;
-    }
+.container_nav {
+    background-color: #ccc;
+    height: 60px;
+    margin-bottom: 3px;
+}
 
-    .links {
-        background-color: #ccc;
-        height: 653px;
-    }
+.container_content {
+    background-color: #ccc;
+    height: 590px;s
+    margin-top: 3px;
+}
 
-    .ro {
-        background-color: #ccc;
-        height: 60px;
-        margin-bottom: 3px;
-    }
+.container_footer {
+    background-color: #999;
+    padding-bottom: 0;
+    height: 100px;
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+}
 
-    .ru {
-        background-color: #ccc;    
-        height: 590px;
-        margin-top: 3px;
-    }
+.container_info_margin-r {
+    margin-right: -20px;
+}
 
-    .footer {
-        background-color: #999;
-        padding-bottom: 0px;
-        height: 100px;
-        position: relative;
-        width: 100%;
-        margin-top: 5px;
+.navpoint {
+    width:100%;
+    padding-top: 18px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .container_info_margin-r {
+        margin-right: 0;
     }
-    .margin-r{
-        margin-right: -20px;
-    }
-    @media (max-width: 767px){
-        .margin-r{
-            margin-right: 0px;
-        }
-    }
+}

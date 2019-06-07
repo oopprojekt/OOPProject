@@ -86,7 +86,7 @@ der rest wird ja aus den anderen templates gezogen-->
                 <div class="col-sm-4 create_columnthree">
 
                     <div class="row">
-                        <div class="chooseteam"><img id="bilder/trainer_gross" width="80%" height="180%"></div>
+                        <div class="chooseteam"><img id="bilder/trainer_gross" width="auto" height="180%"></div>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,5 @@
 <?php
 
-//datenbankanbindungstetst
-include_once "./scripte/php/DB.php";
-
-$foo = new DB();
-
 ?>
 
 <!DOCTYPE html>

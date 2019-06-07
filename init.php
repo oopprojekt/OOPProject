@@ -2,6 +2,8 @@
     //nötig um mit die sessionarrays zu nutzen
     session_start();
 
+    include_once "./scripte/php/show_errors.php";
+
     //nun stehen die werte in den session zur verfügung
     //und können durch alle seiten durchgeschleust werden
     $_SESSION['email']    = $_POST['email'];
@@ -11,16 +13,13 @@
 
     include_once "./scripte/php/DB.php";
 
-    $foo = new DB();
+    $foo = new DB($_POST['email']);
 
-    $foo->create_user($_POST['name'], $_POST['email'], $_POST['passwort'], $_POST['passwort_2']);
+    $foo->create_user($_POST['name'], $_POST['email'], $_POST['passwort']);
 
     $res = $foo->get_user_id($_POST['email']);
 
     $foo->get_user_color();
-
-
-
 
     //an der stelle kommt der eintrag in die datenbank
     //validierung und prüfung der daten

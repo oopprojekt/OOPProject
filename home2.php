@@ -2,10 +2,7 @@
 //an dieser stelle kommt immer das benötigte php zeugs
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
-error_reporting(0);
-?>
-
-<?php
+include_once "./scripte/php/show_errors.php";
 
 session_start();
 

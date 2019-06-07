@@ -42,54 +42,57 @@ der rest wird ja aus den anderen templates gezogen-->
     <div class="creatediv">
         <div class="container-fluid create_grid">
             <div class="row">
-                <div class="col-sm-3 create_topic">
+                <div class="col-sm-2 create_topic">
                     Beginne deine Karriere
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-10">
 
-                </div>
-                <div class="col-sm-3 create_continue">
-Fertig
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-sm-4 create_columnone">
+                <div class="col-sm-3 create_columnone">
                     <div class="row">
                         <div class="trainerfirstname">Item 1</div>
                         <div class="trainersecondname">Item 2</div>
-                        <div class="chooseteam">Item 3<img id="trainer_gross" width="100px" height="100px"></div>
+                        <div class="trainersecondname">Item 2</div>
                     </div>
                 </div>
-                <div class="col-sm-8 create_columntwo">
+                <div class="col-sm-5 create_columntwo">
 
                     <div class="row">
                         <div class="col-sm create_trainerone">
-                            <img id="coach_a" src="trainer1.jpg" width="100%" height="">
+                            <img id="coach_a" src="bilder/trainer1.jpg" width="100%" height="">
                         </div>
                         <div class="col-sm create_trainertwo">
-                            <img id="coach_b" src="trainer2.jpg" width="100%" height="">
+                            <img id="coach_b" src="bilder/trainer2.jpg" width="100%" height="">
                         </div>
                         <div class="col-sm create_trainerthree">
-                            <img id="coach_c" src="trainer3.jpg" width="100%" height="">
+                            <img id="coach_c" src="bilder/trainer3.jpg" width="100%" height="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm create_trainerone">
-                            Beginne deine Karriere
+                            <img id="coach_c" src="bilder/trainer3.jpg" width="100%" height="">
                         </div>
                         <div class="col-sm create_trainertwo">
-                            d
+                            <img id="coach_c" src="bilder/trainer2.jpg" width="100%" height="">
                         </div>
                         <div class="col-sm create_trainerthree">
-                            d
+                            <img id="coach_c" src="bilder/trainer1.jpg" width="100%" height="">
                         </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 create_columnthree">
+
+                    <div class="row">
+                        <div class="chooseteam"><img id="bilder/trainer_gross" width="auto" height="180%"></div>
                     </div>
                 </div>
             </div>
 
+        </div>
     </div>
-</div>
 
 </div>
 
@@ -97,8 +100,8 @@ Fertig
 
 <script>
 
-    let img_coach = document.getElementById("trainer_gross");
-    img_coach.src = "./bilder/coach_b.jpeg";
+    let img_coach = document.getElementById("bilder/trainer_gross");
+    img_coach.src = "./bilder/coach_b.png";
 
     document.addEventListener('click', (e) => {
 
@@ -106,9 +109,8 @@ Fertig
         let str_coach = id_img.substr(0, 5);
 
 
-        if("coach" === str_coach)
-        {
-            img_coach.src = "./bilder/" + id_img + ".jpeg";
+        if ("coach" === str_coach) {
+            img_coach.src = "./bilder/" + id_img + ".png";
         }
 
     }, false);
@@ -138,7 +140,7 @@ Fertig
 
     .uibereichstart {
         margin-left: 10%;
-        margin-right: 30%;
+        margin-right: 0%;
     }
 
     .create_grid {
@@ -147,26 +149,24 @@ Fertig
     }
 
     .create_topic {
-        background-color: #ccc;
+
+        background-image: url("http://localhost/OOPProject/bilder/panelpic.png");
+        background-size: 100%;
         height: 50px;
         padding-top: 10px;
     }
 
-    .create_continue {
-        background-color: #ccc;
-        height: 50px;
-        padding-top: 10px;
-        text-align: right;
-    }
 
     .create_columnone {
         background-color: #ccc;
-        height: 650px;
     }
 
     .create_columntwo {
         background-color: #ccc;
-        width: 600px !important;
+    }
+
+    .create_columnthree {
+        padding-top: 30px;
     }
 
     .create_trainerone, .create_trainertwo, .create_trainerthree, .create_trainerfour, .create_trainerfive, .create_trainersix {
@@ -174,6 +174,10 @@ Fertig
         height: 325px;
         width: 100px;
         position: relative;
+    }
+
+    .trainer_gross {
+        background-color: transparent;
     }
 
     .trainerfirstname {

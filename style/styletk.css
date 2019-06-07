@@ -47,7 +47,6 @@ body {
 .container_calendar {
     background-color: #ccc;
     height: 150px;
-    background-image: url("kalender.png");
     background-size: 15% 100%;
     margin-top: 45px;
     margin-bottom: 5px;
@@ -76,7 +75,7 @@ body {
 
 .container_content {
     background-color: #ccc;
-    height: 590px;s
+    height: 590px;
     margin-top: 3px;
 }
 

@@ -58,20 +58,20 @@ Fertig
                     <div class="row">
                         <div class="trainerfirstname">Item 1</div>
                         <div class="trainersecondname">Item 2</div>
-                        <div class="chooseteam">Item 3</div>
+                        <div class="chooseteam">Item 3<img id="trainer_gross" width="100px" height="100px"></div>
                     </div>
                 </div>
                 <div class="col-sm-8 create_columntwo">
 
                     <div class="row">
                         <div class="col-sm create_trainerone">
-                            <img src="trainer1.jpg" width="100%" height=""></img>
+                            <img id="coach_a" src="trainer1.jpg" width="100%" height="">
                         </div>
                         <div class="col-sm create_trainertwo">
-                            <img src="trainer2.jpg" width="100%" height=""></img>
+                            <img id="coach_b" src="trainer2.jpg" width="100%" height="">
                         </div>
                         <div class="col-sm create_trainerthree">
-                            <img src="trainer3.jpg" width="100%" height=""></img>
+                            <img id="coach_c" src="trainer3.jpg" width="100%" height="">
                         </div>
                     </div>
                     <div class="row">
@@ -88,19 +88,32 @@ Fertig
                 </div>
             </div>
 
-
-            <script src="scripte/js/index.js"></script>
-
-
-        </
-        >
     </div>
 </div>
 
 </div>
 
-
 <!-- Optional JavaScript -->
+
+<script>
+
+    let img_coach = document.getElementById("trainer_gross");
+    img_coach.src = "./bilder/coach_b.jpeg";
+
+    document.addEventListener('click', (e) => {
+
+        let id_img = e.target.id;
+        let str_coach = id_img.substr(0, 5);
+
+
+        if("coach" === str_coach)
+        {
+            img_coach.src = "./bilder/" + id_img + ".jpeg";
+        }
+
+    }, false);
+
+</script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -115,6 +128,7 @@ Fertig
 </html>
 
 <style type="text/css">
+
 
     body {
         background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");

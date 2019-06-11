@@ -70,4 +70,57 @@ class DB
         $res = $this->execute($sql);
         return mysqli_fetch_assoc($res)["tm_farbe"];
     }
+
+    //TODO Herr B
+
+    /*  eine spalte in der tbl_spielplan fürn spieltag
+        aber einfach über clicki-bunti in phpmyadmin */
+
+
+    /*  eine methode zum schreiben in die tbl_transfer
+        ein paramet string */
+
+
+    /*  methode zum schreiben in die tbl_trainer
+        mit zwei parametern als string für vor- und nachname */
+
+
+    /*  methode welche das budget unseres teams holt aus der tbl_team
+        benötigt keinen parameter, da die id des users ja schon als
+        klassenvariable vorhanden ist ($this->id_class)
+        im sql-befehl musst du wieder JOIN nutzen
+        und einen integer returnen */
+
+
+    /*  methode zum ändern des budget in der tbl_team
+        ein parameter als integer (also das neue budget)
+        für den sql-string benötigst du wieder die id des users und
+        wieder JOINen
+        tip: sql-befehl UPDATE
+        */
+
+
+    /*  methode zum ändern der formation
+        ein parameter als string der formation
+        aber das passiert nicht in der tbl_formation, sondern in der
+        tbl_team wird der wert des fremdschlüssels tm_fs_formation
+        geändert */
+
+
+    /*  und natürlich auch noch eine methode zum auslesen der formation
+        ein parameter als integer für die team_id
+        und es wird ein string returnt */
+
+
+    /*  eine methode welche dir die komplette tabelle
+        tbl_spielplan returnt */
+
+
+    /*  ausserdem kommen dann noch einige methoden
+        getter und setter
+        für die eigenschaften der speiler */
+
+    /*  ĥier angelangt sollte der grossteil dieser klasse fertig sein
+        dann ist gehirnschmalz gefordert wenn du die klasse für die
+        ligatabelle baust ;) */
 }

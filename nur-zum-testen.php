@@ -27,16 +27,11 @@ include_once "./scripte/php/show_errors.php";
     let foobar = new Training(23);
 
     //test getter
-    let wert = foobar.get_foo();
+    let wert = foobar.foo;
     alert(wert);
 
     //test setter
-    foobar.set_foo(42);
-    alert(foobar.get_foo());
-
-
-    //bzw kann ich auch direkt so an die variable ran
-    foobar.foo = 88;
+    foobar.foo = 42;
     alert(foobar.foo);
 
 </script>

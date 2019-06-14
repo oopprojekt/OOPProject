@@ -2,16 +2,16 @@ class Training
 {
     constructor(foo)
     {
-        this.foo = foo;
+        this._foo = foo;
     }
 
-    set_foo(foo)
+    set foo(wert)
     {
-        this.foo = foo;
+        this._foo = wert;
     }
 
-    get_foo()
+    get foo()
     {
-        return this.foo;
+        return this._foo;
     }
 }

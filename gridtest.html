@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name=description content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/stylek.css">
+
+    <title>Create</title>
+
+
+<body>
+<div class="wrapper">
+    <div class="box a"><p id="trainer_topictext">Beginne deine Karriere</p></div>
+    <div class="box a2"></div>
+    <div class="box b">
+        <div class="chooseteam"><img id="trainer_gross"></div>
+    </div>
+    <div class="box c">
+        <p>
+            <label for="usr">
+        <p class="trainer_namelabel">Vorname:</p></label>
+        <input type="text" class="form-control trainer_nameform" id="usr">
+        <label for="usr2"><p class="trainer_namelabel">Nachname:</p></label>
+        <input type="text" class="form-control trainer_nameform" id="usr2">
+        </p>
+    </div>
+
+    <div class="box d">
+        <img id="coach_a" src="bilder/trainer1.jpg" width="32%" height="">
+
+        <img id="coach_b" src="bilder/trainer2.jpg" width="32%" height="">
+
+        <img id="coach_c" src="bilder/trainer3.jpg" width="32%" height="">
+        <img id="coach_d" src="bilder/trainer4.jpg" width="32%" height="">
+
+        <img id="coach_e" src="bilder/trainer5.jpg" width="32%" height="">
+
+        <img id="coach_f" src="bilder/trainer6.jpg" width="32%" height="">
+
+    </div>
+    <div class="box e">
+        <a href="#" id="trainercontinuebutton">
+            <img src="./bilder/trainercontinuebutton.png"class="trainercontinuebutton" height="100%"></a>
+    </div>
+</body>
+<script>
+
+    let img_coach = document.getElementById("trainer_gross");
+    img_coach.src = "./bilder/coach_b.png";
+
+    document.addEventListener('click', (e) => {
+
+        let id_img = e.target.id;
+        let str_coach = id_img.substr(0, 5);
+
+
+        if ("coach" === str_coach) {
+            img_coach.src = "./bilder/" + id_img + ".png";
+        }
+
+    }, false);
+
+</script>
+
+
+<style>
+    body {
+        background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");
+        background-color: #000;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+
+    .wrapper {
+        display: grid; /* display: inline-grid;*/
+        grid-template-columns: 30% 50% 30%; /* 3 x 1 fraction */
+        margin-top: 7%;
+    }
+
+    .a {
+        grid-column: 1 / span 1;
+        background-image: url("http://localhost/OOPProject/bilder/panelbg.png");
+        background-size: 100%;
+        height: 50px;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .a2 {
+        grid-column: 2 / span 1;
+        background-image: url("http://localhost/OOPProject/bilder/traineruntereleiste.png");
+        background-size: 100% 80%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        border-radius: 5px 5px 5px 5px;
+        opacity: 0.8;
+    }
+
+    .b {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+    #trainer_gross {
+        width: 100%;
+    }
+
+    .c {
+        grid-column: 1;
+        grid-row: 2;
+        background-color: #888;
+        background-image: url("http://localhost/OOPProject/bilder/panelbg.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 0px 0px 0px 5px;
+    }
+
+    .d {
+        grid-column: 2;
+        grid-row: 2;
+        background-color: #777;
+        background-image: url("http://localhost/OOPProject/bilder/panelbg.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 0px 5px 5px 0px;
+    }
+
+    #coach_a, #coach_b, #coach_c, #coach_d, #coach_e, #coach_f {
+        margin-top: 5px;
+        margin-bottom: 3px;
+    }
+
+    .e {
+        grid-column: 1 / span 2;
+        background-color: #ccc;
+        height: 40px;
+        background-image: url("http://localhost/OOPProject/bilder/traineruntereleiste.png");
+        background-size: 100%;
+        height: 40px;
+        padding-top: 10px;
+        border-radius: 5px 5px 5px 5px;
+        margin-top: 5px;
+    }
+
+    #trainercontinuebutton {
+        float: right;
+        height: 100%;
+        margin-right: 5px;
+    }
+
+    .trainer_nameform {
+        width: 80%;
+        background-color: #444;
+        border-color: #444;
+        height: 30px;
+        display: inline-block;
+        opacity: 0.5;
+        margin-left: 20px;
+    }
+
+    .trainer_namelabel {
+        margin-left: 20px;
+    }
+
+    #trainer_topictext {
+        margin-left: 20px;
+    }
+
+</style>
+</body>
+</html>

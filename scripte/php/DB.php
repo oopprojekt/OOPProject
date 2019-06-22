@@ -96,7 +96,7 @@ class DB
     /**
      * @return bool|mysqli_result
      */
-    public function get_all_teamplayers()
+    private function get_all_teamplayers()
     {
         $sql = "SELECT * FROM tbl_spieler WHERE spl_fs_team = " . $this->team_id . ";";
         return $this->execute($sql);
@@ -105,7 +105,7 @@ class DB
     /**
      * @return array
      */
-    public function get_fieldnames()
+    private function get_fieldnames()
     {
         $result = [];
         $sql = "SHOW COLUMNS FROM tbl_spieler;";
@@ -118,12 +118,18 @@ class DB
         return $result;
     }
 
+    /**
+     * @param $feild
+     * @return bool|string
+     */
     private function clear_fieldname($feild)
     {
-        $name = substr($feild , 4);
-        return $name;
+        return substr($feild , 4);
     }
 
+    /**
+     * @return array
+     */
     public function create_player_array()
     {
         $players     = [];

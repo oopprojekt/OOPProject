@@ -118,9 +118,32 @@ class DB
         return $result;
     }
 
+    private function clear_fieldname($feild)
+    {
+        $name = substr($feild , 4);
+        return $name;
+    }
+
     public function create_player_array()
     {
+        $players     = [];
+        $all_players = $this->get_all_teamplayers();
+        $fields      = $this->get_fieldnames(); array_shift($fields);
 
+        while ($row = mysqli_fetch_assoc($all_players))
+        {
+            $keys = []; $values = [];
+            $players[$row["spl_id"]] = [];
+
+            for($i = 0; $i < 15; $i++)
+            {
+                array_push($keys, $this->clear_fieldname($fields[$i]));
+                array_push($values, $row[$fields[$i]]);
+            }
+            $actual_player = array_combine($keys, $values);
+            array_push($players[$row["spl_id"]], $actual_player);
+        }
+        return $players;
     }
 
     //TODO Herr B

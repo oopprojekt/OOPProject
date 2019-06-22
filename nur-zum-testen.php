@@ -38,3 +38,13 @@ include_once "./scripte/php/show_errors.php";
 
 
 </html>
+
+<?php
+
+    include_once "./scripte/php/DB.php";
+
+    $foo = new DB("else@gmx.com");
+
+    echo $foo->get_team_id("else@gmx.com");
+
+?>

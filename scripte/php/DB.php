@@ -7,6 +7,7 @@ class DB
     private $connection  = null;
     private $id_class    = null;
     private $email_class = null;
+    private $team_id     = null;
 
     /**
      * DB constructor.
@@ -17,6 +18,7 @@ class DB
         $this->connection  = mysqli_connect(Config::$HOST, Config::$NUTZER, Config::$PASSWORT, Config::$DB);
         $this->email_class = $mail;
         $this->get_user_id($this->email_class);
+        $this->get_team_id($this->email_class);
     }
 
     /**
@@ -69,6 +71,26 @@ class DB
         $sql = "SELECT tbl_team.tm_farbe  FROM tbl_team JOIN tbl_user ON tbl_user.usr_fs_team = tbl_team.tm_id WHERE tbl_user.usr_id =" . $this->id_class . ";";
         $res = $this->execute($sql);
         return mysqli_fetch_assoc($res)["tm_farbe"];
+    }
+
+    /**
+     * @param $id
+     */
+    private  function set_team_id($id)
+    {
+        $this->team_id = $id;
+    }
+
+    /**
+     * @param $email
+     * @return integer team_id
+     */
+    public function get_team_id($email)
+    {
+        $sql = "SELECT `usr_fs_team` FROM `tbl_user` WHERE `usr_email` = '". $email . "';";
+        $res = $this->execute($sql);
+        $this->set_team_id((int)mysqli_fetch_assoc($res)["usr_fs_team"]);
+        return $this->team_id;
     }
 
     //TODO Herr B

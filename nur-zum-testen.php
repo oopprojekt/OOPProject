@@ -47,4 +47,10 @@ include_once "./scripte/php/show_errors.php";
 
     echo $foo->get_team_id("else@gmx.com");
 
+    var_dump($foo->get_all_teamplayers());
+
+    echo "<br><br>...";
+
+    var_dump($foo->get_fieldnames());
+
 ?>

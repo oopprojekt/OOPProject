@@ -93,6 +93,36 @@ class DB
         return $this->team_id;
     }
 
+    /**
+     * @return bool|mysqli_result
+     */
+    public function get_all_teamplayers()
+    {
+        $sql = "SELECT * FROM tbl_spieler WHERE spl_fs_team = " . $this->team_id . ";";
+        return $this->execute($sql);
+    }
+
+    /**
+     * @return array
+     */
+    public function get_fieldnames()
+    {
+        $result = [];
+        $sql = "SHOW COLUMNS FROM tbl_spieler;";
+        $res = $this->execute($sql);
+
+        while ($row = mysqli_fetch_assoc($res))
+        {
+            array_push($result, $row["Field"]);
+        }
+        return $result;
+    }
+
+    public function create_player_array()
+    {
+
+    }
+
     //TODO Herr B
 
     /*  eine spalte in der tbl_spielplan fürn spieltag

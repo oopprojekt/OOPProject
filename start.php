@@ -3,8 +3,6 @@
 //datenbankanbindungstetst
 include_once "./scripte/php/DB.php";
 
-$foo = new DB();
-
 ?>
 <!--dieses komplette html dokument wird immer so unveränderd für jede seite genutzt
 nur im content werden die dinge geschrieben die man sehen soll

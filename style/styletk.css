@@ -103,3 +103,24 @@ body {
         margin-right: 0;
     }
 }
+
+#myProgress {
+    width: 100%;
+    background-color: grey;
+}
+
+#myBar {
+    width: 0;
+    height: 30px;
+    background-color: green;
+}
+
+#spielaktionen
+{
+    display: flex;
+}
+
+#team_a
+{
+    margin-right: 250px;
+}

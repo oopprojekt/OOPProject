@@ -1,0 +1,36 @@
+<?php
+//an dieser stelle kommt immer das benötigte php zeugs
+//welches ja auf jeder seite anders ist und immer auch nur den content
+//betrifft
+include_once "./scripte/php/show_errors.php";
+
+session_start();
+
+$_SESSION['username'] = $_POST['name'];
+$_SESSION['passwort'] = $_POST['passwort'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="startpage.css">
+        <title>Start Page</title>
+    </head>
+    <body>
+        <div class="page-container flex-y">
+            <div class="first-block grey-block"></div>
+            <div class="flex-x flex-1">
+                <div class="second-block grey-block"></div>
+                <div class="flex-y flex-1">
+                    <div class="third-block grey-block">                <?php include_once "./templatestk/navtk.php"; ?></div>
+                    <div class="flex-1 grey-block"></div>
+                </div>
+            </div>
+            <div class="fifth-block grey-block"></div>
+        </div>
+    </body>
+</html>
+

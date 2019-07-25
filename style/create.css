@@ -10,6 +10,8 @@ body {
     width:100%;
     height:100%;
     padding: 70px 0;
+    background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");
+    background-color: #000;
 }
 
 .page-container {

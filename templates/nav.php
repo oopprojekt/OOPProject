@@ -6,7 +6,7 @@
             <a href="ligatabelle.php">Ligatabelle</a>
             <a href="transfers_finanzen.php">Transfers/ Finanzen</a>
             <a href="karriere_statistik.php">Karriere/ Statistik</a>
-            <a href="stadion.php">Stadion</a>
+            <a href="spiel.php">Spiel</a>
         </div>
     </div>
 </div>

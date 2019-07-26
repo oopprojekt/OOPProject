@@ -156,11 +156,20 @@ class DB
      * @param string
      */
     //eine methode zum schreiben in die tbl_transfer ein parameter string */
-    public function set_string_tbl_transfer ()
+    public function set_string_tbl_transfer($string)
     {
-        $string = 'Oezil wurde eben in Londoner Stadteil Opfer eines Raubueberfall!';
-        $sql = "INSERT INTO `tbl_transfer`(`trf_info`) VALUES ('$string')";
-        $res = mysqli_query($this->connection,$sql);
+        //den string wollen wir ja als parameter entgegennehmen
+        //$string = 'Oezil wurde eben in Londoner Stadteil Opfer eines Raubueberfall!';
+
+        //und halt immer auf die korrekte konkattination (schreibt man das so?) achten
+        $sql = "INSERT INTO `tbl_transfer`(`trf_info`) VALUES ('" . $string . "')";
+
+        //wir haben doch schon eine methode die uns den sql ausführt
+        //nutze immer unser execute dafür der du nur den sql-string mitgibst
+        $this->execute($sql);
+
+        //das ist der überflüssige weg
+        //$res = mysqli_query($this->connection,$sql);
     }
 
     //TODO Herr B

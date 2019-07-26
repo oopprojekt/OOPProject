@@ -2,6 +2,13 @@
 //nötig um mit die sessionarrays zu nutzen
 session_start();
 include_once "./scripte/php/show_errors.php";
+
+include_once "./scripte/php/DB.php";
+
+$db_test = new DB("grete@il.de");
+$db_test->set_string_tbl_transfer("warum ist die banane krumm?");
+
+echo "foobar";
 ?>
 
 <!DOCTYPE html>

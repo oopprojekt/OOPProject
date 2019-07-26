@@ -152,14 +152,25 @@ class DB
         return $players;
     }
 
+    /**
+     * @param string
+     */
+    //eine methode zum schreiben in die tbl_transfer ein parameter string */
+    public function set_string_tbl_transfer ()
+    {
+        $string = 'Oezil wurde eben in Londoner Stadteil Opfer eines Raubueberfall!';
+        $sql = "INSERT INTO `tbl_transfer`(`trf_info`) VALUES ('$string')";
+        $res = mysqli_query($this->connection,$sql);
+    }
+
     //TODO Herr B
 
-    /*  eine spalte in der tbl_spielplan fürn spieltag
+    /*  Erledigt-->eine spalte in der tbl_spielplan fürn spieltag
         aber einfach über clicki-bunti in phpmyadmin */
 
 
     /*  eine methode zum schreiben in die tbl_transfer
-        ein paramet string */
+        ein parameter string */
 
 
     /*  methode zum schreiben in die tbl_trainer

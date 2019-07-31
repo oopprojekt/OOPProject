@@ -172,6 +172,25 @@ class DB
         //$res = mysqli_query($this->connection,$sql);
     }
 
+    /**
+     * @return bool|mysqli_result
+     */
+    public function get_all_teams()
+    {
+        $sql = "SELECT * FROM tbl_team;";
+        $result = $this->execute($sql);
+        return $result;
+    }
+
+
+    public function foo()
+    {
+        while ($row = mysqli_fetch_assoc($this->get_all_teams()))
+        {
+            echo $row["tm_id"];
+        }
+    }
+
     //TODO Herr B
 
     /*  Erledigt-->eine spalte in der tbl_spielplan fürn spieltag

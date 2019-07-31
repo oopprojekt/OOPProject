@@ -5,9 +5,9 @@
 include_once "./scripte/php/show_errors.php";
 
 session_start();
-error_reporting(0);
-$_SESSION['username'] = $_POST['name'];
-$_SESSION['passwort'] = $_POST['passwort'];
+//error_reporting(0);
+$_SESSION['tr_vorname']  = $_POST['trainer_vorname'];
+$_SESSION['tr_nachname'] = $_POST['trainer_nachname'];
 ?>
 
 <!DOCTYPE html>

@@ -1,77 +1,109 @@
-body
-{
-    background-image: url("../bilder/rasen.jpeg");
-    background-size: cover;
-    width: 900px;
-    margin: auto;
-    display: grid;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
-.buttons
-{
-    width: 125px;
-    color: white;
-    font-size: medium;
-    font-weight: normal;
-    background: gray;
+body {
+    width:100%;
+    height:100%;
+    min-height: 100vh;
+    background-image: url("https://answers.ea.com/ea/attachments/ea/fifa-18-technical-issues-en/1347/1/9-21-2017_2-12-52_PM.png");
+    background-color: #000;
+    background-size: 100% 100%;
 }
 
-.buttons:hover
-{
-    font-weight: bolder;
+.page-container {
+    margin: 0 10%;
+    min-height: 100vh;
 }
 
-#div_login
-{
-    background: fuchsia;
+.grey-block {
+    background-color: #999999;
+    border: 2px solid black;
+    margin: 3px;
 }
 
-#div_regist
-{
-    background: aqua;
-}
-
-.index_content
-{
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 50px;
-    left: 500px;
-    padding: 10px;
-}
-
-#header
-{
-    background-color: aqua;
-    width: 100%;
+.first-block {
+    height: 130px;
     margin-top: 30px;
-    height: 80px;
 }
 
-#info
-{
-    background-color: aliceblue;
+.second-block {
     width: 20%;
-    margin-right: 20px;
 }
 
-#footer
-{
-    background-color: coral;
+.third-block {
+    height: 10%;
+}
+
+.fifth-block {
+    height: 80px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.flex-y {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-x {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* MENU NAV */
+
+.navpoint {
+    width:100%;
+    padding-top: 18px;
+    text-align: center;
+}
+
+/* LIVETICKER BEGINN */
+
+#myProgress {
     width: 100%;
-    height: 60px;
+    background-color: grey;
 }
 
-#info_and_content
+#myBar {
+    width: 0;
+    height: 30px;
+    background-color: green;
+}
+
+#spielaktionen
 {
     display: flex;
-    height: 300px;
-    margin: 20px 0;
 }
 
-#home
+#team_a
 {
-    background-color: darkgrey;
-    width: 80%;
+    margin-right: 250px;
+}
+/* LIVETICKER ENDE */
+
+/*
+####### footer #######
+#### untenrum ;) #####
+ */
+
+#lauftext
+{
+    width: 90%;
+    background-color: violet;
+}
+
+#btn_anpfiff
+{
+    background-color: orange;
+    width: 10%;
 }

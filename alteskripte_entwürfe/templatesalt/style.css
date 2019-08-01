@@ -1,0 +1,77 @@
+body
+{
+    background-image: url("../../bilder/rasen.jpeg");
+    background-size: cover;
+    width: 900px;
+    margin: auto;
+    display: grid;
+}
+
+.buttons
+{
+    width: 125px;
+    color: white;
+    font-size: medium;
+    font-weight: normal;
+    background: gray;
+}
+
+.buttons:hover
+{
+    font-weight: bolder;
+}
+
+#div_login
+{
+    background: fuchsia;
+}
+
+#div_regist
+{
+    background: aqua;
+}
+
+.index_content
+{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50px;
+    left: 500px;
+    padding: 10px;
+}
+
+#header
+{
+    background-color: aqua;
+    width: 100%;
+    margin-top: 30px;
+    height: 80px;
+}
+
+#info
+{
+    background-color: aliceblue;
+    width: 20%;
+    margin-right: 20px;
+}
+
+#footer
+{
+    background-color: coral;
+    width: 100%;
+    height: 60px;
+}
+
+#info_and_content
+{
+    display: flex;
+    height: 300px;
+    margin: 20px 0;
+}
+
+#home
+{
+    background-color: darkgrey;
+    width: 80%;
+}

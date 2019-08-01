@@ -20,7 +20,7 @@ echo "trallali";
 <head>
     <meta charset="UTF-8">
     <title>fu_ma_si</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="alteskripte_entwürfe/templatesalt/style.css">
 
     <!--einbindung der klasse-->
     <script src="scripte/js/Training.js"></script>

@@ -6,10 +6,8 @@ include_once "./scripte/php/show_errors.php";
 
 session_start();
 error_reporting(0);
-
 $_SESSION['username'] = $_POST['name'];
 $_SESSION['passwort'] = $_POST['passwort'];
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +16,7 @@ $_SESSION['passwort'] = $_POST['passwort'];
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style/startpage.css">
+        <link rel="stylesheet" href="style/style.css">
         <title>Start Page</title>
     </head>
     <body>

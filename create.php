@@ -12,7 +12,7 @@ $db = new DB($_SESSION['user_mail']);
 //$db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['passwort']);
 //$db->create_user("name", "mail@gmx.de", "pw");
 
-//echo var_dump(mysqli_fetch_array($db->get_all_teams())[13]) ;
+ 
 ?>
 
 <!DOCTYPE html>
@@ -54,20 +54,33 @@ $db = new DB($_SESSION['user_mail']);
                         <input type="text" name="trainer_vorname" placeholder="***vorname***"><br>
                         <input type="text" name="trainer_nachname" placeholder="***nachname***"><br>
 
-                        <!--
+                         
                         <select name="teams">
                             <?php
-                                /*
+                               					
 
-                                while($row = mysqli_fetch_assoc($db->get_all_teams()))
-                                {
-                                   echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
-                                }
+                        /*TK ANSATZ (funzt, aber leider in pdo) */ 
 
-                               */
+
+                        $pdo = new pdo('mysql:host=localhost;dbname=fumasi', 'root', 'root'); /* ZUGANGSDATEN ANPASSEN! **/
+
+						$sql = "SELECT * FROM tbl_team";
+						foreach ($pdo->query($sql) as $row) {
+						   echo "<option>" . $row['tm_name'] . "</option>";;
+						} 
+
+					 
+						/* STEFANS ANSATZ */
+
+                        /*   while($row = mysqli_fetch_assoc($db->get_all_teams()))
+                             {
+                              	echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
+                             }
+                         */
+
                             ?>
                         </select><br>
-                        -->
+                        
 
                         <input type="submit" class="buttons" value="spielen">
                     </form>

@@ -10,7 +10,7 @@ $db_test = new DB("grete@il.de");
 //$db_test->create_user("name", "mail@gmx.de", "pw");
 
 
-$db_test->foo();
+//$db_test->foo();
 
 echo "trallali";
 ?>
@@ -24,6 +24,7 @@ echo "trallali";
 
     <!--einbindung der klasse-->
     <script src="scripte/js/Training.js"></script>
+    <script src="scripte/js/Config.js"></script>
 </head>
 <body>
 <h1>TESTSEITE</h1>
@@ -44,6 +45,9 @@ echo "trallali";
     //test setter
     foobar.foo = 42;
     alert(foobar.foo);
+
+    const bar = new Config();
+    alert(bar.ORTE);
 
 </script>
 

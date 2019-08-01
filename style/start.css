@@ -42,6 +42,7 @@ body {
 .fifth-block {
     height: 80px;
     margin-bottom: 30px;
+    display: flex;
 }
 
 .flex-y {
@@ -89,3 +90,20 @@ body {
     margin-right: 250px;
 }
 /* LIVETICKER ENDE */
+
+/*
+####### footer #######
+#### untenrum ;) #####
+ */
+
+#lauftext
+{
+    width: 90%;
+    background-color: violet;
+}
+
+#btn_anpfiff
+{
+    background-color: orange;
+    width: 10%;
+}

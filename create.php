@@ -65,7 +65,7 @@ $db = new DB($_SESSION['user_mail']);
 
                     </form>
 
-                    <img id="team_logo">q
+                    <img id="team_logo">
 
                 </div>
                 <div class="grey-block flex-1 left-border-none">

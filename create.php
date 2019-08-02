@@ -54,24 +54,17 @@ $db = new DB($_SESSION['user_mail']);
                         <input type="text" name="trainer_vorname" placeholder="***vorname***"><br>
                         <input type="text" name="trainer_nachname" placeholder="***nachname***"><br>
 
-                        <!--
                         <select name="teams">
                             <?php
-                                /*
-
-                                while($row = mysqli_fetch_assoc($db->get_all_teams()))
+                                foreach($db->get_all_teams() as $row)
                                 {
-                                   echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
+                                   echo "<option>" . $row["tm_name"] . "</option>";
                                 }
-
-                               */
                             ?>
                         </select><br>
-                        -->
 
                         <input type="submit" class="buttons" value="spielen">
                     </form>
-
 
                 </div>
                 <div class="grey-block flex-1 left-border-none">

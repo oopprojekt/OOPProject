@@ -8,6 +8,9 @@ session_start();
 error_reporting(0);
 $_SESSION['tr_vorname'] = $_POST['trainer_vorname'];
 $_SESSION['tr_nachname'] = $_POST['trainer_nachname'];
+$_SESSION['team'] = $_POST['teams'];
+
+echo $_SESSION['team'];
 ?>
 
 <!DOCTYPE html>

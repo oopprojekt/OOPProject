@@ -50,21 +50,22 @@ $db = new DB($_SESSION['user_mail']);
                     <label for="usr2">Nachname:</label>
                     <input type="text" class="form-control trainer_firstnameform " id="usr2">
 
-                    <form action="home.php" method="post">
+                    <form id="form" action="home.php" method="post">
                         <input type="text" name="trainer_vorname" placeholder="***vorname***"><br>
                         <input type="text" name="trainer_nachname" placeholder="***nachname***"><br>
 
-                        <select name="teams">
+                        <select name="teams" onchange="leaveChange(this)">
                             <?php
                                 foreach($db->get_all_teams() as $row)
                                 {
-                                   echo "<option>" . $row["tm_name"] . "</option>";
+                                   echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
                                 }
                             ?>
                         </select><br>
 
-                        <input type="submit" class="buttons" value="spielen">
                     </form>
+
+                    <img id="team_logo">q
 
                 </div>
                 <div class="grey-block flex-1 left-border-none">
@@ -83,7 +84,7 @@ $db = new DB($_SESSION['user_mail']);
             <div class="flex-x third-row mtr-6">
                 <div class="grey-block flex-1"></div>
                 <div class="grey-block last-block left-border-none">
-                    <a href="#">Karriere starten </a>
+                    <input form="form" type="submit" class="buttons" value="Karriere starten">
                 </div>
             </div>
         </div>
@@ -91,6 +92,15 @@ $db = new DB($_SESSION['user_mail']);
     </div>
 </div>
 
+<script>
+
+    let img_team = document.getElementById("team_logo");
+
+    leaveChange = (e) => {
+        img_team.src = "./bilder/logo/" + e.value + ".jpeg";
+    }
+
+</script>
 
 <script>
 

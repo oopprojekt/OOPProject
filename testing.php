@@ -70,6 +70,4 @@ echo "trallali";
 
     echo "<br><br>...";
 
-    print_r($foo->create_player_array());
-
 ?>

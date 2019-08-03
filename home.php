@@ -3,12 +3,13 @@
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
 include_once "./scripte/php/show_errors.php";
-
+include_once "./scripte/php/DB.php";
+$db = new DB("grete@il.de");
 session_start();
-error_reporting(0);
+//error_reporting(0);
 $_SESSION['tr_vorname'] = $_POST['trainer_vorname'];
 $_SESSION['tr_nachname'] = $_POST['trainer_nachname'];
-$_SESSION['team'] = $_POST['teams'];
+$_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 
 echo $_SESSION['team'];
 ?>

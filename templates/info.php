@@ -1,1 +1,2 @@
-Info
+<?php
+echo $_SESSION['team'];

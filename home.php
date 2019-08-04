@@ -9,9 +9,11 @@ session_start();
 //error_reporting(0);
 $_SESSION['tr_vorname'] = $_POST['trainer_vorname'];
 $_SESSION['tr_nachname'] = $_POST['trainer_nachname'];
-$_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 
-echo $_SESSION['team'];
+if(!$_SESSION['team'])
+{
+    $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
+}
 ?>
 
 <!DOCTYPE html>

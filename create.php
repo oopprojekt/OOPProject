@@ -97,7 +97,7 @@ $db = new DB($_SESSION['user_mail']);
     let img_team = document.getElementById("team_logo");
 
     leaveChange = (e) => {
-        img_team.src = "./bilder/logo/" + e.value + ".jpeg";
+        img_team.src = "./bilder/logo/" + e.value + ".png";
     }
 
 </script>

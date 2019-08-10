@@ -88,3 +88,7 @@ body {
 .left-border-none {
     border-left: none;
 }
+
+#team_logo{
+    margin: 20px;
+}

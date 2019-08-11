@@ -204,6 +204,11 @@ class DB
 
     /*  methode zum schreiben in die tbl_trainer
         mit zwei parametern als string für vor- und nachname */
+    public function get_trainer_names($team_id)
+    {
+        $sql = "";
+        return $this->execute($sql);
+    }
 
 
     /*  methode welche das budget unseres teams holt aus der tbl_team

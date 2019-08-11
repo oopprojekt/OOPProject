@@ -33,7 +33,7 @@ $_SESSION['passwort'] = $_POST['passwort'];
             <div class="flex-1 grey-block">
 
                 <!--das wird dann dynamisch mit js befüllt-->
-                <span>Team A </span><span> 0</span>:<span>0 </span><span> Team B</span>
+                <span>Team A </span><span id="tore_a"></span>:<span id="tore_b"></span><span> Team B</span>
 
                 <!--das ist der vortschrittsbalken-->
                 <div id="myProgress">
@@ -69,6 +69,8 @@ $_SESSION['passwort'] = $_POST['passwort'];
     ];
 
     let btn_anpfiff = document.getElementById("anpfiff");
+    let tore_a = document.getElementById("tore_a");
+    let tore_b = document.getElementById("tore_b");
 
     minute = (progress) => {
         return parseInt((progress * 90) / 100);
@@ -77,6 +79,9 @@ $_SESSION['passwort'] = $_POST['passwort'];
     btn_anpfiff.onclick = () => {
         let elem = document.getElementById("myBar");
         let width = 0;
+        let a = 0, b = 0;
+
+
         let id = setInterval(() => {
 
             let num = parseInt(Math.random() * (23));
@@ -87,6 +92,15 @@ $_SESSION['passwort'] = $_POST['passwort'];
 
                 let team = parseInt(Math.random() * (2));
                 document.getElementById("team_" + team).appendChild(new_p);
+
+                //es fällt ein tor
+                if(num === 3)
+                {
+                    team ? b++ : a++;
+                }
+
+                tore_a.innerText = a;
+                tore_b.innerText = b;
             }
             if (50 === width) {
                 alert("halbzeit");

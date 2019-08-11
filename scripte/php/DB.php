@@ -192,11 +192,10 @@ class DB
         return $this->execute($sql)->fetch_row()[0];
     }
 
+    public function set_player_data()
+    {
+    }
     //TODO Herr B
-
-    /*  Erledigt-->eine spalte in der tbl_spielplan fürn spieltag
-        aber einfach über clicki-bunti in phpmyadmin */
-
 
     /*  eine methode zum schreiben in die tbl_transfer
         ein parameter string */

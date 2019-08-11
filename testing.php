@@ -61,6 +61,24 @@ echo "trallali";
     $foo = new DB("else@gmx.com");
 
     echo $foo->get_team_id("else@gmx.com");
+    echo "<br><br>...";
+
+    $set_increment = 'ALTER TABLE tbl_spieler AUTO_INCREMENT = 1;';
+    $this->execute($set_increment);
+        for ($team_id = 3; $team_id <= 20; $team_id++) {
+            //spieler werden angelegt
+            for ($i = 1; $i < 11; $i++) {
+                $pos = rand(1,10);
+                $skills = rand(1,100);
+                $shirt_number = rand (1, 99);
+                $sql = "INSERT INTO `tbl_spieler` (`spl_vorname`, `spl_nachname`, `spl_fs_team`, `spl_alter`, `spl_fs_position`, `spl_ausdauer`, `spl_technik`, `spl_torgefahr`, `spl_zweikampf`, `spl_rote`, `spl_gelbe`, `spl_verletzt`, `spl_preis`, `spl_tore`, `spl_nummer`) 
+VALUES ('spl_" . $i . "_vorname', 'spl_" . $i . "_nachname',' " . $team_id . "','35', '" . $pos . "', '" . $skills . "', '" . $skills . "', '" . $skills . "', '" . $skills . "', '0', '0', '0', '1', '1', '" . $shirt_number . "');";
+                //INSERT INTO `tbl_spieler` (`spl_id`, `spl_vorname`, `spl_nachname`, `spl_fs_team`, `spl_alter`, `spl_fs_position`, `spl_ausdauer`, `spl_technik`, `spl_torgefahr`, `spl_zweikampf`, `spl_rote`, `spl_gelbe`, `spl_verletzt`, `spl_preis`, `spl_tore`, `spl_nummer`)
+                // VALUES (NULL, 'hans', 'gruber', '15', '35', '1', '100', '100', '100', '100', '0', '0', '0', '1', '1', '1')
+                //echo($sql); echo "<br>";
+                $this->execute($sql);
+            }
+        }
 
     //var_dump($foo->get_all_teamplayers());
 

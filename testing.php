@@ -63,23 +63,32 @@ echo "trallali";
     echo $foo->get_team_id("else@gmx.com");
     echo "<br><br>...";
 
-    $set_increment = 'ALTER TABLE tbl_spieler AUTO_INCREMENT = 1;';
-    $this->execute($set_increment);
+        $con = mysqli_connect("localhost","root","root","fumasi");
+        $set_increment = 'ALTER TABLE tbl_spieler AUTO_INCREMENT = 1;';
+        mysqli_query($con, $set_increment);
         for ($team_id = 3; $team_id <= 20; $team_id++) {
             //spieler werden angelegt
-            for ($i = 1; $i < 11; $i++) {
-                $pos = rand(1,10);
-                $skills = rand(1,100);
-                $shirt_number = rand (1, 99);
+            for ($i = 1; $i <= 11; $i++) {
+                $alter = rand(16,49);
+                $position = rand(1,10);
+                $ausdauer = rand(1,100);
+                $technik = rand(1,100);
+                $torgefahr = rand(1,100);
+                $zweikampf = rand(1,100);
+                $rote_karte = 0;
+                $gelbe_karte = 0;
+                $verletzt = 0;
+                $preis = rand(10000,100000);
+                $tore = 0;
+                $nummer = 0;
                 $sql = "INSERT INTO `tbl_spieler` (`spl_vorname`, `spl_nachname`, `spl_fs_team`, `spl_alter`, `spl_fs_position`, `spl_ausdauer`, `spl_technik`, `spl_torgefahr`, `spl_zweikampf`, `spl_rote`, `spl_gelbe`, `spl_verletzt`, `spl_preis`, `spl_tore`, `spl_nummer`) 
-VALUES ('spl_" . $i . "_vorname', 'spl_" . $i . "_nachname',' " . $team_id . "','35', '" . $pos . "', '" . $skills . "', '" . $skills . "', '" . $skills . "', '" . $skills . "', '0', '0', '0', '1', '1', '" . $shirt_number . "');";
-                //INSERT INTO `tbl_spieler` (`spl_id`, `spl_vorname`, `spl_nachname`, `spl_fs_team`, `spl_alter`, `spl_fs_position`, `spl_ausdauer`, `spl_technik`, `spl_torgefahr`, `spl_zweikampf`, `spl_rote`, `spl_gelbe`, `spl_verletzt`, `spl_preis`, `spl_tore`, `spl_nummer`)
-                // VALUES (NULL, 'hans', 'gruber', '15', '35', '1', '100', '100', '100', '100', '0', '0', '0', '1', '1', '1')
-                //echo($sql); echo "<br>";
-                $this->execute($sql);
+    VALUES ('spl_" . $i . "_vorname', 'spl_" . $i . "_nachname',' " . $team_id . "','" . $alter . "', '" . $position . "', '" . $ausdauer . "', '" . $technik . "', '" . $torgefahr . "', '" . $zweikampf . "', '0', '0', '0', '" . $preis . "', '1', '" . $i . "');";
+            //INSERT INTO `tbl_spieler` (`spl_id`, `spl_vorname`, `spl_nachname`, `spl_fs_team`, `spl_alter`, `spl_fs_position`, `spl_ausdauer`, `spl_technik`, `spl_torgefahr`, `spl_zweikampf`, `spl_rote`, `spl_gelbe`, `spl_verletzt`, `spl_preis`, `spl_tore`, `spl_nummer`)
+            // VALUES (NULL, 'hans', 'gruber', '15', '35', '1', '100', '100', '100', '100', '0', '0', '0', '1', '1', '1')
+            //echo($sql); echo "<br>";
+            mysqli_query($con, $sql);
             }
         }
-
     //var_dump($foo->get_all_teamplayers());
 
     echo "<br><br>...";

@@ -25,7 +25,7 @@ class DB
      * @param $sql
      * @return bool|mysqli_result
      */
-    private function execute($sql)
+    public function execute($sql)
     {
         return mysqli_query($this->connection, $sql);
     }
@@ -194,6 +194,7 @@ class DB
 
     public function set_player_data()
     {
+
     }
     //TODO Herr B
 

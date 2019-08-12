@@ -197,14 +197,12 @@ class DB
     public function get_trainer_names()
     {
         $sql = "SELECT * FROM tbl_team JOIN tbl_trainer ON tbl_team.tm_fs_trainer = tbl_trainer.tr_id;";
-        $result = [];
-        foreach ($this->execute($sql) as $item) {
-            $trainer = [ $item["tm_id"] =>
-                            [$item["tr_id"], utf8_encode($item["tr_vorname"]), utf8_encode($item["tr_nachname"])]];
-
-            array_push($result, $trainer);
+        $trainer = [];
+        foreach ($this->execute($sql) as $item)
+        {
+            $trainer[$item["tm_id"]] = [utf8_encode($item["tr_vorname"]), utf8_encode($item["tr_nachname"])];
         }
-        return $result;
+        return $trainer;
     }
 /*
 foreach($db->get_all_teams() as $row)

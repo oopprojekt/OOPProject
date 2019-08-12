@@ -152,7 +152,7 @@ class DB
         return $players;
     }
 
-    /**
+    /**SELECT * FROM `tbl_trainer`
      * @param string
      */
     //eine methode zum schreiben in die tbl_transfer ein parameter string */
@@ -204,12 +204,24 @@ class DB
 
     /*  methode zum schreiben in die tbl_trainer
         mit zwei parametern als string für vor- und nachname */
-    public function get_trainer_names($team_id)
+    public function get_trainer_names()
     {
-        $sql = "";
-        return $this->execute($sql);
-    }
+        $sql = "SELECT * FROM tbl_team JOIN tbl_trainer ON tbl_team.tm_fs_trainer = tbl_trainer.tr_id;";
+        $result = [];
+        foreach ($this->execute($sql) as $item) {
+            $trainer = [ $item["tm_id"] =>
+                            [$item["tr_id"], utf8_encode($item["tr_vorname"]), utf8_encode($item["tr_nachname"])]];
 
+            array_push($result, $trainer);
+        }
+        return $result;
+    }
+/*
+foreach($db->get_all_teams() as $row)
+{
+echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
+}
+*/
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

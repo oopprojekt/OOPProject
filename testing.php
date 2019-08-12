@@ -20,7 +20,6 @@ echo "trallali";
 <head>
     <meta charset="UTF-8">
     <title>fu_ma_si</title>
-    <link rel="stylesheet" href="alteskripte_entwürfe/templatesalt/style.css">
 
     <!--einbindung der klasse-->
     <script src="scripte/js/Training.js"></script>
@@ -40,14 +39,14 @@ echo "trallali";
 
     //test getter
     let wert = foobar.foo;
-    alert(wert);
+    //alert(wert);
 
     //test setter
     foobar.foo = 42;
-    alert(foobar.foo);
+    //alert(foobar.foo);
 
     const bar = new Config();
-    alert(bar.ORTE);
+    //alert(bar.ORTE);
 
 </script>
 
@@ -55,9 +54,19 @@ echo "trallali";
 </html>
 
 <?php
-
+    /*
     include_once "./scripte/php/Fixtures.php";
     $fixtures = new Fixtures();
     $fixtures->set_player_data();
+    */
+?>
+
+<?php
+
+    $alle_trainer = $db_test->get_trainer_names();
+
+    echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
+
+    echo "danach angekommen?!";
 
 ?>

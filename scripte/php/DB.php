@@ -177,7 +177,8 @@ class DB
     public function get_team_by_id($id)
     {
         $sql = "SELECT tm_name FROM tbl_team WHERE tm_id = " . $id . ";";
-        //->fetch_row()[0] -> liefert vom resultobjekt den gewünschten string
+        //->fetch_row()[0] -> liefert vom
+        // resultobjekt den gewünschten string
         return $this->execute($sql)->fetch_row()[0];
     }
 

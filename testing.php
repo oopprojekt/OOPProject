@@ -54,11 +54,9 @@ echo "trallali";
 </html>
 
 <?php
-    /*
     include_once "./scripte/php/Fixtures.php";
     $fixtures = new Fixtures();
-    $fixtures->set_player_data();
-    */
+    // $fixtures->set_player_data();
 ?>
 
 <?php
@@ -69,4 +67,10 @@ echo "trallali";
 
     echo "danach angekommen?!";
 
+?>
+
+<?php
+include_once "./scripte/php/spieltag.php";
+$spieltag = new Spieltag();
+$spieltag->set_spieltag();
 ?>

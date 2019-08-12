@@ -65,4 +65,5 @@ class Fixtures
 
         echo "testdummys der spieler wurden geschrieben";
     }
+
 }

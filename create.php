@@ -43,16 +43,11 @@ $db = new DB($_SESSION['user_mail']);
             <div class="flex-1 flex-x mr-6 mt-3">
                 <div class="grey-block third-block">
 
+                    <span id="vorname"></span>
+                    <span id="nachname"></span>
 
-                    <label for="usr">Vorname:</label>
-                    <input type="text" class="form-control trainer_firstnameform  " id="usr"><br/>
-
-                    <label for="usr2">Nachname:</label>
-                    <input type="text" class="form-control trainer_firstnameform " id="usr2">
 
                     <form id="form" action="home.php" method="post">
-                        <input type="text" name="trainer_vorname" placeholder="***vorname***"><br>
-                        <input type="text" name="trainer_nachname" placeholder="***nachname***"><br>
 
                         <select name="teams" onchange="leaveChange(this)">
                             <?php
@@ -94,10 +89,18 @@ $db = new DB($_SESSION['user_mail']);
 
 <script>
 
+    let trainer = <?php echo json_encode($db->get_trainer_names(), JSON_PRETTY_PRINT) ?>;
     let img_team = document.getElementById("team_logo");
+    let vorname = document.getElementById("vorname");
+    let nachname = document.getElementById("nachname");
+
+    console.log(trainer);
+
 
     leaveChange = (e) => {
         img_team.src = "./bilder/logo/" + e.value + ".png";
+        vorname.innerText = trainer[e.value][0];
+        nachname.innerText = trainer[e.value][1];
     }
 
 </script>

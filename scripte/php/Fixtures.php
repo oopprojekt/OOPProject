@@ -43,7 +43,7 @@ class Fixtures
         $this->delete_fixtures();
         $this->set_increment();
 
-        for ($team_id = 3; $team_id <= 20; $team_id++)
+        for ($team_id = 1; $team_id <= 18; $team_id++)
         {
             //spieler werden angelegt
             for ($i = 1; $i <= 11; $i++)
@@ -64,6 +64,92 @@ class Fixtures
         }
 
         echo "testdummys der spieler wurden geschrieben";
+    }
+    private function delete_tbl_spielplan()
+    {
+        $sql = "DELETE FROM tbl_spielplan;";
+        $this->connection->execute($sql);
+    }
+
+    /**
+     * damit die id's mit 1 beginnen
+     */
+    private function set_increment_tbl_spielplan()
+    {
+        $sql = "ALTER TABLE tbl_spielplan AUTO_INCREMENT = 1;";
+        $this->connection->execute($sql);
+    }
+    public function set_saisonstart()
+    {
+        /**
+         * Gibt den Unix-Timestamp entsprechend der gegebenen Argumente zurück. Dieser Timestamp
+         * ist ein Long Integer, der die Anzahl der Sekunden zwischen der
+         * Unix-Epoche (01. Januar 1970 00:00:00 GMT) und dem angegebenen Zeitpunkt enthält
+         */
+        $saisonstart_datum = mktime(15, 30, 0, 8, 17, 2019);
+        return $saisonstart_datum;
+    }
+    public function set_spieltag()
+    {
+        $this->delete_tbl_spielplan();
+        $this->set_increment_tbl_spielplan();
+        $this->set_saisonstart();
+        // Teams aus DB holen
+        $sql = "SELECT tm_id FROM tbl_team";
+        $res = $this->connection->execute($sql);
+
+        $teams = array();
+        while ($row = mysqli_fetch_assoc($res)) {
+            //echo $row['tm_name'];
+            $teams[] = $row['tm_id'];
+        }
+
+        // benötigte Variablen setzen
+        $anzahl  = count($teams);                                       // Anzahl der Teams
+        $paare   = floor($anzahl / 2);                                  // Anzahl der möglichen Spielpaare
+        $plan    = array();                                             // Array für den kompletten Spielplan
+        $tage    = ($anzahl % 2) ? count($teams) : count($teams)-1;     // bei ungerader Anzahl an Teams brauchen wir einen Spieltag mehr
+        $base    = ($anzahl % 2) ? $anzahl-2 : $anzahl-1;               // die Basis für den Array-Index, bei ungerader Anzahl an Teams
+        // fangen wir beim vorletzten Team an
+
+        for ($tag = 1; $tag <= $tage; $tag++) {
+            if ($anzahl % 2) {
+                // letztes element nach vorne
+                array_unshift($teams, array_pop($teams));
+            } else {
+                // zweites element mit array(letztes element, zweites element) ersetzen,
+                // also letztes element zwischen 1. und 2. element einfügen
+                array_splice($teams, 1, 1, array(array_pop($teams), $teams[1]));
+            }
+
+            for ($spiel = 0; $spiel < $paare; $spiel++) {
+                $heim = $teams[$spiel];
+                $gast = $teams[$base-$spiel];
+
+                $plan[$tag][] = array($heim, $gast);
+
+                /* Rückrunde */
+                $plan[$tag+$tage][] = array($gast, $heim);
+            }
+        }
+        ksort($plan);
+        /** spielplan in db schreiben
+         * INSERT INTO `tbl_spielplan` (`sp_id`, `sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) VALUES ('1', '2019-08-17 00:00:00', '12', '4', 'TBD');
+         * formatierung datum DB wie folgt 2019-08-17 00:00:00
+         */
+        $saisonstart_datum = $this->set_saisonstart();
+        foreach ($plan as $spieltag => $spiele) {
+            // formatierung DB 2019-08-17 00:00:00
+            foreach ($spiele as $spielnummer => $paarung) {
+                // formatierung DB 2019-08-17 00:00:00
+                $datum = date("Y-m-d H:i:s",$saisonstart_datum);
+                $sql = "INSERT INTO `tbl_spielplan`(`sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) 
+                VALUES ('" . $datum. "','" . $paarung[0] . "','" . $paarung[1] . "','TBD')";
+                $this->connection->execute($sql);
+            }
+            // datum eine woche später
+            $saisonstart_datum = $saisonstart_datum + 604800;
+        }
     }
 
 }

@@ -182,10 +182,6 @@ class DB
         return $this->execute($sql)->fetch_row()[0];
     }
 
-    public function set_player_data()
-    {
-
-    }
     //TODO Herr B
 
     /*  eine methode zum schreiben in die tbl_transfer

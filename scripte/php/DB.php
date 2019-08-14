@@ -200,6 +200,18 @@ class DB
         }
         return $trainer;
     }
+
+    public function set_team($team_id)
+    {
+        $sql = "UPDATE tbl_user SET usr_fs_team = " . $team_id . " WHERE usr_email = '" . $this->email_class . "';";
+        $this->execute($sql);
+    }
+
+    public function get_trainer()
+    {
+        $sql = "SELECT tr_vorname, tr_nachname FROM tbl_trainer WHERE tr_id = 1;";
+        return $this->execute($sql);
+    }
 /*
 foreach($db->get_all_teams() as $row)
 {

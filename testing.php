@@ -8,6 +8,9 @@ include_once "./scripte/php/DB.php";
 $db_test = new DB("grete@il.de");
 //$db_test->set_string_tbl_transfer("warum ist die banane immer krumm?");
 //$db_test->create_user("name", "mail@gmx.de", "pw");
+//$db_test->set_team(13);
+echo "trainername:";
+var_dump($db_test->get_trainer("bratob"));
 
 
 //$db_test->foo();

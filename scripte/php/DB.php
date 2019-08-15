@@ -182,14 +182,9 @@ class DB
         return $this->execute($sql)->fetch_row()[0];
     }
 
-    //TODO Herr B
-
-    /*  eine methode zum schreiben in die tbl_transfer
-        ein parameter string */
-
-
-    /*  methode zum schreiben in die tbl_trainer
-        mit zwei parametern als string für vor- und nachname */
+    /**
+     * @return array
+     */
     public function get_trainer_names()
     {
         $sql = "SELECT * FROM tbl_team JOIN tbl_trainer ON tbl_team.tm_fs_trainer = tbl_trainer.tr_id;";
@@ -201,23 +196,32 @@ class DB
         return $trainer;
     }
 
+    /**
+     * @param $team_id
+     */
     public function set_team($team_id)
     {
         $sql = "UPDATE tbl_user SET usr_fs_team = " . $team_id . " WHERE usr_email = '" . $this->email_class . "';";
         $this->execute($sql);
     }
 
-    public function get_trainer()
+    /**
+     * @param $user
+     * @return string
+     */
+    public function get_trainer($user)
     {
-        $sql = "SELECT tr_vorname, tr_nachname FROM tbl_trainer WHERE tr_id = 1;";
-        return $this->execute($sql);
+        $sql = "SELECT tbl_trainer.tr_vorname, tbl_trainer.tr_nachname FROM tbl_trainer JOIN tbl_team 
+                ON 
+                tbl_trainer.tr_id = tbl_team.tm_fs_trainer JOIN tbl_user 
+                ON 
+                tbl_team.tm_id = tbl_user.usr_fs_team 
+                WHERE tbl_user.usr_name = '" . $user . "';";
+        $vorname  = $this->execute($sql)->fetch_row()[0];
+        $nachname = $this->execute($sql)->fetch_row()[1];
+        return $vorname . " " . $nachname;
     }
-/*
-foreach($db->get_all_teams() as $row)
-{
-echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
-}
-*/
+
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

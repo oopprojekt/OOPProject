@@ -65,6 +65,7 @@ class Fixtures
 
         echo "testdummys der spieler wurden geschrieben";
     }
+    //TODO bei allen methoden an die php-docs denken (diese grünen kommentare - funktionsbeschreibung)
     private function delete_tbl_spielplan()
     {
         $sql = "DELETE FROM tbl_spielplan;";
@@ -79,6 +80,12 @@ class Fixtures
         $sql = "ALTER TABLE tbl_spielplan AUTO_INCREMENT = 1;";
         $this->connection->execute($sql);
     }
+
+
+
+
+
+    //TODO bei allen methoden an die php-docs denken (diese grünen kommentare - funktionsbeschreibung) und diese methode sollte private sein
     public function set_saisonstart()
     {
         /**
@@ -89,24 +96,29 @@ class Fixtures
         $saisonstart_datum = mktime(15, 30, 0, 8, 17, 2019);
         return $saisonstart_datum;
     }
+    //TODO bei allen methoden an die php-docs denken (diese grünen kommentare - funktionsbeschreibung)
     public function set_spieltag()
     {
         $this->delete_tbl_spielplan();
         $this->set_increment_tbl_spielplan();
+        //TODO ist der aufruf der fkt hier nicht sinnfrei??!!
         $this->set_saisonstart();
+
+        //TODO in eine private methode auslagern (zeile 108, 109)
         // Teams aus DB holen
         $sql = "SELECT tm_id FROM tbl_team";
         $res = $this->connection->execute($sql);
 
         $teams = array();
         while ($row = mysqli_fetch_assoc($res)) {
+            //TODO debugechos auch immer entfernen wenn alles fertig ist
             //echo $row['tm_name'];
             $teams[] = $row['tm_id'];
         }
 
         // benötigte Variablen setzen
         $anzahl  = count($teams);                                       // Anzahl der Teams
-        $paare   = floor($anzahl / 2);                                  // Anzahl der möglichen Spielpaare
+        $paare   = floor($anzahl / 2);                           // Anzahl der möglichen Spielpaare
         $plan    = array();                                             // Array für den kompletten Spielplan
         $tage    = ($anzahl % 2) ? count($teams) : count($teams)-1;     // bei ungerader Anzahl an Teams brauchen wir einen Spieltag mehr
         $base    = ($anzahl % 2) ? $anzahl-2 : $anzahl-1;               // die Basis für den Array-Index, bei ungerader Anzahl an Teams
@@ -133,15 +145,19 @@ class Fixtures
             }
         }
         ksort($plan);
+
+        //TODO diesen kommentar dann auch zur methode
         /** spielplan in db schreiben
          * INSERT INTO `tbl_spielplan` (`sp_id`, `sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) VALUES ('1', '2019-08-17 00:00:00', '12', '4', 'TBD');
          * formatierung datum DB wie folgt 2019-08-17 00:00:00
          */
         $saisonstart_datum = $this->set_saisonstart();
         foreach ($plan as $spieltag => $spiele) {
+            //TODO der kommentar ist zweimal da und er würde besser bei der set_saisonstart passen
             // formatierung DB 2019-08-17 00:00:00
             foreach ($spiele as $spielnummer => $paarung) {
                 // formatierung DB 2019-08-17 00:00:00
+                //TODO auch in eine private methode auslagern der du die entsprechenden parameter übergibst (zeile 161 bis 163)
                 $datum = date("Y-m-d H:i:s",$saisonstart_datum);
                 $sql = "INSERT INTO `tbl_spielplan`(`sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) 
                 VALUES ('" . $datum. "','" . $paarung[0] . "','" . $paarung[1] . "','TBD')";

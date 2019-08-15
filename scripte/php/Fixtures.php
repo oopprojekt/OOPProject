@@ -98,19 +98,6 @@ class Fixtures
     }
 
     /**
-     *  Team-ID's aus DB holen
-     * @return $res
-     */
-    private function get_team_ids()
-    {
-
-        $sql = "SELECT tm_id FROM tbl_team";
-        $res = $this->connection->execute($sql);
-        return $res;
-
-    }
-
-    /**
      *  convertiert inter zu datum
      *  formatierung DB 2019-08-17 00:00:00
      * @param $saisonstart_datum
@@ -120,7 +107,17 @@ class Fixtures
     {
         $datum = date("Y-m-d H:i:s",$saisonstart_datum);
         return $datum;
+    }
 
+    /**
+     *  Team-ID's aus DB holen
+     * @return $res
+     */
+    private function get_team_ids()
+    {
+        $sql = "SELECT tm_id FROM tbl_team";
+        $res = $this->connection->execute($sql);
+        return $res;
     }
 
     /**

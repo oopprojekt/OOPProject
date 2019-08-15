@@ -65,7 +65,10 @@ class Fixtures
 
         echo "testdummys der spieler wurden geschrieben";
     }
-    //TODO bei allen methoden an die php-docs denken (diese grünen kommentare - funktionsbeschreibung)
+
+    /**
+     * löscht tabelle
+     */
     private function delete_tbl_spielplan()
     {
         $sql = "DELETE FROM tbl_spielplan;";
@@ -73,7 +76,7 @@ class Fixtures
     }
 
     /**
-     * damit die id's mit 1 beginnen
+     * setzt inkrement der id's auf 1
      */
     private function set_increment_tbl_spielplan()
     {
@@ -81,38 +84,58 @@ class Fixtures
         $this->connection->execute($sql);
     }
 
-
-
-
-
-    //TODO bei allen methoden an die php-docs denken (diese grünen kommentare - funktionsbeschreibung) und diese methode sollte private sein
-    public function set_saisonstart()
+   /**
+     * gibt den Unix-Timestamp entsprechend der gegebenen Argumente zurück. Dieser Timestamp
+     * ist ein Long Integer, der die Anzahl der Sekunden zwischen der
+     * Unix-Epoche (01. Januar 1970 00:00:00 GMT) und dem angegebenen Zeitpunkt enthält
+     * @return $saisonstart_datum, integer
+     */
+    private function set_saisonstart()
     {
-        /**
-         * Gibt den Unix-Timestamp entsprechend der gegebenen Argumente zurück. Dieser Timestamp
-         * ist ein Long Integer, der die Anzahl der Sekunden zwischen der
-         * Unix-Epoche (01. Januar 1970 00:00:00 GMT) und dem angegebenen Zeitpunkt enthält
-         */
         $saisonstart_datum = mktime(15, 30, 0, 8, 17, 2019);
+        // $saisonstart_datum = time();
         return $saisonstart_datum;
     }
-    //TODO bei allen methoden an die php-docs denken (diese grünen kommentare - funktionsbeschreibung)
+
+    /**
+     *  Team-ID's aus DB holen
+     * @return $res
+     */
+    private function get_team_ids()
+    {
+
+        $sql = "SELECT tm_id FROM tbl_team";
+        $res = $this->connection->execute($sql);
+        return $res;
+
+    }
+
+    /**
+     *  convertiert inter zu datum
+     *  formatierung DB 2019-08-17 00:00:00
+     * @param $saisonstart_datum
+     * @return $datum
+     */
+    private function format_saisonstart_datum($saisonstart_datum)
+    {
+        $datum = date("Y-m-d H:i:s",$saisonstart_datum);
+        return $datum;
+
+    }
+
+    /**
+     *  erstellt array für teilnehmende teams
+     * @return $plan
+     */
     public function set_spieltag()
     {
         $this->delete_tbl_spielplan();
         $this->set_increment_tbl_spielplan();
-        //TODO ist der aufruf der fkt hier nicht sinnfrei??!!
         $this->set_saisonstart();
 
-        //TODO in eine private methode auslagern (zeile 108, 109)
-        // Teams aus DB holen
-        $sql = "SELECT tm_id FROM tbl_team";
-        $res = $this->connection->execute($sql);
-
         $teams = array();
-        while ($row = mysqli_fetch_assoc($res)) {
-            //TODO debugechos auch immer entfernen wenn alles fertig ist
-            //echo $row['tm_name'];
+        $foo = $this->get_team_ids();
+        while ($row = mysqli_fetch_assoc($foo)) {
             $teams[] = $row['tm_id'];
         }
 
@@ -145,22 +168,21 @@ class Fixtures
             }
         }
         ksort($plan);
+        return $plan;
+    }
 
-        //TODO diesen kommentar dann auch zur methode
-        /** spielplan in db schreiben
-         * INSERT INTO `tbl_spielplan` (`sp_id`, `sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) VALUES ('1', '2019-08-17 00:00:00', '12', '4', 'TBD');
-         * formatierung datum DB wie folgt 2019-08-17 00:00:00
-         */
+    /** spielplan in db schreiben
+     * INSERT INTO `tbl_spielplan`(`sp_id`, `sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) VALUES ('1', '2019-08-17 00:00:00', '12', '4', 'TBD');
+     * param $plan array
+     */
+    public function set_tbl_spielplan()
+    {
         $saisonstart_datum = $this->set_saisonstart();
-        foreach ($plan as $spieltag => $spiele) {
-            //TODO der kommentar ist zweimal da und er würde besser bei der set_saisonstart passen
-            // formatierung DB 2019-08-17 00:00:00
+        foreach ($this->set_spieltag() as $spieltag => $spiele) {
+            $ansetzungs_datum = $this->format_saisonstart_datum($saisonstart_datum);
             foreach ($spiele as $spielnummer => $paarung) {
-                // formatierung DB 2019-08-17 00:00:00
-                //TODO auch in eine private methode auslagern der du die entsprechenden parameter übergibst (zeile 161 bis 163)
-                $datum = date("Y-m-d H:i:s",$saisonstart_datum);
                 $sql = "INSERT INTO `tbl_spielplan`(`sp_datum`, `sp_fs_heim`, `sp_fs_auswaerts`, `sp_ergebnis`) 
-                VALUES ('" . $datum. "','" . $paarung[0] . "','" . $paarung[1] . "','TBD')";
+                VALUES ('" . $ansetzungs_datum. "','" . $paarung[0] . "','" . $paarung[1] . "','TBD')";
                 $this->connection->execute($sql);
             }
             // datum eine woche später

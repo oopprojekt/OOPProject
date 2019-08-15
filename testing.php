@@ -57,7 +57,7 @@ echo "trallali";
     include_once "./scripte/php/Fixtures.php";
     $fixtures = new Fixtures();
     //$fixtures->set_player_data();
-    //$fixtures->set_spieltag();
+    //$fixtures->set_tbl_spielplan();
 ?>
 
 <?php

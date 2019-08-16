@@ -57,10 +57,11 @@ echo "trallali";
 </html>
 
 <?php
-    include_once "./scripte/php/Fixtures.php";
-    $fixtures = new Fixtures();
-    //$fixtures->set_player_data();
-    //$fixtures->set_tbl_spielplan();
+    include_once "./scripte/php/Ligatabelle.php";
+    $ligatabelle = new Ligatabelle();
+    echo ("</br>");
+    $ligatabelle->ergebnislogik();
+    echo ("</br></br>");
 ?>
 
 <?php

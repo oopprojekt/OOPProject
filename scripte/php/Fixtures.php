@@ -128,7 +128,6 @@ class Fixtures
     {
         $this->delete_tbl_spielplan();
         $this->set_increment_tbl_spielplan();
-        $this->set_saisonstart();
 
         $teams = array();
         $foo = $this->get_team_ids();

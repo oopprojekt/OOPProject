@@ -230,7 +230,7 @@ body {
   }
 
 body {
-  background-image: url("https://wallpapercave.com/wp/wp2878440.jpg")!important;
+  background-image: url("/OOPProject/Bilder/livetickerbg.png")!important;
   background-color: #000;
   background-size: 100% 100%;
 }

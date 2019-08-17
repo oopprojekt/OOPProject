@@ -57,11 +57,13 @@ echo "trallali";
 </html>
 
 <?php
+/*
     include_once "./scripte/php/Ligatabelle.php";
     $ligatabelle = new Ligatabelle();
     echo ("</br>");
     $ligatabelle->ergebnislogik();
     echo ("</br></br>");
+*/
 ?>
 
 <?php
@@ -71,5 +73,13 @@ echo "trallali";
     echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
 
     echo "danach angekommen?!";
+
+?>
+
+<?php
+    include_once "./scripte/php/Fixtures.php";
+
+    $bar = new Fixtures();
+    $bar->set_player_data();
 
 ?>

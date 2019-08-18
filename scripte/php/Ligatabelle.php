@@ -27,11 +27,12 @@ class Ligatabelle
             $res = $this->connection->execute($sql);
             $obj = $res->fetch_object();
             $ergebnis = $obj->sp_ergebnis;
+            // legt daten in array ab
             $daten[] = array($obj->sp_fs_heim, $obj->sp_fs_auswaerts, $obj->sp_ergebnis, $this->ergbeniszerlegung($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[1]);
-            $tabelle[] = array($obj->sp_fs_heim, $this->tore($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[0]);
-            $tabelle[] = array($obj->sp_fs_auswaerts, $this->tore($ergebnis)[1], $this->ergbeniszerlegung($ergebnis)[1]);
+            //erstellt tabellenarray
+            $tabelle[] = array($obj->sp_fs_heim, $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], $this->ergbeniszerlegung($ergebnis)[0]);
+            $tabelle[] = array($obj->sp_fs_auswaerts, $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[1]);
         }
-
         for ($j = 0; $j <= 17; $j++) {
             for ($k = 0; $k <= 2; $k++) {
                 echo $tabelle[$j][$k];
@@ -77,7 +78,7 @@ class Ligatabelle
             echo("<tr>");
                 echo("<th>Platz</th>");
                 echo("<th>Team</th>");
-                echo("<th>Tore</th>");
+                echo("<th>Tordifferenz</th>");
                 echo("<th>Punkte</th>");
             echo("</tr>");
         for ($j = 0; $j <= 17; $j++) {

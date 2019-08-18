@@ -59,7 +59,6 @@ echo "trallali";
 <?php
     include_once "./scripte/php/Ligatabelle.php";
     $ligatabelle = new Ligatabelle();
-    echo ("</br>");
     $ligatabelle->get_data_tbl_spielplan();
     echo ("</br></br>");
     //$ligatabelle->punktvergabe();

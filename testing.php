@@ -77,9 +77,33 @@ echo "trallali";
 ?>
 
 <?php
+/*
     include_once "./scripte/php/Fixtures.php";
 
     $bar = new Fixtures();
     $bar->set_player_data();
-
+*/
 ?>
+
+<?php
+    echo ("</br>players:</br>");
+
+    $players = $db_test->create_player_array();
+
+    echo json_encode($players, JSON_PRETTY_PRINT);
+?>
+
+<script>
+
+    let players = <?php echo json_encode($players, JSON_PRETTY_PRINT);?>;
+    //console.log(players);
+    let training = new Training(players);
+    training.print();
+    console.log("#######################");
+    console.log(training.id_by_number("10"));
+    console.log(training.value_of_number("10", "ausdauer"));
+
+
+
+
+</script>

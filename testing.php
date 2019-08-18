@@ -57,29 +57,30 @@ echo "trallali";
 </html>
 
 <?php
-/*
     include_once "./scripte/php/Ligatabelle.php";
     $ligatabelle = new Ligatabelle();
     echo ("</br>");
-    $ligatabelle->ergebnislogik();
+    $ligatabelle->get_data_tbl_spielplan();
     echo ("</br></br>");
-*/
+    //$ligatabelle->punktvergabe();
+    //echo ("</br></br>");
 ?>
 
 <?php
-
+/*
     $alle_trainer = $db_test->get_trainer_names();
 
     echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
 
     echo "danach angekommen?!";
-
+*/
 ?>
 
 <?php
-    include_once "./scripte/php/Fixtures.php";
+/*    include_once "./scripte/php/Fixtures.php";
 
     $bar = new Fixtures();
     $bar->set_player_data();
-
+    //$bar->set_tbl_spielplan();
+*/
 ?>

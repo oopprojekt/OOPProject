@@ -17,99 +17,119 @@ class Ligatabelle
         $this->connection = new DB("else@gmx.com");
     }
 
-    /**
-     *  erstellt array für teilnehmende teams
-     * @return $plan
+    /** holt alle werte aus der DB und legt den spieltag erstmal in daten ab, und anschliessen wird die tabelle erstellt
+     * --
      */
-    public function get_technik_team()
+    public function get_data_tbl_spielplan()
     {
-        $sql = "SELECT `spl_technik`FROM `tbl_spieler` WHERE `spl_fs_team` = '1';";
-        $res = $this->connection->execute($sql);
-        $technik_team = 0;
-        while($row = mysqli_fetch_object($res))
-        {
-            $technik_team =  $technik_team + $row->spl_technik;
+        for ($i = 1; $i <= 9; $i++) {
+            $sql = "SELECT `sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = '$i';";
+            $res = $this->connection->execute($sql);
+            $obj = $res->fetch_object();
+            $ergebnis = $obj->sp_ergebnis;
+            $daten[] = array($obj->sp_fs_heim, $obj->sp_fs_auswaerts, $obj->sp_ergebnis, $this->ergbeniszerlegung($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[1]);
+            $tabelle[] = array($obj->sp_fs_heim, $this->tore($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[0]);
+            $tabelle[] = array($obj->sp_fs_auswaerts, $this->tore($ergebnis)[1], $this->ergbeniszerlegung($ergebnis)[1]);
         }
-        return $technik_team;
+
+        for ($j = 0; $j <= 17; $j++) {
+            for ($k = 0; $k <= 2; $k++) {
+                echo $tabelle[$j][$k];
+                echo("-");
+            }
+            echo("</br>");
+        }
+        echo("ohne sortierung</br>");
+        echo("</br>");
+        //sortiert nach Punkten absteigend 3->0
+        for ($i = 0; $i < 18; $i++) {
+            // Position des kleinsten Elements suchen
+            $minpos = $i;
+            for ($j = $i + 1; $j < 18; $j++)
+                if ($tabelle[$j][2] > $tabelle[$minpos][2]) {
+                    $minpos = $j;
+                }
+            // Elemente vertauschen
+            $tmp = $tabelle[$minpos][2];
+            $tabelle[$minpos][2] = $tabelle[$i][2];
+            $tabelle[$i][2] = $tmp;
+
+            $tmp = $tabelle[$minpos][1];
+            $tabelle[$minpos][1] = $tabelle[$i][1];
+            $tabelle[$i][1] = $tmp;
+
+            $tmp = $tabelle[$minpos][0];
+            $tabelle[$minpos][0] = $tabelle[$i][0];
+            $tabelle[$i][0] = $tmp;
+        }
+        //werte sortiert rohformat
+        for ($j = 0; $j <= 17; $j++) {
+
+            for ($k = 0; $k <= 2; $k++) {
+                echo $tabelle[$j][$k];
+                echo("-");
+            }
+            echo("</br>");
+        }
+        echo("mit sortierung nach Punkten</br>");
+        echo("</br>");
+        echo("<table>");
+            echo("<tr>");
+                echo("<th>Platz</th>");
+                echo("<th>Team</th>");
+                echo("<th>Tore</th>");
+                echo("<th>Punkte</th>");
+            echo("</tr>");
+        for ($j = 0; $j <= 17; $j++) {
+            echo("<tr>");
+                echo("<td>");
+                echo $w = $j+1;
+                echo("</td>");
+                for ($k = 0; $k <= 2; $k++) {
+                    echo("<td>");
+                    echo $tabelle[$j][$k];
+                    echo("</td>");
+            }
+            echo("</tr>");
+        }
+        echo("</table>");
+        echo("</br>");
     }
 
-    public function get_ausdauer_team()
-    {
-        $sql = "SELECT `spl_ausdauer`FROM `tbl_spieler` WHERE `spl_fs_team` = '1';";
-        $res = $this->connection->execute($sql);
-        $ausdauer_team = 0;
-        while($row = mysqli_fetch_object($res))
-        {
-            $ausdauer_team =  $ausdauer_team + $row->spl_ausdauer;
-        }
-        return $ausdauer_team;
-    }
-
-    public function get_torgefahr_team()
-    {
-        $sql = "SELECT `spl_torgefahr`FROM `tbl_spieler` WHERE `spl_fs_team` = '1';";
-        $res = $this->connection->execute($sql);
-        $torgefahr_team = 0;
-        while($row = mysqli_fetch_object($res))
-        {
-            $torgefahr_team =  $torgefahr_team + $row->spl_torgefahr;
-        }
-        return $torgefahr_team;
-    }
-
-    public function get_zweikampf_team()
-    {
-        $sql = "SELECT `spl_ausdauer`FROM `tbl_spieler` WHERE `spl_fs_team` = '1';";
-        $res = $this->connection->execute($sql);
-        $zweikampf_team = 0;
-        while($row = mysqli_fetch_object($res))
-        {
-            $zweikampf_team =  $zweikampf_team + $row->spl_ausdauer;
-        }
-        return $zweikampf_team;
-    }
-
-    public function get_teamstaerke()
-    {
-        $teamstaerke = $this->get_zweikampf_team() + $this->get_torgefahr_team() + $this->get_technik_team() + $this->get_ausdauer_team();
-        $sql = "SELECT `spl_ausdauer`FROM `tbl_spieler` WHERE `spl_fs_team` = '1';";
-        $res = $this->connection->execute($sql);
-        $anzahl_spielerwerte = floor($res->num_rows*4);
-        $teamstaerke = floor($teamstaerke/$anzahl_spielerwerte);
-        return $teamstaerke;
-    }
-    /**
-     *  erstellt array für teilnehmende teams
-     * @return $plan
+    /** zerlegt das ergebnis aus der DB, verteilt danach die punkte und returnt die beiden werte
+     * @param $ergebnis
+     * @return $punkte_arr (enthält [0]-heim [1]-gast)
      */
-    public function ergebnislogik()
+    public function ergbeniszerlegung($ergebnis)
     {
-        $teamstaerke_heim = $this->get_teamstaerke(); //1-66
-        $teamstaerke_gast = $this->get_teamstaerke();
-        $z_faktor_heim = rand(1,34);
-        $z_faktor_gast = rand(1,34);
-        $erg_heim = $teamstaerke_heim + $z_faktor_heim;
-        $erg_gast = $teamstaerke_gast + $z_faktor_gast;
-        if ($erg_heim > $erg_gast && ($erg_heim - $erg_gast)>5) {
-            echo ("Team dahoam hat gewonnen!");
-        } elseif($erg_heim < $erg_gast && ($erg_gast - $erg_heim)>3) {
-            echo ("Team away hat gewonnen!");
+        $ergebnis;
+        $ergebnis_arr = explode(':', $ergebnis);
+        //echo $ergebnis_arr[0];echo ("</br>");
+        //echo $ergebnis_arr[1];echo ("</br>");
+        if($ergebnis_arr[0] > $ergebnis_arr[1]){
+            $heimpunkte = 3;
+            $gastpunkte = 0;
+            $punkte_arr = array($heimpunkte,$gastpunkte);
+        } else if ($ergebnis_arr[0] < $ergebnis_arr[1]){
+            $heimpunkte = 0;
+            $gastpunkte = 3;
+            $punkte_arr = array($heimpunkte,$gastpunkte);
         } else {
-            echo ("Beide Teams müssen sich mit einem Punkt begnügen!");
+            $heimpunkte = 1;
+            $gastpunkte = 1;
+            $punkte_arr = array($heimpunkte,$gastpunkte);
         }
-        $ergebnis = $erg_heim . ":" . $erg_gast;
-        echo $ergebnis;
-        echo ("</br>");
+        return $punkte_arr;
     }
 
-    public function spielstand()
+    /** zerlegt das ergebnis aus der DB, returnt die beiden werte alleine für torverhältnis
+     * @param $ergebnis
+     * @return $ergebnis_arr (enthält [0]-heim [1]-gast)
+     */
+    public function tore($ergebnis)
     {
-
+        $ergebnis;
+        $ergebnis_arr = explode(':', $ergebnis);
+        return $ergebnis_arr;
     }
-
-    public function punktvergabe()
-    {
-
-    }
-
-}
+ }

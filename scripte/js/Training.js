@@ -2,6 +2,7 @@ class Training
 {
     constructor(team_players)
     {
+        //DB()->create_player_array()
         this._team_players = team_players;
     }
 

@@ -96,9 +96,9 @@ class DB
     /**
      * @return bool|mysqli_result
      */
-    private function get_all_teamplayers()
+    private function get_all_teamplayers($team_id)
     {
-        $sql = "SELECT * FROM tbl_spieler WHERE spl_fs_team = " . $this->team_id . ";";
+        $sql = "SELECT * FROM tbl_spieler WHERE spl_fs_team = " . $team_id . ";";
         return $this->execute($sql);
     }
 
@@ -130,10 +130,10 @@ class DB
     /**
      * @return array
      */
-    public function create_player_array()
+    public function create_player_array($team_id)
     {
         $players     = [];
-        $all_players = $this->get_all_teamplayers();
+        $all_players = $this->get_all_teamplayers($team_id);
         $fields      = $this->get_fieldnames(); array_shift($fields);
 
         while ($row = mysqli_fetch_assoc($all_players))

@@ -40,71 +40,36 @@ echo "trallali";
     //object erzeugen und wert für konstruktor mitschicken
     let foobar = new Training(23);
 
-    //test getter
-    let wert = foobar.foo;
-    //alert(wert);
-
-    //test setter
-    foobar.foo = 42;
-    //alert(foobar.foo);
-
-    const bar = new Config();
-    //alert(bar.ORTE);
-
 </script>
 
 
 </html>
 
-<?php
-    include_once "./scripte/php/Ligatabelle.php";
-    $ligatabelle = new Ligatabelle();
-    $ligatabelle->get_data_tbl_spielplan();
-    echo ("</br></br>");
-    //$ligatabelle->punktvergabe();
-    //echo ("</br></br>");
-?>
-
-<?php
-/*
-    $alle_trainer = $db_test->get_trainer_names();
-
-    echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
-
-    echo "danach angekommen?!";
-*/
-?>
-
-<?php
-
-/*
-    include_once "./scripte/php/Fixtures.php";
-
-    $bar = new Fixtures();
-    $bar->set_player_data();
-*/
-?>
 
 <?php
     echo ("</br>players:</br>");
 
-    $players = $db_test->create_player_array();
+    $players = $db_test->create_player_array(8);
 
-    echo json_encode($players, JSON_PRETTY_PRINT);
+    //echo json_encode($players, JSON_PRETTY_PRINT);
 
 ?>
 
 <script>
 
     let players = <?php echo json_encode($players, JSON_PRETTY_PRINT);?>;
-    //console.log(players);
+    console.log(players);
     let training = new Training(players);
-    training.print();
     console.log("#######################");
     console.log(training.id_by_number("10"));
-    console.log(training.value_of_number("10", "ausdauer"));
-
-
-
 
 </script>
+
+<?php
+
+    include_once "./scripte/php/Team_staerke.php";
+    $ts = new Team_staerke(8);
+    echo "########### ts->printer ########";
+    $ts->printer();
+
+?>

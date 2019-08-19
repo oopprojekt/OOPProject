@@ -68,8 +68,8 @@ echo "trallali";
 <?php
 
     include_once "./scripte/php/Team_staerke.php";
-    $ts = new Team_staerke(8);
+    $ts = new Team_staerke(18);
     echo "########### ts->printer ########";
-    $ts->printer();
+    echo $ts->get_team_staerke();
 
 ?>

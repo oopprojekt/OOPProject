@@ -23,8 +23,8 @@ class Ligatabelle
     public function get_data_tbl_spielplan()
     {
         for ($i = 1; $i <= 9; $i++) {
-            get_spielgergebnis($i);???????????
-            $obj = $res->fetch_object();????????????
+            $res = $this->connection->get_spielgergebnis($i);
+            $obj = $res->fetch_object();
             $ergebnis = $obj->sp_ergebnis;
             // legt daten in array ab
             $daten[] = array($obj->sp_fs_heim, $obj->sp_fs_auswaerts, $obj->sp_ergebnis, $this->punktvergabe($ergebnis)[0], $this->punktvergabe($ergebnis)[1]);

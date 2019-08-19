@@ -226,8 +226,8 @@ class DB
      */
     public function get_spielgergebnis($id)
     {
-        $sql = "SELECT `sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = '$id';";
-        $res = $this->connection->execute($sql);
+        $sql = "SELECT `sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = " . $id . ";";
+        $res = $this->execute($sql);
         return $res;
     }
 

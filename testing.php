@@ -73,3 +73,9 @@ echo "trallali";
     echo $ts->get_team_staerke();
 
 ?>
+
+<?php
+    include_once "./scripte/php/Ligatabelle.php";
+    $ligatabelle = new Ligatabelle();
+    $ligatabelle->get_data_tbl_spielplan();
+?>

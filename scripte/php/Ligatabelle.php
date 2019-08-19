@@ -1,5 +1,4 @@
 <?php
-include_once "Config.php";
 include_once "DB.php";
 
 /**
@@ -17,96 +16,66 @@ class Ligatabelle
         $this->connection = new DB("else@gmx.com");
     }
 
-    /** holt alle werte aus der DB und legt den spieltag erstmal in daten ab, und anschliessen wird die tabelle erstellt
-     * --
+    /** zerlegt das ergebnis aus der DB, returnt die beiden werte alleine
+     *
+     * @return $tabelle
      */
     public function get_data_tbl_spielplan()
     {
         for ($i = 1; $i <= 9; $i++) {
-            $sql = "SELECT `sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = '$i';";
-            $res = $this->connection->execute($sql);
-            $obj = $res->fetch_object();
+            get_spielgergebnis($i);???????????
+            $obj = $res->fetch_object();????????????
             $ergebnis = $obj->sp_ergebnis;
             // legt daten in array ab
-            $daten[] = array($obj->sp_fs_heim, $obj->sp_fs_auswaerts, $obj->sp_ergebnis, $this->ergbeniszerlegung($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[1]);
+            $daten[] = array($obj->sp_fs_heim, $obj->sp_fs_auswaerts, $obj->sp_ergebnis, $this->punktvergabe($ergebnis)[0], $this->punktvergabe($ergebnis)[1]);
             //erstellt tabellenarray
-            $tabelle[] = array($obj->sp_fs_heim, $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], $this->ergbeniszerlegung($ergebnis)[0]);
-            $tabelle[] = array($obj->sp_fs_auswaerts, $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], $this->ergbeniszerlegung($ergebnis)[1]);
+            $tabelle[] = array('team'=>$obj->sp_fs_heim,'differenz'=> $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], 'punkte'=>$this->punktvergabe($ergebnis)[0]);
+            $tabelle[] = array('team'=>$obj->sp_fs_auswaerts,'differenz'=> $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], 'punkte'=>$this->punktvergabe($ergebnis)[1]);
         }
-        for ($j = 0; $j <= 17; $j++) {
-            for ($k = 0; $k <= 2; $k++) {
-                echo $tabelle[$j][$k];
-                echo("-");
-            }
-            echo("</br>");
+        foreach ($tabelle as $key => $row) {
+            $tor[$key] = $row['differenz'];
+            $punkte[$key] = $row['punkte'];
         }
-        echo("ohne sortierung</br>");
-        echo("</br>");
-        //sortiert nach Punkten absteigend 3->0
-        for ($i = 0; $i < 18; $i++) {
-            // Position des kleinsten Elements suchen
-            $minpos = $i;
-            for ($j = $i + 1; $j < 18; $j++)
-                if ($tabelle[$j][2] > $tabelle[$minpos][2]) {
-                    $minpos = $j;
-                }
-            // Elemente vertauschen
-            $tmp = $tabelle[$minpos][2];
-            $tabelle[$minpos][2] = $tabelle[$i][2];
-            $tabelle[$i][2] = $tmp;
+        array_multisort($tor, SORT_DESC, $punkte, SORT_DESC, $tabelle);
+        var_dump($tabelle);
 
-            $tmp = $tabelle[$minpos][1];
-            $tabelle[$minpos][1] = $tabelle[$i][1];
-            $tabelle[$i][1] = $tmp;
-
-            $tmp = $tabelle[$minpos][0];
-            $tabelle[$minpos][0] = $tabelle[$i][0];
-            $tabelle[$i][0] = $tmp;
-        }
-        //werte sortiert rohformat
-        for ($j = 0; $j <= 17; $j++) {
-
-            for ($k = 0; $k <= 2; $k++) {
-                echo $tabelle[$j][$k];
-                echo("-");
-            }
-            echo("</br>");
-        }
-        echo("mit sortierung nach Punkten</br>");
         echo("</br>");
         echo("<table>");
+        echo("<tr>");
+        echo("<th>Platz</th>");
+        echo("<th>Team</th>");
+        echo("<th>Tordifferenz</th>");
+        echo("<th>Punkte</th>");
+        echo("</tr>");
+        for ($j = 0, $i = 1; $j <= 17, $i <= 18; $j++, $i++) {
             echo("<tr>");
-                echo("<th>Platz</th>");
-                echo("<th>Team</th>");
-                echo("<th>Tordifferenz</th>");
-                echo("<th>Punkte</th>");
-            echo("</tr>");
-        for ($j = 0; $j <= 17; $j++) {
-            echo("<tr>");
-                echo("<td>");
-                echo $w = $j+1;
-                echo("</td>");
-                for ($k = 0; $k <= 2; $k++) {
-                    echo("<td>");
-                    echo $tabelle[$j][$k];
-                    echo("</td>");
-            }
-            echo("</tr>");
+            echo("<td>" .  $i . "</td>");
+            echo("<td>" . $tabelle[$j]['team'] . "</td>");
+            echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
+            echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
+            echo ("</tr>");
         }
         echo("</table>");
         echo("</br>");
+        return $tabelle;
     }
 
-    /** zerlegt das ergebnis aus der DB, verteilt danach die punkte und returnt die beiden werte
+    /** zerlegt das ergebnis aus der DB, returnt die beiden werte alleine
      * @param $ergebnis
+     * @return $ergebnis_arr (enthält [0]-heim [1]-gast)
+     */
+    private function tore($ergebnis)
+    {
+        $ergebnis_arr = explode(':', $ergebnis);
+        return $ergebnis_arr;
+    }
+
+    /** verteilt die punkte und returnt die beiden werte
+     * @param $ergebnis_arr
      * @return $punkte_arr (enthält [0]-heim [1]-gast)
      */
-    public function ergbeniszerlegung($ergebnis)
+    private function punktvergabe($ergebnis_arr)
     {
-        $ergebnis;
-        $ergebnis_arr = explode(':', $ergebnis);
-        //echo $ergebnis_arr[0];echo ("</br>");
-        //echo $ergebnis_arr[1];echo ("</br>");
         if($ergebnis_arr[0] > $ergebnis_arr[1]){
             $heimpunkte = 3;
             $gastpunkte = 0;
@@ -121,16 +90,5 @@ class Ligatabelle
             $punkte_arr = array($heimpunkte,$gastpunkte);
         }
         return $punkte_arr;
-    }
-
-    /** zerlegt das ergebnis aus der DB, returnt die beiden werte alleine für torverhältnis
-     * @param $ergebnis
-     * @return $ergebnis_arr (enthält [0]-heim [1]-gast)
-     */
-    public function tore($ergebnis)
-    {
-        $ergebnis;
-        $ergebnis_arr = explode(':', $ergebnis);
-        return $ergebnis_arr;
     }
  }

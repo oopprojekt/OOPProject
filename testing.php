@@ -79,3 +79,11 @@ echo "trallali";
     $ligatabelle = new Ligatabelle();
     $ligatabelle->get_data_tbl_spielplan();
 ?>
+
+<?php
+
+    echo "spieler und die poss:<br>";
+
+    var_dump($db_test->create_array_player_staerke_pos());
+
+?>

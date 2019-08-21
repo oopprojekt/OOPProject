@@ -231,6 +231,40 @@ class DB
         return $res;
     }
 
+    /**
+     * @return bool|mysqli_result
+     */
+    private function get_spieler_staerke_pos()
+    {
+        $sql = "SELECT spl_vorname AS vorname, spl_nachname AS nachname, spl_ausdauer, spl_technik, spl_torgefahr, spl_zweikampf, pos_kurzel AS posi 
+                FROM tbl_spieler JOIN tbl_position ON spl_fs_position = pos_id WHERE spl_fs_team = " . $this->team_id . ";";
+        return $this->execute($sql);
+    }
+
+    /**
+     * @return array
+     */
+    public function create_array_player_staerke_pos()
+    {
+        $players = [];
+        $all_players = $this->get_spieler_staerke_pos();
+
+        while ($row = mysqli_fetch_assoc($all_players))
+        {
+            $staerken = $row["spl_ausdauer"] + $row["spl_technik"] + $row["spl_torgefahr"] + $row["spl_zweikampf"];
+            $stark = intval($staerken / 4);
+
+            $spieler = ["vorname" => $row["vorname"],
+                        "nachname" => $row["nachname"],
+                        "position" => $row["posi"],
+                        "stärke" => $stark];
+
+            array_push($players, $spieler);
+        }
+
+        return $players;
+    }
+
 
 
 

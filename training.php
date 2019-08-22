@@ -1,15 +1,4 @@
-﻿<?php
-//an dieser stelle kommt immer das benötigte php zeugs
-//welches ja auf jeder seite anders ist und immer auch nur den content
-//betrifft
-include_once "./scripte/php/show_errors.php";
-
-session_start();
-error_reporting(0);
-$_SESSION['username'] = $_POST['name'];
-$_SESSION['passwort'] = $_POST['passwort'];
-?>
-
+﻿ 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,15 +9,15 @@ $_SESSION['passwort'] = $_POST['passwort'];
         <title>Start Page</title>
     </head>
     <body>
-<div class="calendartemplate"><?php include_once "./templates/header.php"; ?></div>
-  <div class="leftcolumntemplate"><?php include_once "./templates/info.php"; ?></div>
+<div class="calendartemplate">d></div>
+  <div class="leftcolumntemplate">d</div>
   <div class="rightcolumntemplate">
-        <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
+        <div class="navrowtemplate">d</div>
         <div class="maincontentrowtemplate">
 inhalt
         </div>
 </div>
-<div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>
+<div class="footertemplate">d</div>
 
 
 

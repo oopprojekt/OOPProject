@@ -1,7 +1,7 @@
 
 <!--
 
-<?php 
+
 //an dieser stelle kommt immer das benötigte php zeugs
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
@@ -17,7 +17,7 @@ if(!$_SESSION['team'])
 {
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
-?>
+
 
 -->
 

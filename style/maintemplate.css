@@ -41,7 +41,7 @@ body {
 
 .navrowtemplate {
     height: 7vh;
-    background-image: url("/Bilder/livetickerbg1.png");
+    background-image: url("http://localhost/OOPProject/bilder/livetickerbg1.pnghttp://localhost/OOPProject/bilder/livetickerbg1.png");
     opacity: 0.95;
     border-radius: 6px;
     background-size: 100% 100%;
@@ -50,7 +50,7 @@ body {
 
 .maincontentrowtemplate {
     height: 61vh;
-    background-image: url("/bilder/livetickerbg1.png");
+    background-image: url("http://localhost/OOPProject/bilder/livetickerbg1.png");
     opacity: 0.95;
     border-radius: 6px;
     background-size: 100% 100%;

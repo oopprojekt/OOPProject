@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //an dieser stelle kommt immer das benötigte php zeugs
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
@@ -43,8 +43,3 @@ inhalt
 
     </body>
 </html>
-
-
- 
-
-

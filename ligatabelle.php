@@ -28,7 +28,12 @@ $_SESSION['passwort'] = $_POST['passwort'];
                 <div class="flex-y flex-1">
                     <div class="third-block grey-block">
                         <?php include_once "./templates/nav.php"; ?></div>
-                    <div class="flex-1 grey-block">4</div>
+                    <div class="flex-1 grey-block"><?php
+                                                    include_once "./scripte/php/Ligatabelle.php";
+                                                    $ligatabelle = new Ligatabelle();
+                                                    $ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)));
+                                                    ?>
+                    </div>
                 </div>
             </div>
             <div class="fifth-block grey-block"><?php include_once "./templates/footer.php"; ?></div>

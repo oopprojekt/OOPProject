@@ -132,9 +132,9 @@ class Ligatabelle
         echo("</br>");
         echo("<table>");
         echo("<tr>");
-        echo("<th>Platz</th>");
-        echo("<th>Team_#</th>");
-        echo("<th>Team_Name</th>");
+        echo("<th>Pos</th>");
+        echo("<th>ID</th>");
+        echo("<th>Mannschaft</th>");
         echo("<th>Tordifferenz</th>");
         echo("<th>Punkte</th>");
         echo("</tr>");

@@ -75,9 +75,27 @@ echo "trallali";
 ?>
 
 <?php
-    include_once "./scripte/php/Ligatabelle.php";
-    $ligatabelle = new Ligatabelle();
-    $ligatabelle->get_data_tbl_spielplan();
+include_once "./scripte/php/Ligatabelle.php";
+$ligatabelle = new Ligatabelle();
+echo("</br>");
+echo ("1. Spieltag");
+$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)));
+echo("</br>");
+echo ("2. Spieltag");
+$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18)));
+echo("</br>");
+echo ("3. Spieltag");
+$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)));
+//var_dump($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)));
+echo("</br>");
+echo ("Tabelle 2. Spieltag");
+$ligatabelle->display($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))));
+//var_dump($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))));
+echo("</br>");
+echo ("Tabelle 3. Spieltag");
+echo("</br>");
+$ligatabelle->display($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)),$ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))))
+);
 ?>
 
 <?php

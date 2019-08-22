@@ -231,6 +231,8 @@ class DB
         return $res;
     }
 
+
+
     /**
      * @return bool|mysqli_result
      */
@@ -264,6 +266,7 @@ class DB
 
         return $players;
     }
+
 
 
 

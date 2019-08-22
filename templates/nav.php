@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="navpoint">
-            <a href="home.php"><img src="/OOPProject/Bilder/homebutton.png" id="homebutton"></a>
+            <a href="home.php"><img src="http://localhost/OOPProject/Bilder/homebutton.png" id="homebutton"></a>
             <a href="training.php"><img src="/OOPProject/Bilder/trainingbutton.png" id="homebutton"></a>
             <a href="transfer.php"><img src="/OOPProject/Bilder/transferbutton.png" id="homebutton"></a>
             <a href="ligatabelle.php"><img src="/OOPProject/Bilder/tabellebutton.png" id="homebutton"></a>

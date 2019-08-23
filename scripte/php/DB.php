@@ -222,6 +222,10 @@ class DB
         return $vorname . " " . $nachname;
     }
 
+    public function get_ergebnisse()
+    {
+
+    }
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

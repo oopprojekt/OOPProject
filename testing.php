@@ -34,6 +34,7 @@ echo "trallali";
 
 <p>bla bla blub</p>
 </body>
+</html>
 
 <script>
 
@@ -47,12 +48,14 @@ echo "trallali";
     //test setter
     foobar.foo = 42;
     //alert(foobar.foo);
-
+</script>
 
 <?php
-include_once "./scripte/php/Spieltag.php";
-$spieltag = new Spieltag();
-$spieltag->spieltagermittlung($spieltag->get_saisonarray());
+    echo "<br>vor spieltag<br>";
+    include_once "./scripte/php/Spieltag.php";
+    $spieltag = new Spieltag();
+    $spieltag->spieltagermittlung($spieltag->get_saisonarray());
+    echo "<br>nach spieltag<br>";
 ?>
 
 
@@ -66,7 +69,7 @@ $spieltag->spieltagermittlung($spieltag->get_saisonarray());
 ?>
 
 
-</html>
+
 
 <?php
     include_once "./scripte/php/Ligatabelle.php";

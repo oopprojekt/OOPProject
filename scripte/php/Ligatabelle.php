@@ -110,7 +110,7 @@ class Ligatabelle
     public function punktvergabe()
     {
 
-<<<<<<< HEAD
+
         echo("</br>");
         echo("<table>");
         echo("<tr>");
@@ -132,8 +132,7 @@ class Ligatabelle
             echo ("</tr>");
         }
         echo("</table>");
-=======
->>>>>>> 9993e3a07ea5dbc7dd2fc85a9cb7027d5514ec99
+
     }
 
 }

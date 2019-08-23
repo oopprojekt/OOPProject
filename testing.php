@@ -36,6 +36,19 @@ echo "trallali";
 </body>
 </html>
 
+<?php
+include_once "./scripte/php/Ligatabelle.php";
+$ligatabelle = new Ligatabelle();
+echo("</br>");
+echo("</br>");
+$ligatabelle->untergrenze($ligatabelle->obergrenze($ligatabelle->spieltagermittlung()));
+var_dump($ligatabelle->untergrenze($ligatabelle->obergrenze($ligatabelle->spieltagermittlung())));
+echo("</br>");
+$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->spieltag_tabelle($ligatabelle->untergrenze($ligatabelle->obergrenze($ligatabelle->spieltagermittlung())),
+    $ligatabelle->obergrenze($ligatabelle->spieltagermittlung()))));
+//Muss das so umständlich sein??? um die returnten werte weiter zu geben
+?>
+
 <script>
 
     //object erzeugen und wert für konstruktor mitschicken
@@ -75,16 +88,6 @@ echo "trallali";
 ?>
 
 
-
-
-<?php
-    include_once "./scripte/php/Ligatabelle.php";
-    $ligatabelle = new Ligatabelle();
-    echo ("</br>");
-    $ligatabelle->ergebnislogik();
-    echo ("</br></br>");
-?>
-
 <?php
 
     $alle_trainer = $db_test->get_trainer_names();
@@ -93,6 +96,7 @@ echo "trallali";
 
     echo "danach angekommen?!";
 ?>
+
 
 <?php
 /*

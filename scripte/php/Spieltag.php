@@ -1,5 +1,6 @@
 <?php
 include_once "DB.php";
+include_once "Team_staerke.php";
 
 /**
  * Class Spieltag
@@ -41,6 +42,9 @@ class Spieltag
         return $this->saisonarray;
     }
 
+    /**
+     * @return int
+     */
     private function set_erstes_spiel()
     {
         for ($i = 0; $i < count($this->saisonarray); $i++)
@@ -52,24 +56,50 @@ class Spieltag
         }
     }
 
+    /**
+     *
+     */
     private function set_letztes_spiel()
     {
         $this->spieltag_letzter = $this->spieltag_erster + 8;
     }
 
+    /**
+     *
+     */
     public function play()
     {
         $this->set_erstes_spiel();
         $this->set_letztes_spiel();
         for($i = $this->spieltag_erster; $i <= $this->spieltag_letzter; $i++)
         {
-            $this->saisonarray[$i-1][$i]["ergebnis"] = "0:0";
+            $this->saisonarray[$i-1][$i]["ergebnis"] = $this->schiesse_tore($this->saisonarray[$i-1][$i]["heim"], $this->saisonarray[$i-1][$i]["gast"]);
         }
     }
 
+    /**
+     * @param $heim_id
+     * @param $gast_id
+     * @return string
+     */
+    private function schiesse_tore($heim_id, $gast_id)
+    {
+        $heim = new Team_staerke($heim_id);
+        $stark_heim = $heim->get_team_staerke();
+        $gast = new Team_staerke($gast_id);
+        $stark_gast = $gast->get_team_staerke();
 
+        if($stark_heim > $stark_gast)
+        {
+            $heim_tore = rand(1, 6);
+            $gast_tore = rand(0, 4);
+        }
+        else
+        {
+            $heim_tore = rand(0, 4);
+            $gast_tore = rand(1, 6);
+        }
 
-
+        return (string)$heim_tore . ":" . (string)$gast_tore;
+    }
 }
-
-

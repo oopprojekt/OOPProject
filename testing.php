@@ -58,7 +58,8 @@ echo "trallali";
     var_dump($spieltag->get_saisonarray());
     echo "##################";
 
-    var_dump($spieltag->play() );
+    //var_dump($spieltag->play() );
+
     echo "<br>nach spieltag<br>";
 
 ?>

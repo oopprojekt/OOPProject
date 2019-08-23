@@ -1,6 +1,6 @@
 <div class="test">
     <div class="a">
-      <img src="https://i.pinimg.com/originals/5e/d2/e1/5ed2e125a2d45189cfd69a2c142b5b5d.jpg" id="bild"> </
+      <img src="http://localhost/OOPProject/bilder/spielfeld.jpg" id="bild" height="100%;"> </
       <br/>
       <p>
 
@@ -103,7 +103,7 @@ for($i=0; $i < 4; $i++) {
 }
 ?>
 </table>
-<input id = "btnGet" type="button" value="Get Selected" />
+<input id = "btnGet" type="button" value="Startelf für nächstes Spiel abgeben" />
     </div>
   </div>
 
@@ -128,7 +128,7 @@ for($i=0; $i < 4; $i++) {
 
   if(test == "4-3-3"){
    formation = 433;
-    document.getElementById("bild").src = "https://www.freakyjolly.com/wp-content/uploads/2019/08/hostgator-offer-india-1.gif";
+    document.getElementById("bild").src = "http://localhost/OOPProject/bilder/spielfeld433.jpg";
   }
   if(test == "4-3-2-1"){
    formation = 4321;
@@ -285,8 +285,9 @@ body {
   display: inline-block;
   width: 38%;
   background-color: #;
-  height: 20px;
+  height: 59.5vh;
   float: left;
+
 }
 
 .b {
@@ -295,6 +296,8 @@ body {
   background-color: #;
   height: 20px;
   float: right;
+  height: 59.5vh;
+  overflow-y: scroll;
 }
 
 .test {

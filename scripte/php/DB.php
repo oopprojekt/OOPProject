@@ -222,11 +222,13 @@ class DB
         return $vorname . " " . $nachname;
     }
 
-    public function get_ergebnisse()
+    public function get_spielgergebnis($id)
     {
-        $sql = "SELECT * FROM tbl_spielplan;";
-        $this->execute($sql);
+        $sql = "SELECT `sp_id`,`sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = " . $id . ";";
+        $res = $this->execute($sql);
+        return $res;
     }
+
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

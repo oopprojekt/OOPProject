@@ -48,10 +48,22 @@ echo "trallali";
     foobar.foo = 42;
     //alert(foobar.foo);
 
-    const bar = new Config();
-    //alert(bar.ORTE);
 
-</script>
+<?php
+include_once "./scripte/php/Spieltag.php";
+$spieltag = new Spieltag();
+$spieltag->spieltagermittlung($spieltag->get_saisonarray());
+?>
+
+
+<?php
+    echo ("</br>players:</br>");
+
+    $players = $db_test->create_player_array(8);
+
+    //echo json_encode($players, JSON_PRETTY_PRINT);
+
+?>
 
 
 </html>
@@ -65,6 +77,7 @@ echo "trallali";
 ?>
 
 <?php
+
     $alle_trainer = $db_test->get_trainer_names();
 
     echo json_encode($alle_trainer, JSON_PRETTY_PRINT);

@@ -222,6 +222,19 @@ class DB
         return $vorname . " " . $nachname;
     }
 
+    public function get_spielgergebnis()
+    {
+        $sql = "SELECT * FROM tbl_spielplan;";
+        return $this->execute($sql);
+    }
+
+    public function get_sp_ergebnis_by_row($id)
+    {
+        $sql = "SELECT `sp_id`,`sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = " . $id . ";";
+        $res = $this->execute($sql);
+        return $res;
+    }
+
 
  /**
      * @return bool|mysqli_result

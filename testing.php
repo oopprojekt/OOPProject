@@ -34,6 +34,20 @@ echo "trallali";
 
 <p>bla bla blub</p>
 </body>
+</html>
+
+<?php
+include_once "./scripte/php/Ligatabelle.php";
+$ligatabelle = new Ligatabelle();
+echo("</br>");
+echo("</br>");
+$ligatabelle->untergrenze($ligatabelle->obergrenze($ligatabelle->spieltagermittlung()));
+var_dump($ligatabelle->untergrenze($ligatabelle->obergrenze($ligatabelle->spieltagermittlung())));
+echo("</br>");
+$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->spieltag_tabelle($ligatabelle->untergrenze($ligatabelle->obergrenze($ligatabelle->spieltagermittlung())),
+    $ligatabelle->obergrenze($ligatabelle->spieltagermittlung()))));
+//Muss das so umständlich sein??? um die returnten werte weiter zu geben
+?>
 
 <script>
 
@@ -47,22 +61,32 @@ echo "trallali";
     //test setter
     foobar.foo = 42;
     //alert(foobar.foo);
-
-    const bar = new Config();
-    //alert(bar.ORTE);
-
 </script>
 
+<?php
 
-</html>
+    echo "<br>vor spieltag<br>";
+    include_once "./scripte/php/Spieltag.php";
+    $spieltag = new Spieltag();
+    var_dump($spieltag->get_saisonarray());
+    echo "##################";
+
+    //var_dump($spieltag->play() );
+
+    echo "<br>nach spieltag<br>";
+
+?>
+
 
 <?php
-    include_once "./scripte/php/Ligatabelle.php";
-    $ligatabelle = new Ligatabelle();
-    echo ("</br>");
-    $ligatabelle->ergebnislogik();
-    echo ("</br></br>");
+    echo ("</br>players:</br>");
+
+    //$players = $db_test->create_player_array(8);
+
+    //echo json_encode($players, JSON_PRETTY_PRINT);
+
 ?>
+
 
 <?php
 
@@ -71,5 +95,13 @@ echo "trallali";
     echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
 
     echo "danach angekommen?!";
+?>
 
+
+<?php
+/*
+    include_once "./scripte/php/Fixtures.php";
+    $fix = new Fixtures();
+    $fix->set_tbl_spielplan();
+*/
 ?>

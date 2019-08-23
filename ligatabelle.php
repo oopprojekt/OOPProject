@@ -25,13 +25,11 @@ $_SESSION['passwort'] = $_POST['passwort'];
   <div class="rightcolumntemplate">
         <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
         <div class="maincontentrowtemplate">
-<!--           
-PHP TAG noch DRUM MACHEN!
-    include_once "./scripte/php/Ligatabelle.php";
-    $ligatabelle = new Ligatabelle();
-    $ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)));
-
--->
+            <?php
+                include_once "./scripte/php/Ligatabelle.php";
+                $ligatabelle = new Ligatabelle();
+                $ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)));
+                ?>
         </div>
 </div>
 <div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>

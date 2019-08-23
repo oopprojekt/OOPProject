@@ -25,7 +25,11 @@ $_SESSION['passwort'] = $_POST['passwort'];
   <div class="rightcolumntemplate">
         <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
         <div class="maincontentrowtemplate">
-inhalt
+            <?php
+            include_once "./scripte/php/Spieltag.php";
+            $spieltag = new Spieltag();
+            $spieltag->display($spieltag->get_data_ansetzung(1,9));
+            ?>
         </div>
 </div>
 <div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>

@@ -222,11 +222,11 @@ class DB
 
     /**
      * @param $id
-     * @return $res
-     */
+* @return $res
+*/
     public function get_spielgergebnis($id)
     {
-        $sql = "SELECT `sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = " . $id . ";";
+        $sql = "SELECT `sp_id`,`sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = " . $id . ";";
         $res = $this->execute($sql);
         return $res;
     }

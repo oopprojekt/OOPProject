@@ -132,19 +132,21 @@ class Ligatabelle
         echo("</br>");
         echo("<table>");
         echo("<tr>");
-        echo("<th>Pos</th>");
+        echo("<th>PL.</th>");
         echo("<th>ID</th>");
-        echo("<th>Mannschaft</th>");
-        echo("<th>Tordifferenz</th>");
-        echo("<th>Punkte</th>");
+        echo("<th>VEREIN</th>");
+        echo("<th>PKT.</th>");
+        echo("<th>SP.</th>");
+        echo("<th>DIFF.</th>");
         echo("</tr>");
         for ($j = 0, $i = 1; $j <= 17, $i <= 18; $j++, $i++) {
             echo("<tr>");
             echo("<td>" .  $i . "</td>");
             echo("<td>" . $tabelle[$j]['team_id'] . "</td>");
             echo("<td>" . $tabelle[$j]['team_name'] . "</td>");
-            echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
             echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
+            echo("<td>" . $tabelle[$j]['spiele']=1 . "</td>");
+            echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
             echo ("</tr>");
         }
         echo("</table>");

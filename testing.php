@@ -45,6 +45,12 @@ echo "trallali";
 
 </html>
 
+<?php
+include_once "./scripte/php/Spieltag.php";
+$spieltag = new Spieltag();
+$spieltag->spieltagermittlung($spieltag->get_saisonarray());
+?>
+
 
 <?php
     echo ("</br>players:</br>");
@@ -96,6 +102,12 @@ echo ("Tabelle 3. Spieltag");
 echo("</br>");
 $ligatabelle->display($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)),$ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))))
 );
+?>
+
+<?php
+include_once "./scripte/php/Spieltag.php";
+$spieltag = new Spieltag();
+$spieltag->display($spieltag->get_data_ansetzung(1,9));
 ?>
 
 <?php

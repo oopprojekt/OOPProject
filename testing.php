@@ -51,18 +51,23 @@ echo "trallali";
 </script>
 
 <?php
+
     echo "<br>vor spieltag<br>";
     include_once "./scripte/php/Spieltag.php";
     $spieltag = new Spieltag();
-    $spieltag->spieltagermittlung($spieltag->get_saisonarray());
+    var_dump($spieltag->get_saisonarray());
+    echo "##################";
+
+    var_dump($spieltag->play() );
     echo "<br>nach spieltag<br>";
+
 ?>
 
 
 <?php
     echo ("</br>players:</br>");
 
-    $players = $db_test->create_player_array(8);
+    //$players = $db_test->create_player_array(8);
 
     //echo json_encode($players, JSON_PRETTY_PRINT);
 
@@ -89,8 +94,9 @@ echo "trallali";
 ?>
 
 <?php
+/*
     include_once "./scripte/php/Fixtures.php";
     $fix = new Fixtures();
     $fix->set_tbl_spielplan();
-
+*/
 ?>

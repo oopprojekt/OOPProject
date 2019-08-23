@@ -6,100 +6,70 @@ include_once "DB.php";
  */
 class Spieltag
 {
-    public $connection = null;
+    private $connection = null;
+    private $spieltag_erster = null;
+    private $spieltag_letzter = null;
+    private $saisonarray = [];
+
 
     /**
-     * Fixtures constructor.
+     * Spieltag constructor.
      */
     function __construct()
     {
         $this->connection = new DB("else@gmx.com");
     }
 
-    /** holt alle werte aus der DB und legt alle spieltage in array ab
-     * @param
-     * @return saisonarray
+    /**
+     * @return array
      */
     public function get_saisonarray()
     {
-        for ($i = 1; $i <= 306; $i++) {
-            $res = $this->connection->get_spielgergebnis($i);
-            $obj = $res->fetch_object();
-            $saisonarray[] =  array("sp_id" => $obj->sp_id,"erg" => $obj->sp_ergebnis);
+        $spielergebnisse = $this->connection->get_spielgergebnis();
+
+        while ($row = mysqli_fetch_assoc($spielergebnisse))
+        {
+            $ergebnis = [$row["sp_id"] => [
+                                        "heim" => $row["sp_fs_heim"],
+                                        "gast" => $row["sp_fs_auswaerts"],
+                                        "ergebnis" => $row["sp_ergebnis"]
+            ]];
+
+            array_push($this->saisonarray, $ergebnis);
         }
-        return $saisonarray;
+
+        return $this->saisonarray;
     }
 
-    /** holt alle werte aus der DB und legt den spieltag erstmal in daten ab, und anschliessen wird die tabelle erstellt
-     * @param saisonarray
-     * @return
-     */
-    public function spieltagermittlung($tabelle)
+    private function set_erstes_spiel()
     {
-        $i = 0;
-        do {
-            $i++;
-        } while ($tabelle[$i]['erg'] != "TBD");
-        //echo ("Aktueller Spieltag ist "); echo floor($i/9);
-        return floor($i/9);
-    }
-
-    public function set_untere_grenze ($spieltag)
-    {
-        // in arbeit für get_data_ansetzungen
-    }
-
-
-
-
-    /** holt alle werte aus der DB und legt den spieltag erstmal in daten ab, und anschliessen wird die tabelle erstellt
-     * @param $ug, $og;
-     */
- /*   public function get_data_ansetzung($ug, $og)
-    {
-        for ($i = $ug; $i <= $og; $i++) {
-            $res = $this->connection->get_spielgergebnis($i);
-            $obj = $res->fetch_object();
-            $get_data_ansetzung[] = array("team_name_heim" => $this->holemirteam_a($obj->sp_fs_heim),"erg" => $obj->sp_ergebnis,"team_name_gast" => $this->holemirteam_a($obj->sp_fs_auswaerts) );
+        for ($i = 0; $i < count($this->saisonarray); $i++)
+        {
+            if("TBD" === $this->saisonarray[$i][$i+1]["ergebnis"])
+            {
+                return $this->spieltag_erster = $i+1;
+            }
         }
-        return $get_data_ansetzung;
     }
 
-    // Konvertierung ID->Teamname
-    public function holemirteam_a($a)
+    private function set_letztes_spiel()
     {
-        $team_heim = $this->connection->get_team_by_id($a);
-        return $team_heim;
+        $this->spieltag_letzter = $this->spieltag_erster + 8;
     }
 
-    public function holemirteam_b($b)
+    public function play()
     {
-        $team_gast = $this->connection->get_team_by_id($b);
-        return $team_gast;
-    }
-
-    /** stellt array in html code tabelle dar
-     * @param $tabelle
-     * @return
-     */
-  /*  public function display($tabelle)
-    {
-        echo("</br>");
-        echo("<table>");
-        echo("<tr>");
-        echo("<th>HEIM.</th>");
-        echo("<th>ERG.</th>");
-        echo("<th>GAST</th>");
-        echo("</tr>");
-        for ($j = 0; $j <= 8; $j++) {
-            echo("<tr>");
-            echo("<td>" . $tabelle[$j]['team_name_heim'] . "</td>");
-            echo("<td>" . $tabelle[$j]['erg'] . "</td>");
-            echo("<td>" . $tabelle[$j]['team_name_gast'] . "</td>");
-            echo ("</tr>");
+        $this->set_erstes_spiel();
+        $this->set_letztes_spiel();
+        for($i = $this->spieltag_erster; $i <= $this->spieltag_letzter; $i++)
+        {
+            $this->saisonarray[$i-1][$i]["ergebnis"] = "0:0";
         }
-        echo("</table>");
-    }*/
+    }
+
+
+
+
 }
 
 

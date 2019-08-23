@@ -260,7 +260,7 @@ class DB
                         "nachname" => $row["nachname"],
                         "position" => $row["posi"],
                         "stärke" => $stark];
-            array_push($players, $spieler);
+            array_push($players, $spieler); 
         }
         return $players;
     }

@@ -65,11 +65,16 @@ echo "trallali";
 ?>
 
 <?php
-
     $alle_trainer = $db_test->get_trainer_names();
 
     echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
 
     echo "danach angekommen?!";
+?>
+
+<?php
+    include_once "./scripte/php/Fixtures.php";
+    $fix = new Fixtures();
+    $fix->set_tbl_spielplan();
 
 ?>

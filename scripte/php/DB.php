@@ -224,7 +224,8 @@ class DB
 
     public function get_ergebnisse()
     {
-
+        $sql = "SELECT * FROM tbl_spielplan;";
+        $this->execute($sql);
     }
 
     /*  methode welche das budget unseres teams holt aus der tbl_team

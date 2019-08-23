@@ -40,11 +40,15 @@ echo "trallali";
     //object erzeugen und wert für konstruktor mitschicken
     let foobar = new Training(23);
 
-</script>
+    //test getter
+    let wert = foobar.foo;
+    //alert(wert);
 
+    //test setter
+    foobar.foo = 42;
+    //alert(foobar.foo);
 
-</html>
-
+<<<<<<< HEAD
 <?php
 include_once "./scripte/php/Spieltag.php";
 $spieltag = new Spieltag();
@@ -68,40 +72,22 @@ $spieltag->spieltagermittlung($spieltag->get_saisonarray());
     let training = new Training(players);
     console.log("#######################");
     console.log(training.id_by_number("10"));
+=======
+    const bar = new Config();
+    //alert(bar.ORTE);
+>>>>>>> 9993e3a07ea5dbc7dd2fc85a9cb7027d5514ec99
 
 </script>
 
-<?php
 
-    include_once "./scripte/php/Team_staerke.php";
-    $ts = new Team_staerke(18);
-    echo "########### ts->printer ########";
-    echo $ts->get_team_staerke();
-
-?>
+</html>
 
 <?php
-include_once "./scripte/php/Ligatabelle.php";
-$ligatabelle = new Ligatabelle();
-echo("</br>");
-echo ("1. Spieltag");
-$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)));
-echo("</br>");
-echo ("2. Spieltag");
-$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18)));
-echo("</br>");
-echo ("3. Spieltag");
-$ligatabelle->display($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)));
-//var_dump($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)));
-echo("</br>");
-echo ("Tabelle 2. Spieltag");
-$ligatabelle->display($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))));
-//var_dump($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))));
-echo("</br>");
-echo ("Tabelle 3. Spieltag");
-echo("</br>");
-$ligatabelle->display($ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(19 ,27)),$ligatabelle->spieltag_addition($ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(1,9)), $ligatabelle->sortierung_by_team_id($ligatabelle->get_data_spielplan(10,18))))
-);
+    include_once "./scripte/php/Ligatabelle.php";
+    $ligatabelle = new Ligatabelle();
+    echo ("</br>");
+    $ligatabelle->ergebnislogik();
+    echo ("</br></br>");
 ?>
 
 <?php
@@ -112,8 +98,10 @@ $spieltag->display($spieltag->get_data_ansetzung(1,9));
 
 <?php
 
-    echo "spieler und die poss:<br>";
+    $alle_trainer = $db_test->get_trainer_names();
 
-    var_dump($db_test->create_array_player_staerke_pos());
+    echo json_encode($alle_trainer, JSON_PRETTY_PRINT);
+
+    echo "danach angekommen?!";
 
 ?>

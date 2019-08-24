@@ -22,7 +22,7 @@ $_SESSION['passwort'] = $_POST['passwort'];
     <body>
 <<<<<<< HEAD
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">

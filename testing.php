@@ -11,6 +11,8 @@ $db_test = new DB("grete@il.de");
 //$db_test->set_team(13);
 echo "trainername:";
 var_dump($db_test->get_trainer("bratob"));
+echo("Spielergedöns für Tobi");echo("</br>");
+var_dump($db_test->create_array_player_staerke_pos());
 
 
 //$db_test->foo();
@@ -42,8 +44,7 @@ $ligatabelle = new Ligatabelle();
 echo("</br>");
 $ligatabelle->schreibe_zwischenspeicher($ligatabelle->gesamt_tabelle($ligatabelle->obergrenze($ligatabelle->spieltag())), $ligatabelle->obergrenze($ligatabelle->spieltag()));
 $ligatabelle->display($ligatabelle->tabelle_universal());
-/*$ligatabelle->aktueller_spieltag();
-$ligatabelle->display($ligatabelle->aktueller_spieltag());
-*/
 ?>
+
+
 

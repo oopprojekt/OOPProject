@@ -45,7 +45,7 @@ class Spieltag
     /**
      * @return int
      */
-    private function set_erstes_spiel()
+    public function set_erstes_spiel()
     {
         for ($i = 0; $i < count($this->saisonarray); $i++)
         {
@@ -59,9 +59,9 @@ class Spieltag
     /**
      *
      */
-    private function set_letztes_spiel()
+    public function set_letztes_spiel()
     {
-        $this->spieltag_letzter = $this->spieltag_erster + 8;
+        return $this->spieltag_letzter = $this->spieltag_erster + 8;
     }
 
     /**

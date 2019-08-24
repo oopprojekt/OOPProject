@@ -18,30 +18,26 @@ class Ligatabelle
         $this->spieltag = new Spieltag();
     }
 
-    /*public function get_saisonarray()
-    {
-        for ($i = 1; $i <= 306; $i++) {
-            $obj = $this->connection->get_sp_ergebnis_by_row($i)->fetch_object();
-            $saisonarray[] =  array("sp_id" => $obj->sp_id,"erg" => $obj->sp_ergebnis);
-        }
-        return $saisonarray;
-    }*/
-
     /** berechnet den den aktuellen spieltag
      * @param
      * @return $spieltag
      */
     public function spieltag()
     {
-        for ($i = 1; $i <= 306; $i++) {
-        $obj = $this->connection->get_sp_ergebnis_by_row($i)->fetch_object();
-        $tabelle[] =  array("sp_id" => $obj->sp_id,"erg" => $obj->sp_ergebnis);
-        }
-        $si = 0;
-        do {
-            $si++;
-        } while ($tabelle[$si]['erg'] != "TBD");
-        $spieltag = floor($si/9);
+        $tabelle = $this->spieltag->get_saisonarray();
+        //echo '<pre>'; var_dump($tabelle);
+        $i= 1;
+        $j = 0;
+        do{
+            if ($tabelle[$i-1][$i]['ergebnis'] === "TBD") {
+                $j++;
+                $i++;
+            }
+            else{
+                $i++;
+            }
+        }while($i<307);
+        $spieltag = 34- floor(($j/9));
         return $spieltag;
     }
 
@@ -63,28 +59,6 @@ class Ligatabelle
         $ug = $og-8;
         return $ug;
     }
-    /*
-    /** holt alle werte aus der DB und legt den spieltag erstmal in daten ab, und anschliessen wird die tabelle erstellt
-     * @param $ug, $og;
-     /*
-    public function spieltag_tabelle($ug,$og)
-    {
-        for ($i = $ug; $i <= $og; $i++) {
-            $res = $this->connection->get_sp_ergebnis_by_row($i);
-            $obj = $res->fetch_object();
-            $ergebnis = $obj->sp_ergebnis;
-
-            //erstellt tabellenarray
-            if($ergebnis === "TBD"){
-                $spieltag_tabelle[] = array("team_id" => $obj->sp_fs_heim,"team_name" => $this->holemirteam_a($obj->sp_fs_heim), "differenz" => 0, "punkte" => 0);
-                $spieltag_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts,"team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts), "differenz" => 0, "punkte" => 0);
-            }else{
-                $spieltag_tabelle[] = array("team_id" => $obj->sp_fs_heim,"team_name" => $this->holemirteam_a($obj->sp_fs_heim), "differenz" => $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], "punkte" => $this->punktberechnung($ergebnis)[0]);
-                $spieltag_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts,"team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts), "differenz" => $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], "punkte" => $this->punktberechnung($ergebnis)[1]);
-            }
-        }
-        return $spieltag_tabelle;
-    }*/
 
     public function gesamt_tabelle($og)
     {
@@ -110,22 +84,25 @@ class Ligatabelle
     */
     public function delete_tbl_statistik()
     {
-            $sql = "DELETE FROM tbl_statistik;";
-            $this->connection->execute($sql);
+        $sql = "DELETE FROM tbl_statistik;";
+        $this->connection->execute($sql);
     }
 
+    /** schreibe tbl_statistik als zwischenspeicher für tabellenberechnung
+     * @param $gesamt_tabelle, $og
+     *@return
+     * */
     public function schreibe_zwischenspeicher($gesamt_tabelle, $og)
     {
-            //
-            $this->delete_tbl_statistik();
-            for ($i = 0; $i <=($og*2)-1 ; $i++) {
-                $team_id = $gesamt_tabelle[$i]['team_id'];
-                $diff = $gesamt_tabelle[$i]['differenz'];
-                $punkte = $gesamt_tabelle[$i]['punkte'];
-                $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (". $i ."," . $team_id . "," . $diff . "," . $punkte . ");";
-                $this->connection->execute($sql);
-            }
-        //echo "zwischenspeicher wurde geschrieben";
+        //
+        $this->delete_tbl_statistik();
+        for ($i = 0; $i <=($og*2)-1 ; $i++) {
+            $team_id = $gesamt_tabelle[$i]['team_id'];
+            $diff = $gesamt_tabelle[$i]['differenz'];
+            $punkte = $gesamt_tabelle[$i]['punkte'];
+            $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (". $i ."," . $team_id . "," . $diff . "," . $punkte . ");";
+            $this->connection->execute($sql);
+        }
     }
 
     public function tabelle_universal()
@@ -134,12 +111,13 @@ class Ligatabelle
         {
             $sql = "SELECT `id`,`team_id`,SUM(`diff`), SUM(`punkte`) FROM `tbl_statistik` WHERE `team_id` = " . $i . ";";
             $this->connection->execute($sql);
-            $id  = $this->connection->execute($sql)->fetch_row()[0];
+            //$id  = $this->connection->execute($sql)->fetch_row()[0];
             $team_id = $this->connection->execute($sql)->fetch_row()[1];
             $diff_sum = $this->connection->execute($sql)->fetch_row()[2];
             $punkte_sum = $this->connection->execute($sql)->fetch_row()[3];
+            // Konvertierung ID->Teamname heim
             $team_name = $this->connection->get_team_by_id($i);
-            $tabelle_universal[] = array("team_id" => $team_id,"team_name" => $team_name, "differenz" => $diff_sum, "punkte" => $punkte_sum);
+            $tabelle_universal[] = array("spieltag"=>$this->spieltag(),"team_id" => $team_id,"team_name" => $team_name, "differenz" => $diff_sum, "punkte" => $punkte_sum);
         }
         return $tabelle_universal;
     }
@@ -207,6 +185,7 @@ class Ligatabelle
      */
     public function display($tabelle)
     {
+
         foreach ($tabelle as $key => $row) {
             $team[$key] = $row['team_id'];
             $tor[$key] = $row['differenz'];
@@ -222,6 +201,7 @@ class Ligatabelle
         echo("<th>VEREIN</th>");
         echo("<th>PKT.</th>");
         echo("<th>DIFF.</th>");
+        echo("<th>SP.</th>");
         echo("</tr>");
         for ($j = 0, $i = 1; $j <= 17, $i <= 18; $j++, $i++) {
             echo("<tr>");
@@ -230,8 +210,10 @@ class Ligatabelle
             echo("<td>" . $tabelle[$j]['team_name'] . "</td>");
             echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
             echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
+            echo("<td>" . $tabelle[$j]['spieltag'] . "</td>");
             echo ("</tr>");
         }
         echo("</table>");
     }
+
 }

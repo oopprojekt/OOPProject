@@ -17,32 +17,38 @@ body {
 
 .page-container {
     margin: 0 10%;
-    min-height: 100vh;
+
 }
 
 .grey-block {
-    background-color: #999999;
+    background-image: url("http://localhost/OOPProject/Bilder/livetickerbg1.png"); opacity: 0.95; border-radius: 6px;
+    background-size: 100% 100%; 
     border: 2px solid black;
     margin: 3px;
 }
 
 .first-block {
-    height: 130px;
-    margin-top: 30px;
+    height: 15vh;
+    margin-top: 3vh;
 }
 
 .second-block {
     width: 20%;
+        height: 69vh;
 }
 
 .third-block {
-    height: 10%;
+    height: 8vh;
 }
 
+.fourth-block {
+    height: 41vh;
+} 
+
 .fifth-block {
-    height: 80px;
-    margin-bottom: 30px;
+    margin-bottom: 3vh;
     display: flex;
+    height: 7vh;
 }
 
 .flex-y {
@@ -63,7 +69,7 @@ body {
 
 .navpoint {
     width:100%;
-    padding-top: 18px;
+    padding-top: 1.5px;
     text-align: center;
 }
 
@@ -99,7 +105,6 @@ body {
 #lauftext
 {
     width: 90%;
-    background-color: violet;
 }
 
 #btn_anpfiff

@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="navpoint">
-            <a href="home.php"><img src="http://localhost/OOPProject/Bilder/homebutton.png" id="homebutton"></a>
-            <a href="training.php"><img src="http://localhost/OOPProject/Bilder/trainingbutton.png" id="homebutton"></a>
-            <a href="transfer.php"><img src="http://localhost/OOPProject/Bilder/transferbutton.png" id="homebutton"></a>
-            <a href="ligatabelle.php"><img src="http://localhost/OOPProject/Bilder/tabellebutton.png" id="homebutton"></a>
-            <a href="statistik.php"><img src="http://localhost/OOPProject/Bilder/statistikenbutton.png" id="homebutton"></a>
+            <a href="home.php"><img src="homebutton.png" id="homebutton"></a>
+            <a href="training.php"><img src="trainingbutton.png" id="homebutton"></a>
+            <a href="transfer.php"><img src="transferbutton.png" id="homebutton"></a>
+            <a href="ligatabelle.php"><img src="tabellebutton.png" id="homebutton"></a>
+            <a href="statistik.php"><img src="statistikenbutton.png" id="homebutton"></a>
         </div> 
     </div>
 </div>

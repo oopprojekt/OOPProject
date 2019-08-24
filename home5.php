@@ -31,8 +31,8 @@ if(!$_SESSION['team'])
     <title>Start Page</title>
 </head>
 <body>
-<div class="calendartemplate"><?php include_once "./templates/header.php"; ?></div>
-  <div class="leftcolumntemplate"> </div>
+<div class="calendartemplate"> <?php include_once "./templates/header.php"; ?></div>
+  <div class="leftcolumntemplate"> <?php include_once "./templates/info.php"; ?></div>
   <div class="rightcolumntemplate">
 		<div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
 		<div class="maincontentrowtemplate"></div>

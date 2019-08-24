@@ -5,7 +5,7 @@
 include_once "./scripte/php/show_errors.php";
 
 session_start();
-error_reporting(0);
+//error_reporting(0);
 $_SESSION['username'] = $_POST['name'];
 $_SESSION['passwort'] = $_POST['passwort'];
 ?>

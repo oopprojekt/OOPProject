@@ -5,7 +5,7 @@
 include_once "./scripte/php/show_errors.php";
 
 session_start();
-error_reporting(0);
+ 
 
 $_SESSION['username'] = $_POST['name'];
 $_SESSION['passwort'] = $_POST['passwort'];
@@ -14,27 +14,23 @@ $_SESSION['passwort'] = $_POST['passwort'];
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style/style.css">
-        <title>Start Page</title>
-    </head>
-    <body>
-        <div class="page-container flex-y">
-            <div class="first-block grey-block">
-                <?php include_once "./templates/header.php"; ?></div>
-            <div class="flex-x flex-1">
-                <div class="second-block grey-block"><?php include_once "./templates/info.php"; ?></div>
-                <div class="flex-y flex-1">
-                    <div class="third-block grey-block">
-                        <?php include_once "./templates/nav.php"; ?></div>
-                    <div class="flex-1 grey-block">4</div>
-                </div>
-            </div>
-            <div class="fifth-block grey-block"><?php include_once "./templates/footer.php"; ?></div>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/maintemplate.css">
+    <title>Start Page</title>
+</head>
+<body>
+<div class="calendartemplate"> <?php include_once "./templates/header.php"; ?></div>
+  <div class="leftcolumntemplate"> <?php include_once "./templates/info.php"; ?></div>
+  <div class="rightcolumntemplate">
+        <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
+        <div class="maincontentrowtemplate"></div>
+</div>
+<div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>
+
+ 
 
 
 <!-- Optional JavaScript -->

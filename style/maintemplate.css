@@ -94,27 +94,27 @@ body {
         height: 2.2vh;
     }
 
-    tr:nth-of-type(2), tr:nth-of-type(3), tr:nth-of-type(4)  {
+    .wrapbltable tr:nth-of-type(2), .wrapbltable tr:nth-of-type(3), .wrapbltable tr:nth-of-type(4)  {
         background-image: linear-gradient(to top, #22E312 0%, #1FFB0D 50%);
         
     }
-    tr:nth-of-type(5) {
+    .wrapbltable tr:nth-of-type(5) {
     background-image: linear-gradient(to top, #7EF173 0%, #AAFCA2 50%);
     
     }
-    tr:nth-of-type(6), tr:nth-of-type(7) {
+    .wrapbltable tr:nth-of-type(6), .wrapbltable tr:nth-of-type(7) {
     background-image: linear-gradient(to top, #D8D8B2 0%, #EDEDC6 50%);
     
     }
-    tr:nth-of-type(8), tr:nth-of-type(9), tr:nth-of-type(10), tr:nth-of-type(11), tr:nth-of-type(12), tr:nth-of-type(13), tr:nth-of-type(14), tr:nth-of-type(15), tr:nth-of-type(16){
+    .wrapbltable tr:nth-of-type(8), .wrapbltable tr:nth-of-type(9), .wrapbltable tr:nth-of-type(10), .wrapbltable tr:nth-of-type(11), .wrapbltable tr:nth-of-type(12), .wrapbltable tr:nth-of-type(13), .wrapbltable tr:nth-of-type(14), .wrapbltable tr:nth-of-type(15), .wrapbltable tr:nth-of-type(16){
     background-image: linear-gradient(to top, #CDCDCD 0%, #DEDEDE 50%);
     
     }
-    tr:nth-of-type(17) {
+    .wrapbltable tr:nth-of-type(17) {
     background-image: linear-gradient(to top, #FF7070 0%, #FF9494 50%);
     
     }
-    tr:nth-of-type(18), tr:nth-of-type(19){
+    .wrapbltable tr:nth-of-type(18), .wrapbltable tr:nth-of-type(19){
         background-image: linear-gradient(to top, #E84141 0%, #FA5555 50%);
         
     }

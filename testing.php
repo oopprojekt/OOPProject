@@ -42,8 +42,7 @@ echo "trallali";
 include_once "./scripte/php/Ligatabelle.php";
 $ligatabelle = new Ligatabelle();
 echo("</br>");
-$ligatabelle->schreibe_zwischenspeicher($ligatabelle->gesamt_tabelle($ligatabelle->obergrenze()), $ligatabelle->obergrenze());
-$ligatabelle->display($ligatabelle->tabelle_universal());
+$ligatabelle->display();
 ?>
 
 

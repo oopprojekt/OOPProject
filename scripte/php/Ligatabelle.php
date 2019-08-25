@@ -32,14 +32,16 @@ class Ligatabelle
      * @param $og
      *@return $ug
      * */
-    public function untergrenze($og)
+    public function untergrenze()
     {
+        $og = $this->obergrenze();
         $ug = $og-8;
         return $ug;
     }
 
-    public function gesamt_tabelle($og)
+    public function gesamt_tabelle()
     {
+        $og = $this->obergrenze();
         for ($i = 1; $i <= $og; $i++) {
             $res = $this->connection->get_sp_ergebnis_by_row($i);
             $obj = $res->fetch_object();
@@ -70,9 +72,10 @@ class Ligatabelle
      * @param $gesamt_tabelle, $og
      *@return
      * */
-    public function schreibe_zwischenspeicher($gesamt_tabelle, $og)
+    public function schreibe_zwischenspeicher()
     {
-        //
+        $gesamt_tabelle = $this->gesamt_tabelle();
+        $og = $this->obergrenze();
         $this->delete_tbl_statistik();
         for ($i = 0; $i <=($og*2)-1 ; $i++) {
             $team_id = $gesamt_tabelle[$i]['team_id'];
@@ -85,6 +88,7 @@ class Ligatabelle
 
     public function tabelle_universal()
     {
+        $this->schreibe_zwischenspeicher();
         for ($i = 1; $i <=18 ; $i++)
         {
             $sql = "SELECT `id`,`team_id`,SUM(`diff`), SUM(`punkte`) FROM `tbl_statistik` WHERE `team_id` = " . $i . ";";
@@ -161,9 +165,9 @@ class Ligatabelle
      * @param $tabelle
      * @return
      */
-    public function display($tabelle)
+    public function display()
     {
-
+        $tabelle = $this->tabelle_universal();
         foreach ($tabelle as $key => $row) {
             $team[$key] = $row['team_id'];
             $tor[$key] = $row['differenz'];

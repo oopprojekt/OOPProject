@@ -266,13 +266,31 @@ class DB
     }
 
     /* zum leeren des alten standes
-*
-*/
+    *
+    */
     public function delete_tbl_statistik()
     {
         $sql = "DELETE FROM tbl_statistik;";
         $this->execute($sql);
     }
+
+    /* schreibt die tbl_statistik
+    *
+    */
+    public function setze_tbl_statistik($i,$team_id, $diff, $punkte)
+    {
+        $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (". $i ."," . $team_id . "," . $diff . "," . $punkte . ");";
+        $this->execute($sql);
+    }
+
+    /* liesst die tbl_statistik aus
+    *
+    */
+    public function get_tbl_statistik($i)
+    {
+
+    }
+
 
 
     /*  methode welche das budget unseres teams holt aus der tbl_team

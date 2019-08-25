@@ -29,7 +29,7 @@ class Ligatabelle
     }
 
     /** setz unteren grenzwert für den spieltag
-     * @param $og
+     * @param
      *@return $ug
      * */
     public function untergrenze()
@@ -39,6 +39,10 @@ class Ligatabelle
         return $ug;
     }
 
+    /** schreibt array tabelle bis zum $og grenzwert
+     * @param
+     *@return $ug
+     * */
     public function gesamt_tabelle()
     {
         $og = $this->obergrenze();
@@ -63,7 +67,7 @@ class Ligatabelle
      * @param $gesamt_tabelle, $og
      *@return
      * */
-    public function schreibe_zwischenspeicher()
+    public function schreibe_tbl_statistik()
     {
         $this->connection->delete_tbl_statistik();
         $gesamt_tabelle = $this->gesamt_tabelle();
@@ -72,19 +76,21 @@ class Ligatabelle
             $team_id = $gesamt_tabelle[$i]['team_id'];
             $diff = $gesamt_tabelle[$i]['differenz'];
             $punkte = $gesamt_tabelle[$i]['punkte'];
-            $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (". $i ."," . $team_id . "," . $diff . "," . $punkte . ");";
-            $this->connection->execute($sql);
+            $this->connection->setze_tbl_statistik($i,$team_id,$diff,$punkte);
         }
     }
 
+    /** schreibe spieltag tabelle
+     * @param
+     *@return $tabelle_universal
+     * */
     public function tabelle_universal()
     {
-        $this->schreibe_zwischenspeicher();
+        $this->schreibe_tbl_statistik();
         for ($i = 1; $i <=18 ; $i++)
         {
             $sql = "SELECT `id`,`team_id`,SUM(`diff`), SUM(`punkte`) FROM `tbl_statistik` WHERE `team_id` = " . $i . ";";
             $this->connection->execute($sql);
-            //$id  = $this->connection->execute($sql)->fetch_row()[0];
             $team_id = $this->connection->execute($sql)->fetch_row()[1];
             $diff_sum = $this->connection->execute($sql)->fetch_row()[2];
             $punkte_sum = $this->connection->execute($sql)->fetch_row()[3];
@@ -95,24 +101,20 @@ class Ligatabelle
         return $tabelle_universal;
     }
 
-    public function sortierung_by_team_id($tabelle)
-    {
-        $tabelle_sortierung_by_team_id = $tabelle;
-        foreach ($tabelle_sortierung_by_team_id as $key => $row) {
-            $team[$key] = $row['team_id'];
-        }
-        array_multisort($team, SORT_ASC, $tabelle_sortierung_by_team_id);
-        return $tabelle_sortierung_by_team_id;
-    }
-
-    // Konvertierung ID->Teamname heim
+    /** konvertiert id zu vereinsnamen
+     * @param
+     *@return $team_name
+     * */
     public function holemirteam_a($a)
     {
         $team_name = $this->connection->get_team_by_id($a);
         return $team_name;
     }
-    // Konvertierung ID->Teamname gast
 
+    /** konvertiert id zu vereinsnamen
+     * @param
+     *@return $team_gast
+     * */
     public function holemirteam_b($b)
     {
         $team_gast = $this->connection->get_team_by_id($b);

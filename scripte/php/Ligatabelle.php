@@ -219,7 +219,7 @@ class Ligatabelle
                 $obj = $res->fetch_object();
                 $ergebnis = $obj->sp_ergebnis;
                 //erstellt tabellenarray
-                $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+                $head_to_head_tabelle[] = array("team_id_heim"=> $obj->sp_fs_heim,"team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_id_gast"=> $obj->sp_fs_auswaerts,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
             }
         }
         else{
@@ -227,7 +227,7 @@ class Ligatabelle
                 $res = $this->connection->get_sp_ergebnis_by_row($i);
                 $obj = $res->fetch_object();
                 //erstellt tabellenarray
-                $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> " : ","team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+                $head_to_head_tabelle[] = array("team_id_heim"=> $obj->sp_fs_heim,"team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> " : ","team_id_gast"=> $obj->sp_fs_auswaerts, "team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
             }
         }
         return $head_to_head_tabelle;
@@ -245,9 +245,11 @@ class Ligatabelle
         echo("<tr>");
         for ($j = 0; $j <= 8; $j++) {
             echo("<tr>");
+            echo("<td>" . $head_to_head_tabelle[$j]['team_id_heim'] . "</td>");
             echo("<td>" . $head_to_head_tabelle[$j]['team_heim'] . "</td>");
             echo("<td>" . $head_to_head_tabelle[$j]['ergebnis'] . "</td>");
             echo("<td>" . $head_to_head_tabelle[$j]['team_gast'] . "</td>");
+            echo("<td>" . $head_to_head_tabelle[$j]['team_id_gast'] . "</td>");
             echo ("</tr>");
         }
         echo("</table>");

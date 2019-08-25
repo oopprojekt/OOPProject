@@ -292,6 +292,18 @@ class DB
         $this->execute($sql);
     }
 
+    public function gets_array()
+    {
+        $sql = "SELECT spl_vorname, spl_nachname, spl_fs_team,spl_fs_position,spl_ausdauer,spl_technik,spl_torgefahr,spl_zweikampf FROM tbl_spieler;";
+        $res = $this->execute($sql);
+
+        $playerlist = array();
+        while ($row = mysqli_fetch_assoc($res)) {
+            $playerlist[] = $row;
+        }
+        return $playerlist;
+    }
+
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

@@ -48,13 +48,9 @@ echo("</br>");
 ?>
 
 <?php
-include_once "./scripte/php/Fixtures.php";
-$fix = new Fixtures();
-$fix->set_spieltag();
-$fix->set_tbl_spielplan();
+include_once "./scripte/php/Ligatabelle.php";
+$lgatabelle = new Ligatabelle();
 
-$ligatabelle->display_ligatabelle();
-$ligatabelle->display_head_to_head();
 
 ?>
 

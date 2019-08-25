@@ -110,7 +110,6 @@ class Spieltag
     public function aktueller_spieltag()
     {
         $tabelle = $this->get_saisonarray();
-        //echo '<pre>'; var_dump($tabelle);
         $i= 1;
         $j = 0;
         do{
@@ -126,6 +125,10 @@ class Spieltag
         return $spieltag;
     }
 
+    /** schreibt ergebnis
+     * @param
+     * @return
+     */
     public function schreibe_ergebnis()
     {
         for ($i = 0; $i < count($this->saisonarray); $i++)

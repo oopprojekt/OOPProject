@@ -20,8 +20,6 @@ $_SESSION['passwort'] = $_POST['passwort'];
         <title>Start Page</title>
     </head>
     <body>
-<<<<<<< HEAD
-
 <!DOCTYPE html> 
 <html lang="en">
 <head>

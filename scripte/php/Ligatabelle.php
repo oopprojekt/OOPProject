@@ -20,63 +20,76 @@ class Ligatabelle
 
     /** setz oberen grenzwert für den spieltag
      * @param
-     *@return $og
+     * @return $og
      * */
-    public function obergrenze(){
+    public function obergrenze()
+    {
         $spieltag = $this->spieltag->aktueller_spieltag();
-        $og = $spieltag*9;
+        $og = $spieltag * 9;
         return $og;
     }
 
     /** setz unteren grenzwert für den spieltag
      * @param
-     *@return $ug
+     * @return $ug
      * */
     public function untergrenze()
     {
         $og = $this->obergrenze();
-        $ug = $og-8;
+        $ug = $og - 8;
         return $ug;
     }
 
     /** schreibt array tabelle bis zum $og grenzwert
      * @param
-     *@return $ug
+     * @return $gesamt_tabelle
      * */
     public function gesamt_tabelle()
     {
         $og = $this->obergrenze();
-        for ($i = 1; $i <= $og; $i++) {
-            $res = $this->connection->get_sp_ergebnis_by_row($i);
-            $obj = $res->fetch_object();
-            $ergebnis = $obj->sp_ergebnis;
-
-            //erstellt tabellenarray
-            if($ergebnis == "TBD"){
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim,"team_name" => $this->holemirteam_a($obj->sp_fs_heim), "differenz" => 0, "punkte" => 0);
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts,"team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts), "differenz" => 0, "punkte" => 0);
-            }else{
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim,"team_name" => $this->holemirteam_a($obj->sp_fs_heim), "differenz" => $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], "punkte" => $this->punktberechnung($ergebnis)[0]);
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts,"team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts), "differenz" => $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], "punkte" => $this->punktberechnung($ergebnis)[1]);
+        if ($og != 0) {
+            for ($i = 1; $i <= $og; $i++) {
+                $res = $this->connection->get_sp_ergebnis_by_row($i);
+                $obj = $res->fetch_object();
+                $ergebnis = $obj->sp_ergebnis;
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim, "team_name" => $this->holemirteam_a($obj->sp_fs_heim), "differenz" => $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], "punkte" => $this->punktberechnung($ergebnis)[0]);
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts, "team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts), "differenz" => $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], "punkte" => $this->punktberechnung($ergebnis)[1]);
+            }
+        }
+        else{
+            for ($i = 1; $i <= 9; $i++) {
+                $res = $this->connection->get_sp_ergebnis_by_row($i);
+                $obj = $res->fetch_object();
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim, "team_name" => $this->holemirteam_a($obj->sp_fs_heim));
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts, "team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts));
             }
         }
         return $gesamt_tabelle;
     }
 
     /** schreibe tbl_statistik als zwischenspeicher für tabellenberechnung
-     * @param $gesamt_tabelle, $og
-     *@return
+     * @param
+     * @return
      * */
     public function schreibe_tbl_statistik()
     {
         $this->connection->delete_tbl_statistik();
         $gesamt_tabelle = $this->gesamt_tabelle();
         $og = $this->obergrenze();
-        for ($i = 0; $i <=($og*2)-1 ; $i++) {
-            $team_id = $gesamt_tabelle[$i]['team_id'];
-            $diff = $gesamt_tabelle[$i]['differenz'];
-            $punkte = $gesamt_tabelle[$i]['punkte'];
-            $this->connection->setze_tbl_statistik($i,$team_id,$diff,$punkte);
+        if ($og != 0) {
+            for ($i = 0; $i <= ($og * 2) - 1; $i++) {
+                $team_id = $gesamt_tabelle[$i]['team_id'];
+                $diff = $gesamt_tabelle[$i]['differenz'];
+                $punkte = $gesamt_tabelle[$i]['punkte'];
+                $this->connection->setze_tbl_statistik($i, $team_id, $diff, $punkte);
+            }
+        }else{
+            for ($i = 0; $i <= 18 - 1; $i++) {
+                $team_id = $gesamt_tabelle[$i]['team_id'];
+                $diff = 0;
+                $punkte = 0;
+                $this->connection->setze_tbl_statistik($i, $team_id, $diff, $punkte);
+            }
         }
     }
 
@@ -154,7 +167,7 @@ class Ligatabelle
         return $ergebnis_arr;
     }
 
-    /** stellt array in html kode tabelle dar
+    /** sortiert array und stellt es in html kode/tabelle dar
      * @param $tabelle
      * @return
      */
@@ -188,7 +201,7 @@ class Ligatabelle
         echo("</table>");
     }
 
-    /** stellt array in html kode tabelle dar für head to head vergleich
+    /** stellt array in html kode/tabelle dar, für head to head vergleich
      * @param
      * @return
      */
@@ -196,12 +209,22 @@ class Ligatabelle
     {
         $ug = $this->untergrenze();
         $og = $this->obergrenze();
-        for ($i = $ug; $i <= $og; $i++) {
-            $res = $this->connection->get_sp_ergebnis_by_row($i);
-            $obj = $res->fetch_object();
-            $ergebnis = $obj->sp_ergebnis;
-            //erstellt tabellenarray
-            $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+        if ($og != 0) {
+            for ($i = $ug; $i <= $og; $i++) {
+                $res = $this->connection->get_sp_ergebnis_by_row($i);
+                $obj = $res->fetch_object();
+                $ergebnis = $obj->sp_ergebnis;
+                //erstellt tabellenarray
+                $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+            }
+        }
+        else{
+            for ($i = 1; $i <= 9; $i++) {
+                $res = $this->connection->get_sp_ergebnis_by_row($i);
+                $obj = $res->fetch_object();
+                //erstellt tabellenarray
+                $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> " : ","team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+            }
         }
         return $head_to_head_tabelle;
     }
@@ -209,7 +232,11 @@ class Ligatabelle
     public function display_head_to_head()
     {
         $head_to_head_tabelle = $this->head_to_head_tabelle();
-        echo ( $this->spieltag->aktueller_spieltag() . ". Spieltag");
+        $spieltag = $this->spieltag->aktueller_spieltag();
+        if($spieltag == 0) {
+            $spieltag++;
+        }
+        echo ( $spieltag. ". Spieltag");
         echo("<table>");
         echo("<tr>");
         for ($j = 0; $j <= 8; $j++) {
@@ -221,5 +248,4 @@ class Ligatabelle
         }
         echo("</table>");
     }
-
 }

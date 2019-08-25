@@ -292,7 +292,7 @@ class DB
         $this->execute($sql);
     }
 
-    public function gets_array()
+    public function gets_spieler_array()
     {
         $sql = "SELECT spl_vorname, spl_nachname, spl_fs_team,spl_fs_position,spl_ausdauer,spl_technik,spl_torgefahr,spl_zweikampf FROM tbl_spieler;";
         $res = $this->execute($sql);
@@ -301,7 +301,14 @@ class DB
         while ($row = mysqli_fetch_assoc($res)) {
             $playerlist[] = $row;
         }
-        return $playerlist;
+        echo("<table>");
+        echo("<tr>");
+        foreach ($playerlist as $i => $record) {
+            echo ("<td>" . $record['spl_vorname'] . "</td><td>".  $record['spl_nachname'] . "</td><td>" .  $record['spl_fs_team'] . "</td><td>" .  $record['spl_fs_position'] . "</td><td>" .
+                $record['spl_ausdauer'] . "</td><td>" .  $record['spl_technik'] . "</td><td>" .   $record['spl_torgefahr'] . "</td><td>" .  $record['spl_zweikampf'] . "</td>");
+        }
+        echo("</tr>");
+        echo("</table>");
     }
 
 

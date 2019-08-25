@@ -311,3 +311,9 @@ body {
 
 </style>
 
+<?php
+include_once "./scripte/php/DB.php";
+$db_test = new DB("grete@il.de");
+$db_test->gets_spieler_array();
+//welche werte da im array stehen siehst du unter DB.php methode gets_array ;)
+?>

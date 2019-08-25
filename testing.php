@@ -11,9 +11,7 @@ $db_test = new DB("grete@il.de");
 //$db_test->set_team(13);
 echo "trainername:";
 var_dump($db_test->get_trainer("bratob"));
-echo("Spielergedöns für Tobi");echo("</br>");
-var_dump($db_test->gets_array());
-
+$db_test->gets_spieler_array();
 //$db_test->foo();
 
 echo "trallali";
@@ -50,7 +48,6 @@ echo("</br>");
 include_once "./scripte/php/Ligatabelle.php";
 $lgatabelle = new Ligatabelle();
 $lgatabelle->display_head_to_head();
-
 ?>
 
 

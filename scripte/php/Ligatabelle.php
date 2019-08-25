@@ -171,7 +171,6 @@ class Ligatabelle
         echo("<table>");
         echo("<tr>");
         echo("<th>PL.</th>");
-        echo("<th>ID</th>");
         echo("<th>VEREIN</th>");
         echo("<th>PKT.</th>");
         echo("<th>DIFF.</th>");
@@ -180,7 +179,6 @@ class Ligatabelle
         for ($j = 0, $i = 1; $j <= 17, $i <= 18; $j++, $i++) {
             echo("<tr>");
             echo("<td>" .  $i . "</td>");
-            echo("<td>" . $tabelle[$j]['team_id'] . "</td>");
             echo("<td>" . $tabelle[$j]['team_name'] . "</td>");
             echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
             echo("<td>" . $tabelle[$j]['differenz'] . "</td>");

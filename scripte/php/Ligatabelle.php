@@ -29,17 +29,23 @@ class Ligatabelle
     }
 
     /** setz unteren grenzwert für den spieltag
-     * @param $og
+     * @param
      *@return $ug
      * */
-    public function untergrenze($og)
+    public function untergrenze()
     {
+        $og = $this->obergrenze();
         $ug = $og-8;
         return $ug;
     }
 
-    public function gesamt_tabelle($og)
+    /** schreibt array tabelle bis zum $og grenzwert
+     * @param
+     *@return $ug
+     * */
+    public function gesamt_tabelle()
     {
+        $og = $this->obergrenze();
         for ($i = 1; $i <= $og; $i++) {
             $res = $this->connection->get_sp_ergebnis_by_row($i);
             $obj = $res->fetch_object();
@@ -57,39 +63,34 @@ class Ligatabelle
         return $gesamt_tabelle;
     }
 
-    /* zum leeren des alten standes
-    *
-    */
-    public function delete_tbl_statistik()
-    {
-        $sql = "DELETE FROM tbl_statistik;";
-        $this->connection->execute($sql);
-    }
-
     /** schreibe tbl_statistik als zwischenspeicher für tabellenberechnung
      * @param $gesamt_tabelle, $og
      *@return
      * */
-    public function schreibe_zwischenspeicher($gesamt_tabelle, $og)
+    public function schreibe_tbl_statistik()
     {
-        //
-        $this->delete_tbl_statistik();
+        $this->connection->delete_tbl_statistik();
+        $gesamt_tabelle = $this->gesamt_tabelle();
+        $og = $this->obergrenze();
         for ($i = 0; $i <=($og*2)-1 ; $i++) {
             $team_id = $gesamt_tabelle[$i]['team_id'];
             $diff = $gesamt_tabelle[$i]['differenz'];
             $punkte = $gesamt_tabelle[$i]['punkte'];
-            $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (". $i ."," . $team_id . "," . $diff . "," . $punkte . ");";
-            $this->connection->execute($sql);
+            $this->connection->setze_tbl_statistik($i,$team_id,$diff,$punkte);
         }
     }
 
+    /** schreibe spieltag tabelle
+     * @param
+     *@return $tabelle_universal
+     * */
     public function tabelle_universal()
     {
+        $this->schreibe_tbl_statistik();
         for ($i = 1; $i <=18 ; $i++)
         {
             $sql = "SELECT `id`,`team_id`,SUM(`diff`), SUM(`punkte`) FROM `tbl_statistik` WHERE `team_id` = " . $i . ";";
             $this->connection->execute($sql);
-            //$id  = $this->connection->execute($sql)->fetch_row()[0];
             $team_id = $this->connection->execute($sql)->fetch_row()[1];
             $diff_sum = $this->connection->execute($sql)->fetch_row()[2];
             $punkte_sum = $this->connection->execute($sql)->fetch_row()[3];
@@ -100,24 +101,20 @@ class Ligatabelle
         return $tabelle_universal;
     }
 
-    public function sortierung_by_team_id($tabelle)
-    {
-        $tabelle_sortierung_by_team_id = $tabelle;
-        foreach ($tabelle_sortierung_by_team_id as $key => $row) {
-            $team[$key] = $row['team_id'];
-        }
-        array_multisort($team, SORT_ASC, $tabelle_sortierung_by_team_id);
-        return $tabelle_sortierung_by_team_id;
-    }
-
-    // Konvertierung ID->Teamname heim
+    /** konvertiert id zu vereinsnamen
+     * @param
+     *@return $team_name
+     * */
     public function holemirteam_a($a)
     {
         $team_name = $this->connection->get_team_by_id($a);
         return $team_name;
     }
-    // Konvertierung ID->Teamname gast
 
+    /** konvertiert id zu vereinsnamen
+     * @param
+     *@return $team_gast
+     * */
     public function holemirteam_b($b)
     {
         $team_gast = $this->connection->get_team_by_id($b);
@@ -157,13 +154,13 @@ class Ligatabelle
         return $ergebnis_arr;
     }
 
-    /** stellt array in html code tabelle dar
+    /** stellt array in html kode tabelle dar
      * @param $tabelle
      * @return
      */
-    public function display($tabelle)
+    public function display_ligatabelle()
     {
-
+        $tabelle = $this->tabelle_universal();
         foreach ($tabelle as $key => $row) {
             $team[$key] = $row['team_id'];
             $tor[$key] = $row['differenz'];
@@ -171,11 +168,9 @@ class Ligatabelle
         }
         array_multisort($punkte, SORT_DESC, $tor, SORT_DESC, $tabelle);
 
-        echo("</br>");
         echo("<table>");
         echo("<tr>");
         echo("<th>PL.</th>");
-        echo("<th>ID</th>");
         echo("<th>VEREIN</th>");
         echo("<th>PKT.</th>");
         echo("<th>DIFF.</th>");
@@ -184,11 +179,44 @@ class Ligatabelle
         for ($j = 0, $i = 1; $j <= 17, $i <= 18; $j++, $i++) {
             echo("<tr>");
             echo("<td>" .  $i . "</td>");
-            echo("<td>" . $tabelle[$j]['team_id'] . "</td>");
             echo("<td>" . $tabelle[$j]['team_name'] . "</td>");
             echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
             echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
             echo("<td>" . $tabelle[$j]['spieltag'] . "</td>");
+            echo ("</tr>");
+        }
+        echo("</table>");
+    }
+
+    /** stellt array in html kode tabelle dar für head to head vergleich
+     * @param
+     * @return
+     */
+    public function head_to_head_tabelle()
+    {
+        $ug = $this->untergrenze();
+        $og = $this->obergrenze();
+        for ($i = $ug; $i <= $og; $i++) {
+            $res = $this->connection->get_sp_ergebnis_by_row($i);
+            $obj = $res->fetch_object();
+            $ergebnis = $obj->sp_ergebnis;
+            //erstellt tabellenarray
+            $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+        }
+        return $head_to_head_tabelle;
+    }
+
+    public function display_head_to_head()
+    {
+        $head_to_head_tabelle = $this->head_to_head_tabelle();
+        echo ( $this->spieltag->aktueller_spieltag() . ". Spieltag");
+        echo("<table>");
+        echo("<tr>");
+        for ($j = 0; $j <= 8; $j++) {
+            echo("<tr>");
+            echo("<td>" . $head_to_head_tabelle[$j]['team_heim'] . "</td>");
+            echo("<td>" . $head_to_head_tabelle[$j]['ergebnis'] . "</td>");
+            echo("<td>" . $head_to_head_tabelle[$j]['team_gast'] . "</td>");
             echo ("</tr>");
         }
         echo("</table>");

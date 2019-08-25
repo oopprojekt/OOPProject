@@ -39,11 +39,23 @@ echo "trallali";
 </html>
 
 <?php
+/*
 include_once "./scripte/php/Ligatabelle.php";
 $ligatabelle = new Ligatabelle();
 echo("</br>");
-$ligatabelle->schreibe_zwischenspeicher($ligatabelle->gesamt_tabelle($ligatabelle->obergrenze($ligatabelle->spieltag())), $ligatabelle->obergrenze($ligatabelle->spieltag()));
-$ligatabelle->display($ligatabelle->tabelle_universal());
+
+*/
+?>
+
+<?php
+include_once "./scripte/php/Fixtures.php";
+$fix = new Fixtures();
+$fix->set_spieltag();
+$fix->set_tbl_spielplan();
+
+$ligatabelle->display_ligatabelle();
+$ligatabelle->display_head_to_head();
+
 ?>
 
 

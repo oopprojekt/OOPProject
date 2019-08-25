@@ -42,7 +42,7 @@ echo "trallali";
 include_once "./scripte/php/Ligatabelle.php";
 $ligatabelle = new Ligatabelle();
 echo("</br>");
-$ligatabelle->display();
+$ligatabelle->display_ligatabelle();
 ?>
 
 

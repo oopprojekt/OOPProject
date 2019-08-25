@@ -59,24 +59,15 @@ class Ligatabelle
         return $gesamt_tabelle;
     }
 
-    /* zum leeren des alten standes
-    *
-    */
-    public function delete_tbl_statistik()
-    {
-        $sql = "DELETE FROM tbl_statistik;";
-        $this->connection->execute($sql);
-    }
-
     /** schreibe tbl_statistik als zwischenspeicher für tabellenberechnung
      * @param $gesamt_tabelle, $og
      *@return
      * */
     public function schreibe_zwischenspeicher()
     {
+        $this->connection->delete_tbl_statistik();
         $gesamt_tabelle = $this->gesamt_tabelle();
         $og = $this->obergrenze();
-        $this->delete_tbl_statistik();
         for ($i = 0; $i <=($og*2)-1 ; $i++) {
             $team_id = $gesamt_tabelle[$i]['team_id'];
             $diff = $gesamt_tabelle[$i]['differenz'];
@@ -165,7 +156,7 @@ class Ligatabelle
      * @param $tabelle
      * @return
      */
-    public function display()
+    public function display_ligatabelle()
     {
         $tabelle = $this->tabelle_universal();
         foreach ($tabelle as $key => $row) {

@@ -265,6 +265,15 @@ class DB
         return $players;
     }
 
+    /* zum leeren des alten standes
+*
+*/
+    public function delete_tbl_statistik()
+    {
+        $sql = "DELETE FROM tbl_statistik;";
+        $this->execute($sql);
+    }
+
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

@@ -33,19 +33,39 @@ if(!$_SESSION['team'])
         <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
         <div class="maincontentrowtemplate">
             
+
+
+
+
 <div class="test">
     <div class="a">
-      <img src="http://localhost/OOPProject/bilder/spielfeld.jpg" id="bild" height="93%"> </
+      <img src="bilder/spielfeld.jpg" id="bild" height="100%"> </
       <br/>
-      <p>
+    
+
+
+    </div>
+    <div class="b">
+
+<?php
+include_once "./scripte/php/DB.php";
+$db_test = new DB("grete@il.de");
+$db_test->gets_spieler_array();
+//welche werte da im array stehen siehst du unter DB.php methode gets_array ;)
+?>
+
+    </div>
+     <div class="c">
+
+  <p>
 
 Wähle deine Formation: 
 
 <select name="formGender" id="formation" onchange="myFunction()">
 
-  <option value="https://i.pinimg.com/originals/5e/d2/e1/5ed2e125a2d45189cfd69a2c142b5b5d.jpg"></option>
+  <option value="bilder/spielfeld.jpg"></option>
 
-  <option value="https://i.pinimg.com/originals/5e/d2/e1/5ed2e125a2d45189cfd69a2c142b5b5d.jpg">4-3-3</option>
+  <option value="bilder/spielfeld433.jpg">4-3-3</option>
 
   <option value="4321">4-3-2-1</option>
 
@@ -58,92 +78,12 @@ Wähle deine Formation:
 
 
 </p>
-
-
     </div>
-    <div class="b">
+        <div class="d">
 
-
-<table border="1" id="Table1" width="80%">
-  <tr>
-    <td>Position</td>
-    <td>Spielername</td>
-    <td>Wert</td>
-    <td>Option</td> 
-    <tr>
-<?php
-
-for($i=0; $i < 4; $i++) {
-   echo "    <td> TW</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> IV</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> RV</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> LV</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> ZDM</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> ZOM</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> LF</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> ST</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-for($i=0; $i < 4; $i++) {
-   echo "    <td> RF</td>
-    <td>Thomas Müller</td>
-    <td>86</td>
-    <td> <input type='checkbox'/> </td>
-    <tr>";
-}
-?>
-</table>
 <input id = "btnGet" type="button" value="Startelf für nächstes Spiel abgeben" />
     </div>
-  </div>
-
 </div>
-
 
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -311,15 +251,18 @@ var ST = parseInt(numLF) + parseInt(numST) +parseInt(numRF);
 
 <style type="text/css">
   
+body {
+  margin: 0;
+ 
+}
 
 .a {
   display: inline-block;
   width: 38%;
   background-color: #;
-  height: 59.5vh;
+  height: 54.5vh;
   float: left;
- 
-  margin-top: 5px;
+
 }
 
 .b {
@@ -328,12 +271,26 @@ var ST = parseInt(numLF) + parseInt(numST) +parseInt(numRF);
   background-color: #;
   height: 20px;
   float: right;
-  height: 59.5vh;
+  height: 54.5vh;
   overflow-y: scroll;
+}
+
+.c {
+  width: 38%;
+  display: inline-block;
+  float: left;
+}
+
+.d {
+  width: 62%;
+  display: inline-block;
+  float: right;
 }
 
 .test {
   width: 100%;
+  padding-left: 2vh;
+  padding-top: 1vh;
 }
 .test:after{
   display: block;
@@ -341,7 +298,11 @@ var ST = parseInt(numLF) + parseInt(numST) +parseInt(numRF);
   clear: both;
 }
 
+ 
+
 </style>
+
+
 
 
 

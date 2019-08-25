@@ -301,11 +301,41 @@ class DB
         while ($row = mysqli_fetch_assoc($res)) {
             $playerlist[] = $row;
         }
-        echo("<table>");
+        echo("<table id='playerstable' cellspacing='0'>");
+        echo("<tr>");
+        echo("<th>Pos.</th>");
+        echo("<th>Vorname</th>");
+        echo("<th>Nachname</th>");
+        echo("<th>Ausdauer</th>");
+        echo("<th>Technik</th>");
+        echo("<th>Torgefahr</th>");
+        echo("<th>Zweikampf</th>");
+        echo("<th></th>");
+        echo("<th></th>");
+        echo("<tr>");
+        echo ("<td></td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            <td>&nbsp</td>
+            ");
         echo("<tr>");
         foreach ($playerlist as $i => $record) {
-            echo ("<td>" . $record['spl_vorname'] . "</td><td>".  $record['spl_nachname'] . "</td><td>" .  $record['spl_fs_team'] . "</td><td>" .  $record['spl_fs_position'] . "</td><td>" .
-                $record['spl_ausdauer'] . "</td><td>" .  $record['spl_technik'] . "</td><td>" .   $record['spl_torgefahr'] . "</td><td>" .  $record['spl_zweikampf'] . "</td>");
+            echo (
+                "<td>" .  $record['spl_fs_position'] . "</td>" .
+                "<td>" . $record['spl_vorname'] . "</td>" .
+                "<td>".  $record['spl_nachname'] . "</td>" .
+                "<td>" .  $record['spl_ausdauer'] . "</td>" .
+                "<td>" .  $record['spl_technik'] . "</td>" .
+                "<td>" .   $record['spl_torgefahr'] . "</td>" .
+                "<td>" .  $record['spl_zweikampf'] . "</td>" . 
+                "<td>" .  $record['spl_fs_team'] . "</td>" .
+                "<td>" . "<input type='checkbox'/>" . "</td>" .
+                "<tr>");
         }
         echo("</tr>");
         echo("</table>");

@@ -90,7 +90,46 @@ body {
       text-align: left;
     }
 
+    #blresulttabletopic {
+        text-align: center;
+        margin-top: 3vh;
+        margin-bottom: 1vh;
+        font-size: 2vh;
+    }
+
+    #blresulttabletopicshort {
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    font-size: 1.5vh;
+    }
+
+    .wrapblresulttable {
+    overflow: hidden;
+    width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    font-size: 2vh;
+    }
+
+    .wrapblresulttableshort {
+    overflow: hidden;
+    font-size: 2vh;
+    }
+
+    .wrapblresulttableshort td {
+    overflow: hidden;
+    text-align: center;
+    font-size: 2vh;
+    }
+
     #bltable img {
+        height: 2.2vh;
+    }
+
+    #blresults img {
         height: 2.2vh;
     }
 
@@ -117,4 +156,22 @@ body {
     .wrapbltable tr:nth-of-type(18), .wrapbltable tr:nth-of-type(19){
         background-image: linear-gradient(to top, #E84141 0%, #FA5555 50%);
         
+    }
+
+    .wrapblresulttable tr:nth-of-type(3), .wrapblresulttable tr:nth-of-type(5), .wrapblresulttable tr:nth-of-type(7), .wrapblresulttable tr:nth-of-type(9)  {
+    background-image: linear-gradient(to top, #BCBBBB 0%, #E1E1E1 50%);
+        
+    }
+    .wrapblresulttable tr:nth-of-type(2), .wrapblresulttable tr:nth-of-type(4), .wrapblresulttable tr:nth-of-type(6), .wrapblresulttable tr:nth-of-type(8), .wrapblresulttable tr:nth-of-type(10) {
+    background-image: linear-gradient(to top, #CDCDCD 0%, #E3E1E1 50%);
+    
+    }
+
+        .wrapblresulttableshort tr:nth-of-type(3), .wrapblresulttableshort tr:nth-of-type(5), .wrapblresulttableshort tr:nth-of-type(7), .wrapblresulttableshort tr:nth-of-type(9)  {
+    background-image: linear-gradient(to top, #BCBBBB 0%, #E1E1E1 50%);
+        
+    }
+    .wrapblresulttableshort tr:nth-of-type(2), .wrapblresulttableshort tr:nth-of-type(4), .wrapblresulttableshort tr:nth-of-type(6), .wrapblresulttableshort tr:nth-of-type(8), .wrapblresulttableshort tr:nth-of-type(10) {
+    background-image: linear-gradient(to top, #CDCDCD 0%, #E3E1E1 50%);
+    
     }

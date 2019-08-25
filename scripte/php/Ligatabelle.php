@@ -240,18 +240,43 @@ class Ligatabelle
         if($spieltag == 0) {
             $spieltag++;
         }
-        echo ( $spieltag. ". Spieltag");
-        echo("<table>");
+        echo ("<div id='blresulttabletopic'><b>" . $spieltag. ". Spieltag</b></div>");
+        echo("<div class='wrapblresulttable'>");
+        echo("<table cellspacing='0' id='blresults' width='60%'>");
         echo("<tr>");
         for ($j = 0; $j <= 8; $j++) {
             echo("<tr>");
-            echo("<td>" . $head_to_head_tabelle[$j]['team_id_heim'] . "</td>");
+            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_heim'] . ".png'" . "</td>");
             echo("<td>" . $head_to_head_tabelle[$j]['team_heim'] . "</td>");
-            echo("<td>" . $head_to_head_tabelle[$j]['ergebnis'] . "</td>");
+
+            echo("<td><b>" . $head_to_head_tabelle[$j]['ergebnis'] . "</b></td>");  
+            echo("<td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </td>");
             echo("<td>" . $head_to_head_tabelle[$j]['team_gast'] . "</td>");
-            echo("<td>" . $head_to_head_tabelle[$j]['team_id_gast'] . "</td>");
+            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_gast'] . ".png'" . "</td>");
             echo ("</tr>");
         }
-        echo("</table>");
+        echo("</table></div>");
+    }
+
+      public function display_head_to_head_only_logos()
+    {
+        $head_to_head_tabelle = $this->head_to_head_tabelle();
+        $spieltag = $this->spieltag->aktueller_spieltag();
+        if($spieltag == 0) {
+            $spieltag++;
+        }
+        echo ("<div id='blresulttabletopicshort'><b>" . "Letzte Ergebnisse </b></div>");
+        echo("<div class='wrapblresulttableshort'>");
+        echo("<table cellspacing='0' id='blresults' width='100%'>");
+        echo("<tr>");
+        for ($j = 0; $j <= 8; $j++) {
+            echo("<tr>");
+            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_heim'] . ".png'" . "</td>");
+
+            echo("<td><b>" . $head_to_head_tabelle[$j]['ergebnis'] . "</b></td>");  
+            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_gast'] . ".png'" . "</td>");
+            echo ("</tr>");
+        }
+        echo("</table></div>");
     }
 }

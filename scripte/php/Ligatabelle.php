@@ -181,24 +181,28 @@ class Ligatabelle
         }
         array_multisort($punkte, SORT_DESC, $tor, SORT_DESC, $tabelle);
 
-        echo("<table>");
+        echo("<div class='wrapbltable'>");
+        echo("<table cellspacing='0' id='bltable'>");
         echo("<tr>");
-        echo("<th>PL.</th>");
-        echo("<th>VEREIN</th>");
-        echo("<th>PKT.</th>");
-        echo("<th>DIFF.</th>");
-        echo("<th>SP.</th>");
+        echo("<th>Platzierung</th>");
+        echo("<th></th>");
+        echo("<th>Verein</th>");
+        echo("<th>Punkte</th>");
+        echo("<th>Differenz</th>");
+        echo("<th>Spiele</th>");
         echo("</tr>");
         for ($j = 0, $i = 1; $j <= 17, $i <= 18; $j++, $i++) {
             echo("<tr>");
             echo("<td>" .  $i . "</td>");
+            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $tabelle[$j]['team_id'] . ".png'" . "</td>");
             echo("<td>" . $tabelle[$j]['team_name'] . "</td>");
-            echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
-            echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
+            echo("<td  class='bltable'>" . $tabelle[$j]['punkte'] . "</td>");
+            echo("<td class='bltable'>" . $tabelle[$j]['differenz'] . "</td>");
             echo("<td>" . $tabelle[$j]['spieltag'] . "</td>");
             echo ("</tr>");
         }
         echo("</table>");
+        echo("</div>");
     }
 
     /** stellt array in html kode/tabelle dar, für head to head vergleich

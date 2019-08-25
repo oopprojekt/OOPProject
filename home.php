@@ -5,6 +5,7 @@
 include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
 $db = new DB("grete@il.de");
+$team_id = $db->get_team_id("grete@il.de");
 session_start();
 //error_reporting(0);
 $_SESSION['tr_vorname'] = $_POST['trainer_vorname'];

@@ -18,34 +18,12 @@ class Ligatabelle
         $this->spieltag = new Spieltag();
     }
 
-    /** berechnet den den aktuellen spieltag
-     * @param
-     * @return $spieltag
-     */
-    public function spieltag()
-    {
-        $tabelle = $this->spieltag->get_saisonarray();
-        //echo '<pre>'; var_dump($tabelle);
-        $i= 1;
-        $j = 0;
-        do{
-            if ($tabelle[$i-1][$i]['ergebnis'] === "TBD") {
-                $j++;
-                $i++;
-            }
-            else{
-                $i++;
-            }
-        }while($i<307);
-        $spieltag = 34- floor(($j/9));
-        return $spieltag;
-    }
-
     /** setz oberen grenzwert für den spieltag
-     * @param $$spieltag
+     * @param
      *@return $og
      * */
-    public function obergrenze($spieltag){
+    public function obergrenze(){
+        $spieltag = $this->spieltag->aktueller_spieltag();
         $og = $spieltag*9;
         return $og;
     }
@@ -117,7 +95,7 @@ class Ligatabelle
             $punkte_sum = $this->connection->execute($sql)->fetch_row()[3];
             // Konvertierung ID->Teamname heim
             $team_name = $this->connection->get_team_by_id($i);
-            $tabelle_universal[] = array("spieltag"=>$this->spieltag(),"team_id" => $team_id,"team_name" => $team_name, "differenz" => $diff_sum, "punkte" => $punkte_sum);
+            $tabelle_universal[] = array("spieltag"=>$this->spieltag->aktueller_spieltag(),"team_id" => $team_id,"team_name" => $team_name, "differenz" => $diff_sum, "punkte" => $punkte_sum);
         }
         return $tabelle_universal;
     }

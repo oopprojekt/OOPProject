@@ -9,16 +9,16 @@ class Fixtures
 {
     public $connection = null;
 
-    /**
-     * Fixtures constructor.
+    /** fixtures constructor
+     *
      */
     function __construct()
     {
         $this->connection = new DB("else@gmx.com");
     }
 
-    /**
-     * zum leeren des alten standes
+    /** zum leeren des alten standes
+     *
      */
     private function delete_fixtures()
     {
@@ -35,8 +35,8 @@ class Fixtures
         $this->connection->execute($sql);
     }
 
-    /**
-     * schreibt für alle teams jeweils 11 spieler
+    /** schreibt für alle teams jeweils 11 spieler
+     *
      */
     public function set_player_data()
     {
@@ -66,8 +66,8 @@ class Fixtures
         echo "testdummys der spieler wurden geschrieben";
     }
 
-    /**
-     * löscht tabelle
+    /** löscht tabelle tbl_spielplan
+     *
      */
     private function delete_tbl_spielplan()
     {
@@ -75,8 +75,8 @@ class Fixtures
         $this->connection->execute($sql);
     }
 
-    /**
-     * setzt inkrement der id's auf 1
+    /** setzt inkrement der id's auf 1 in tbl_spielplan
+     *
      */
     private function set_increment_tbl_spielplan()
     {
@@ -84,11 +84,10 @@ class Fixtures
         $this->connection->execute($sql);
     }
 
-   /**
-     * gibt den Unix-Timestamp entsprechend der gegebenen Argumente zurück. Dieser Timestamp
+    /** gibt den Unix-Timestamp entsprechend der gegebenen Argumente zurück. Dieser Timestamp
      * ist ein Long Integer, der die Anzahl der Sekunden zwischen der
      * Unix-Epoche (01. Januar 1970 00:00:00 GMT) und dem angegebenen Zeitpunkt enthält
-     * @return $saisonstart_datum, integer
+     * @ return $saisonstart_datum, integer
      */
     private function set_saisonstart()
     {
@@ -97,9 +96,8 @@ class Fixtures
         return $saisonstart_datum;
     }
 
-    /**
-     *  convertiert inter zu datum
-     *  formatierung DB 2019-08-17 00:00:00
+    /** convertiert int zu datum
+     * formatierung DB 2019-08-17 00:00:00
      * @param $saisonstart_datum
      * @return $datum
      */
@@ -109,8 +107,7 @@ class Fixtures
         return $datum;
     }
 
-    /**
-     *  Team-ID's aus DB holen
+    /** team ids aus db holen
      * @return $res
      */
     private function get_team_ids()
@@ -120,8 +117,7 @@ class Fixtures
         return $res;
     }
 
-    /**
-     *  erstellt array für teilnehmende teams
+    /** erstellt array für teilnehmende teams
      * @return $plan
      */
     public function set_spieltag()
@@ -136,11 +132,11 @@ class Fixtures
         }
 
         // benötigte Variablen setzen
-        $anzahl  = count($teams);                                       // Anzahl der Teams
-        $paare   = floor($anzahl / 2);                           // Anzahl der möglichen Spielpaare
-        $plan    = array();                                             // Array für den kompletten Spielplan
-        $tage    = ($anzahl % 2) ? count($teams) : count($teams)-1;     // bei ungerader Anzahl an Teams brauchen wir einen Spieltag mehr
-        $base    = ($anzahl % 2) ? $anzahl-2 : $anzahl-1;               // die Basis für den Array-Index, bei ungerader Anzahl an Teams
+        $anzahl  = count($teams);                                       // anzahl der teams
+        $paare   = floor($anzahl / 2);                           // anzahl der möglichen Spielpaare
+        $plan    = array();                                             // array für den kompletten Spielplan
+        $tage    = ($anzahl % 2) ? count($teams) : count($teams)-1;     // bei ungerader anzahl an Teams brauchen wir einen Spieltag mehr
+        $base    = ($anzahl % 2) ? $anzahl-2 : $anzahl-1;               // die basis für den array-Index, bei ungerader Anzahl an Teams
         // fangen wir beim vorletzten Team an
 
         for ($tag = 1; $tag <= $tage; $tag++) {

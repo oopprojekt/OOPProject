@@ -125,4 +125,12 @@ class Spieltag
         $spieltag = 34- floor(($j/9));
         return $spieltag;
     }
+
+    public function schreibe_ergebnis()
+    {
+        for ($i = 0; $i < count($this->saisonarray); $i++)
+        {
+            $this->connection->set_spiel_ergebnis($i+1, $this->saisonarray[$i][$i+1]["ergebnis"]);
+        }
+    }
 }

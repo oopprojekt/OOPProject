@@ -265,6 +265,12 @@ class DB
         return $players;
     }
 
+    public function set_spiel_ergebnis($id, $ergebnis)
+    {
+        $sql ="UPDATE tbl_spielplan SET sp_ergebnis = '" . $ergebnis . "' WHERE sp_id = " . $id . ";";
+        $this->execute($sql);
+    }
+
 
     /*  methode welche das budget unseres teams holt aus der tbl_team
         benötigt keinen parameter, da die id des users ja schon als

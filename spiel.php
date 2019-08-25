@@ -10,6 +10,12 @@ session_start();
 
 $_SESSION['username'] = $_POST['name'];
 $_SESSION['passwort'] = $_POST['passwort'];
+
+include_once "./scripte/php/Spieltag.php";
+$spiel = new Spieltag();
+$spiel->play();
+$spiel->schreibe_ergebnis();
+
 ?>
 
 <!DOCTYPE html>

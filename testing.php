@@ -43,6 +43,7 @@ include_once "./scripte/php/Ligatabelle.php";
 $ligatabelle = new Ligatabelle();
 echo("</br>");
 $ligatabelle->display_ligatabelle();
+$ligatabelle->display_head_to_head();
 ?>
 
 

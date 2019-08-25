@@ -154,7 +154,7 @@ class Ligatabelle
         return $ergebnis_arr;
     }
 
-    /** stellt array in html code tabelle dar
+    /** stellt array in html kode tabelle dar
      * @param $tabelle
      * @return
      */
@@ -168,7 +168,6 @@ class Ligatabelle
         }
         array_multisort($punkte, SORT_DESC, $tor, SORT_DESC, $tabelle);
 
-        echo("</br>");
         echo("<table>");
         echo("<tr>");
         echo("<th>PL.</th>");
@@ -186,6 +185,40 @@ class Ligatabelle
             echo("<td>" . $tabelle[$j]['punkte'] . "</td>");
             echo("<td>" . $tabelle[$j]['differenz'] . "</td>");
             echo("<td>" . $tabelle[$j]['spieltag'] . "</td>");
+            echo ("</tr>");
+        }
+        echo("</table>");
+    }
+
+    /** stellt array in html kode tabelle dar für head to head vergleich
+     * @param
+     * @return
+     */
+    public function head_to_head_tabelle()
+    {
+        $ug = $this->untergrenze();
+        $og = $this->obergrenze();
+        for ($i = $ug; $i <= $og; $i++) {
+            $res = $this->connection->get_sp_ergebnis_by_row($i);
+            $obj = $res->fetch_object();
+            $ergebnis = $obj->sp_ergebnis;
+            //erstellt tabellenarray
+            $head_to_head_tabelle[] = array("team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
+        }
+        return $head_to_head_tabelle;
+    }
+
+    public function display_head_to_head()
+    {
+        $head_to_head_tabelle = $this->head_to_head_tabelle();
+        echo ( $this->spieltag->aktueller_spieltag() . ". Spieltag");
+        echo("<table>");
+        echo("<tr>");
+        for ($j = 0; $j <= 8; $j++) {
+            echo("<tr>");
+            echo("<td>" . $head_to_head_tabelle[$j]['team_heim'] . "</td>");
+            echo("<td>" . $head_to_head_tabelle[$j]['ergebnis'] . "</td>");
+            echo("<td>" . $head_to_head_tabelle[$j]['team_gast'] . "</td>");
             echo ("</tr>");
         }
         echo("</table>");

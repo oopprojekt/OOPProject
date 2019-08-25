@@ -32,19 +32,19 @@ $_SESSION['passwort'] = $_POST['passwort'];
     <title>Start Page</title>
 </head>
 <body>
-    =======
 <div class="calendartemplate"> <?php include_once "./templates/header.php"; ?></div>
   <div class="leftcolumntemplate"> <?php include_once "./templates/info.php"; ?></div>
   <div class="rightcolumntemplate">
         <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
-        <div class="maincontentrowtemplate"> <?php
-                        include_once "./scripte/php/Ligatabelle.php";
-                        $ligatabelle = new Ligatabelle();
-                        $ligatabelle->display($ligatabelle->tabelle_universal());
-                        ?></div>
+        <div class="maincontentrowtemplate">
+            <?php
+            include_once "./scripte/php/Ligatabelle.php";
+            $ligatabelle = new Ligatabelle();
+            $ligatabelle->display_ligatabelle();
+            ?>
+        </div>
 </div>
 <div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>
->>>>>>> 9993e3a07ea5dbc7dd2fc85a9cb7027d5514ec99
 
 
 <!-- Optional JavaScript -->

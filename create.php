@@ -1,6 +1,6 @@
 <?php
 include_once "./scripte/php/show_errors.php";
-
+error_reporting(0);
 session_start();
 $_SESSION['user_name'] = $_POST['name'];
 $_SESSION['user_mail'] = $_POST['email'];
@@ -17,35 +17,20 @@ $db = new DB($_SESSION['user_mail']);
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style/create.css">
-    <title>Create Page</title>
-</head>
-<body>
-<div class="page-container flex-y">
-    <!-- First row -->
-    <div class="flex-x mt-3">
-        <div class="first-block grey-block">Starte deine Karriere!</div>
-        <div class="flex-y flex-1 mr-10">
-            <div class="white-space">
-            </div>
-            <div class="flex-1 grey-block left-border-none">
-            </div>
-        </div>
-        <div class="first-line-last-space"></div>
-    </div>
-    <!-- Second row -->
-    <div class="flex-x flex-1 mb-3">
-        <div class="flex-y flex-1">
-            <div class="flex-1 flex-x mr-6 mt-3">
-                <div class="grey-block third-block">
-
-                    <span id="vorname"></span>
-                    <span id="nachname"></span>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style/maintemplate.css">
+        <title>Start Page</title>
+    </head>
+    <body>
+        <div id="createheader"><b>Wähle dein Team!</b></div>  
+        <div class="maincontentrowtemplatecreate">
+             <div id="infoteamandtrainer">
+                <div><img id="team_logo"><div>
+                    <div>Trainer: <span id="vorname"></span>                    
+                    <span id="nachname"></span></div>
 
                     <form id="form" action="home.php" method="post">
 
@@ -56,36 +41,27 @@ $db = new DB($_SESSION['user_mail']);
                                    echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
                                 }
                             ?>
-                        </select><br>
+                        </select>
 
                     </form>
 
-                    <img id="team_logo" width="100%" height="100%">
-
-                </div>
-                <div class="grey-block flex-1 left-border-none">
 
 
-                    <img id="coach_a" src="bilder/trainer1.jpg" width="32%" height="">
-                    <img id="coach_b" src="bilder/trainer2.jpg" width="32%" height="">
-                    <img id="coach_c" src="bilder/trainer3.jpg" width="32%" height="">
 
-                    <img id="coach_d" src="bilder/trainer4.jpg" width="32%" height="">
-                    <img id="coach_e" src="bilder/trainer5.jpg" width="32%" height="">
-                    <img id="coach_f" src="bilder/trainer6.jpg" width="32%" height="">
 
-                </div>
-            </div>
-            <div class="flex-x third-row mtr-6">
-                <div class="grey-block flex-1"></div>
-                <div class="grey-block last-block left-border-none">
-                    <input form="form" type="submit" class="buttons" value="Karriere starten">
-                </div>
-            </div>
+
         </div>
-        <div class="right-last-block"><img id="trainer_gross" width="110%" height="auto"></div>
-    </div>
 </div>
+
+</div>
+   </div></div> </div>         
+   <div id="createfooter">
+
+    <input form="form" type="submit" class="buttons" value="Karriere starten"><br><a href="http://localhost/OOPProject/liveticker.php"> 
+
+    <img src="karrierestarten.png" form="form" type="submit" class="buttons" id="gamebutton" height="100%"></div>   
+
+
 
 <script>
 
@@ -98,31 +74,85 @@ $db = new DB($_SESSION['user_mail']);
 
 
     leaveChange = (e) => {
-        img_team.src = "./bilder/logo/" + e.value + ".png";
+        img_team.src = "./bilder/livetickerlogo/logo" + e.value + ".png";
         vorname.innerText = trainer[e.value][0];
         nachname.innerText = trainer[e.value][1];
     }
 
 </script>
 
-<script>
+<style type="text/css">
+    #infoteamandtrainer {
+        text-align: center; 
+        padding: 2vh;
+             display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    let img_coach = document.getElementById("trainer_gross");
-    img_coach.src = "./bilder/coach_b.png";
+    #team_logo {
 
-    document.addEventListener('click', (e) => {
+        margin-bottom: 3vh;
+        width: auto;
+        height: 20vh;
+    }
+    
+#nachname, #vorname {
+    margin-bottom: 3vh;
+}
 
-        let id_img = e.target.id;
-        let str_coach = id_img.substr(0, 5);
+#selectteam {
+    font-size: 1.5vh;
+    margin-top: 1vh;
+}
 
 
-        if ("coach" === str_coach) {
-            img_coach.src = "./bilder/" + id_img + ".png";
-        }
+  #createheader {
+    padding-top: 2.4vh;
+    padding-left: 1%;
+  }
 
-    }, false);
+#createfooter {
 
-</script>
+    height: 7vh;
+    background-image: url("../OOPProject/bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 1vh;
+    margin-bottom: 22vh;
+}
+#createheader {
+        margin-top:  25vh;
+    height: 4.6vh;
+    background-image: url("../OOPProject/bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 20vh;
+    margin-bottom: 1vh;
+}
+
+#gamebutton {
+        margin-top: 1.25vh;
+        height: 4.5vh;
+        margin-bottom: 1.25vh;
+        margin-left: 0.1vh;
+        margin-right: 2vh;
+        float: right;
+ }
+</style>
+
+
+
+
+
+
+<!-- Optional JavaScript -->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -130,6 +160,5 @@ $db = new DB($_SESSION['user_mail']);
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-</body>
+    </body>
 </html>

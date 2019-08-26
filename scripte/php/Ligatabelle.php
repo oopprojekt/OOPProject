@@ -52,16 +52,16 @@ class Ligatabelle
                 $res = $this->connection->get_sp_ergebnis_by_row($i);
                 $obj = $res->fetch_object();
                 $ergebnis = $obj->sp_ergebnis;
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim, "team_name" => $this->holemirteam($obj->sp_fs_heim), "differenz" => $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], "punkte" => $this->punktberechnung($ergebnis)[0]);
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts, "team_name" => $this->holemirteam($obj->sp_fs_auswaerts), "differenz" => $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], "punkte" => $this->punktberechnung($ergebnis)[1]);
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim, "team_name" => $this->holemirteam_a($obj->sp_fs_heim), "differenz" => $diff = $this->tore($ergebnis)[0] - $this->tore($ergebnis)[1], "punkte" => $this->punktberechnung($ergebnis)[0]);
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts, "team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts), "differenz" => $diff = $this->tore($ergebnis)[1] - $this->tore($ergebnis)[0], "punkte" => $this->punktberechnung($ergebnis)[1]);
             }
         }
         else{
             for ($i = 1; $i <= 9; $i++) {
                 $res = $this->connection->get_sp_ergebnis_by_row($i);
                 $obj = $res->fetch_object();
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim, "team_name" => $this->holemirteam($obj->sp_fs_heim));
-                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts, "team_name" => $this->holemirteam($obj->sp_fs_auswaerts));
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_heim, "team_name" => $this->holemirteam_a($obj->sp_fs_heim));
+                $gesamt_tabelle[] = array("team_id" => $obj->sp_fs_auswaerts, "team_name" => $this->holemirteam_b($obj->sp_fs_auswaerts));
             }
         }
         return $gesamt_tabelle;
@@ -118,7 +118,7 @@ class Ligatabelle
      * @param
      *@return $team_name
      * */
-    public function holemirteam($a)
+    public function holemirteam_a($a)
     {
         $team_name = $this->connection->get_team_by_id($a);
         return $team_name;
@@ -127,12 +127,12 @@ class Ligatabelle
     /** konvertiert id zu vereinsnamen
      * @param
      *@return $team_gast
-     * *
+     * */
     public function holemirteam_b($b)
     {
         $team_gast = $this->connection->get_team_by_id($b);
         return $team_gast;
-    }*/
+    }
 
     /** zerlegt das ergebnis aus der DB, verteilt danach die punkte und returnt die beiden werte
      * @param $ergebnis
@@ -219,7 +219,7 @@ class Ligatabelle
                 $obj = $res->fetch_object();
                 $ergebnis = $obj->sp_ergebnis;
                 //erstellt tabellenarray
-                $head_to_head_tabelle[] = array("team_id_heim"=> $obj->sp_fs_heim,"team_heim" => $this->holemirteam($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_id_gast"=> $obj->sp_fs_auswaerts,"team_gast" => $this->holemirteam($obj->sp_fs_auswaerts));
+                $head_to_head_tabelle[] = array("team_id_heim"=> $obj->sp_fs_heim,"team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> $ergebnis,"team_id_gast"=> $obj->sp_fs_auswaerts,"team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
             }
         }
         else{
@@ -227,7 +227,7 @@ class Ligatabelle
                 $res = $this->connection->get_sp_ergebnis_by_row($i);
                 $obj = $res->fetch_object();
                 //erstellt tabellenarray
-                $head_to_head_tabelle[] = array("team_id_heim"=> $obj->sp_fs_heim,"team_heim" => $this->holemirteam($obj->sp_fs_heim),"ergebnis"=> " : ","team_id_gast"=> $obj->sp_fs_auswaerts, "team_gast" => $this->holemirteam($obj->sp_fs_auswaerts));
+                $head_to_head_tabelle[] = array("team_id_heim"=> $obj->sp_fs_heim,"team_heim" => $this->holemirteam_a($obj->sp_fs_heim),"ergebnis"=> " : ","team_id_gast"=> $obj->sp_fs_auswaerts, "team_gast" => $this->holemirteam_b($obj->sp_fs_auswaerts));
             }
         }
         return $head_to_head_tabelle;
@@ -251,8 +251,8 @@ class Ligatabelle
 
             echo("<td><b>" . $head_to_head_tabelle[$j]['ergebnis'] . "</b></td>");  
             echo("<td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </td>");
-            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_gast'] . ".png'" . "</td>");
             echo("<td>" . $head_to_head_tabelle[$j]['team_gast'] . "</td>");
+            echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_gast'] . ".png'" . "</td>");
             echo ("</tr>");
         }
         echo("</table></div>");

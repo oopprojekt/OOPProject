@@ -72,6 +72,49 @@ body {
     overflow: hidden;
 }
 
+
+
+.maincontentrowtemplatecreate {
+
+    width: 30%;
+    height: 35vh;
+
+    margin-left: 35%;
+    margin-right: 35%;
+    background-image: url("livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    overflow: hidden;
+    border: 3px;
+    border-color: #000;
+     display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+}
+
+
+.maincontentrowtemplatelogin {
+    font-size: 1.6vh;
+    width: 30%;
+    height: 35vh;
+    margin-left: 65%;
+    margin-right: 5%;
+    margin-bottom: 32vh;
+    background-image: url("livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    overflow: hidden;
+    border: 3px;
+    border-color: #000;
+     display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+}
+
   #bltable {
         color: #222;
         margin-left: ;

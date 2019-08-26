@@ -183,19 +183,6 @@ class DB
     }
 
     /**
-     * @param $id
-     * @return string
-     */
-    public function get_budget_by_id($id)
-    {
-        $sql = "SELECT tm_budget FROM tbl_team WHERE tm_id = " . $id . ";";
-        //->fetch_row()[0] -> liefert vom
-        // resultobjekt den gewünschten string
-        return $this->execute($sql)->fetch_row()[0];
-    }
-
-
-    /**
      * @return array
      */
     public function get_trainer_names()

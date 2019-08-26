@@ -2,7 +2,7 @@
 
 <div id="marquee">
 	<img src="fumasifooterlogo.png" id="fumasifooterlogo">
-	<marquee id="lauftext"></marquee>
+
 </div>
 <div id="btn_anpfiff">
 	<a href="http://localhost/OOPProject/liveticker.php"> <img src="zumspielbutton.png" id="gamebutton" height="100%">
@@ -15,26 +15,6 @@
 <style type="text/css">
 	
 
-
-#marquee {
-	display: inline-block;
-	float: left;
-	width: 85%;
-}
-
-#lauftext {
-	width: 72%;
-	margin-left: 15%;
-	margin-top: 2.2vh;
-	font-size: larger;
-    font-weight: bold;
-}
-
-#btn_anpfiff {
-	display: inline-block;
-	float: right;
-	width: 15%;
-}
 
 #gamebutton {
         margin-top: 1.25vh;

@@ -26,6 +26,8 @@
 	width: 72%;
 	margin-left: 15%;
 	margin-top: 2.2vh;
+    font-size: larger;
+    font-weight: bold;
 }
 
 #btn_anpfiff {

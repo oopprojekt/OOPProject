@@ -264,3 +264,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </body>
 </html>
+
+<style type="text/css">
+    
+a:link { 
+    color: #444;  
+    font-weight: bold;
+}
+a:visited { 
+    color: #888; 
+    font-weight: bold;
+}
+
+</style>

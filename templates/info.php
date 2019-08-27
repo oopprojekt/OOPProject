@@ -3,7 +3,7 @@
 
 
 
-echo $_SESSION['team'];
+//echo $_SESSION['team'];
 
 ?>
 

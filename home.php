@@ -11,6 +11,7 @@ $db = new DB($_SESSION['user_mail']);
 
 if(!$_SESSION['team'])
 {
+    $db->update_team_to_user($_POST['teams']);
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
 ?>

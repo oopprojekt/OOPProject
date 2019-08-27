@@ -3,12 +3,12 @@
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
 include_once "./scripte/php/show_errors.php";
+include_once "./scripte/php/DB.php";
 
 session_start();
- 
+$db = new DB($_SESSION['user_mail']);
 
-$_SESSION['username'] = $_POST['name'];
-$_SESSION['passwort'] = $_POST['passwort'];
+
 
 ?>
 
@@ -26,7 +26,20 @@ $_SESSION['passwort'] = $_POST['passwort'];
   <div class="leftcolumntemplate"> <?php include_once "./templates/info.php"; ?></div>
   <div class="rightcolumntemplate">
         <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
-        <div class="maincontentrowtemplate"></div>
+        <div class="maincontentrowtemplate">
+
+            <h1>training</h1>
+
+            <?php
+
+                var_dump($db->create_player_array());
+
+            ?>
+
+
+
+
+        </div>
 </div>
 <div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>
 

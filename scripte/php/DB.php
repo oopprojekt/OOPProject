@@ -43,6 +43,12 @@ class DB
         $this->execute($sql_anmeldung);
     }
 
+    public function update_team_to_user($id)
+    {
+        $sql ="UPDATE tbl_user SET usr_fs_team = " . $id . " WHERE usr_email = '" . $this->email_class . "';";
+        $this->execute($sql);
+    }
+
     /**
      * @param $email
      * @return integer

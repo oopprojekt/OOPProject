@@ -85,7 +85,7 @@ include_once "./scripte/php/DB.php";
 </div>
  <div class="box livetickergridbottom">
   <div class="row">
-    <div><a href="http://localhost/OOPProject/home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
+    <div><a href="/OOPProject/home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
     
   </div>
 </div>

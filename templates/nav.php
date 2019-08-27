@@ -6,7 +6,8 @@
             <a href="transfer.php"><img src="transferbutton.png" id="homebutton"></a>
             <a href="ligatabelle.php"><img src="tabellebutton.png" id="homebutton"></a>
             <a href="statistik.php"><img src="ergebnissebutton.png" id="homebutton"></a>
-        </div> 
+            <a href="doku.php">dokumentation</a>
+        </div>
     </div>
 </div>
 

@@ -10,61 +10,59 @@ include_once "./scripte/php/DB.php";
 
 $db = new DB("else@gmx.com");
 $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['passwort']);
-$db->create_user("name", "mail@gmx.de", "pw");
 
-echo $_SESSION['user_name'];
-echo $_SESSION['user_mail'];
-echo $_SESSION['passwort'];
+//echo $_SESSION['user_name'];
+//echo $_SESSION['user_mail'];
+//echo $_SESSION['passwort'];
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style/maintemplate.css">
-        <title>Start Page</title>
-    </head>
-    <body>
-        <div id="createheader"><b>Wähle dein Team!</b></div>  
-        <div class="maincontentrowtemplatecreate">
-             <div id="infoteamandtrainer">
-                <div><img id="team_logo"><div>
-                    <div>Trainer: <span id="vorname"></span>                    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/maintemplate.css">
+    <title>Start Page</title>
+</head>
+<body>
+<div id="createheader"><b>Wähle dein Team!</b></div>
+<div class="maincontentrowtemplatecreate">
+    <div id="infoteamandtrainer">
+        <div><img id="team_logo">
+            <div>
+                <div>Trainer: <span id="vorname"></span>
                     <span id="nachname"></span></div>
 
-                    <form id="form" action="home.php" method="post">
+                <form id="form" action="home.php" method="post">
 
-                        <select name="teams" onchange="leaveChange(this)">
-                            <?php
-                                foreach($db->get_all_teams() as $row)
-                                {
-                                   echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
-                                }
-                            ?>
-                        </select>
+                    <select name="teams" onchange="leaveChange(this)">
+                        <?php
+                        foreach ($db->get_all_teams() as $row) {
+                            echo "<option value='" . $row["tm_id"] . "'>" . $row["tm_name"] . "</option>";
+                        }
+                        ?>
+                    </select>
 
-                    </form>
+                    <input type="submit" value="zur karriere">
 
-
-
+                </form>
 
 
-
+            </div>
         </div>
+
+    </div>
 </div>
+<!--
+<div id="createfooter">
 
-</div>
-   </div></div> </div>         
-   <div id="createfooter">
+    <input form="form" type="submit" class="buttons" value="Karriere starten"><br><a
+            href="http://localhost/OOPProject/liveticker.php">
 
-    <input form="form" type="submit" class="buttons" value="Karriere starten"><br><a href="http://localhost/OOPProject/liveticker.php"> 
-
-    <img src="karrierestarten.png" form="form" type="submit" class="buttons" id="gamebutton" height="100%"></div>   
-
-
+        <img src="karrierestarten.png" form="form" type="submit" class="buttons" id="gamebutton" height="100%"></div>
+-->
 
 <script>
 
@@ -86,11 +84,11 @@ echo $_SESSION['passwort'];
 
 <style type="text/css">
     #infoteamandtrainer {
-        text-align: center; 
+        text-align: center;
         padding: 2vh;
-             display: flex;
-      align-items: center;
-      justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     #team_logo {
@@ -99,60 +97,56 @@ echo $_SESSION['passwort'];
         width: auto;
         height: 20vh;
     }
-    
-#nachname, #vorname {
-    margin-bottom: 3vh;
-}
 
-#selectteam {
-    font-size: 1.5vh;
-    margin-top: 1vh;
-}
+    #nachname, #vorname {
+        margin-bottom: 3vh;
+    }
 
+    #selectteam {
+        font-size: 1.5vh;
+        margin-top: 1vh;
+    }
 
-  #createheader {
-    padding-top: 2.4vh;
-    padding-left: 1%;
-  }
+    #createheader {
+        padding-top: 2.4vh;
+        padding-left: 1%;
+    }
 
-#createfooter {
+    #createfooter {
 
-    height: 7vh;
-    background-image: url("../OOPProject/bilder/livetickerbg1.png");
-    opacity: 0.95;
-    border-radius: 6px;
-    background-size: 100% 100%;
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 1vh;
-    margin-bottom: 22vh;
-}
-#createheader {
-        margin-top:  25vh;
-    height: 4.6vh;
-    background-image: url("../OOPProject/bilder/livetickerbg1.png");
-    opacity: 0.95;
-    border-radius: 6px;
-    background-size: 100% 100%;
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 20vh;
-    margin-bottom: 1vh;
-}
+        height: 7vh;
+        background-image: url("../OOPProject/bilder/livetickerbg1.png");
+        opacity: 0.95;
+        border-radius: 6px;
+        background-size: 100% 100%;
+        margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 1vh;
+        margin-bottom: 22vh;
+    }
 
-#gamebutton {
+    #createheader {
+        margin-top: 25vh;
+        height: 4.6vh;
+        background-image: url("../OOPProject/bilder/livetickerbg1.png");
+        opacity: 0.95;
+        border-radius: 6px;
+        background-size: 100% 100%;
+        margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 20vh;
+        margin-bottom: 1vh;
+    }
+
+    #gamebutton {
         margin-top: 1.25vh;
         height: 4.5vh;
         margin-bottom: 1.25vh;
         margin-left: 0.1vh;
         margin-right: 2vh;
         float: right;
- }
+    }
 </style>
-
-
-
-
 
 
 <!-- Optional JavaScript -->
@@ -163,5 +157,5 @@ echo $_SESSION['passwort'];
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-    </body>
+</body>
 </html>

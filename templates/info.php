@@ -11,7 +11,7 @@ echo $_SESSION['team'];
 
       <div id="a"><img src="http://localhost/OOPProject/bilder/logo/1.png" id="infoteamlogo"></div>
       <div id="b"><img src="http://localhost/OOPProject/bilder/infotrainer1.png" id="infoteamlogo"></div>
-      <div id="g">Teamname</div>
+      <div id="g"><?php echo $_SESSION["team"]; ?></div>
       <div>(Trainername)</div>
  </div>  
     <div id="infoteamübersicht">

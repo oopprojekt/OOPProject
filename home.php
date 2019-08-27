@@ -4,19 +4,15 @@
 //betrifft
 include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
-$db = new DB("grete@il.de");
-$team_id = $db->get_team_id("tk.tobiki@gmail.com");
 
 session_start();
+$db = new DB($_SESSION['user_mail']);
 //error_reporting(0);
-$_SESSION['tr_vorname'] = $_POST['trainer_vorname'];
-$_SESSION['tr_nachname'] = $_POST['trainer_nachname'];
 
 if(!$_SESSION['team'])
 {
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
-echo($db->get_team_by_id($_POST['teams']));
 ?>
 
 <!DOCTYPE html>

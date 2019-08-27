@@ -1,6 +1,6 @@
 <?php
 include_once "./scripte/php/show_errors.php";
-//error_reporting(0);
+error_reporting(0);
 session_start();
 $_SESSION['user_name'] = $_POST['name'];
 $_SESSION['user_mail'] = $_POST['email'];
@@ -24,7 +24,7 @@ $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['pass
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/maintemplate.css">
-    <title>Start Page</title>
+    <title>Teamauswahl</title>
 </head>
 <body>
 <div id="createheader"><b>Wähle dein Team!</b></div>
@@ -44,8 +44,8 @@ $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['pass
                         }
                         ?>
                     </select>
-
-                    <input type="submit" value="zur karriere">
+                    ´<p><input type="image" src="register.png" id="navbutton" alt="Submit"/></p>
+                    
 
                 </form>
 
@@ -111,20 +111,7 @@ $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['pass
         padding-top: 2.4vh;
         padding-left: 1%;
     }
-
-    #createfooter {
-
-        height: 7vh;
-        background-image: url("../OOPProject/bilder/livetickerbg1.png");
-        opacity: 0.95;
-        border-radius: 6px;
-        background-size: 100% 100%;
-        margin-left: 35%;
-        margin-right: 35%;
-        margin-top: 1vh;
-        margin-bottom: 22vh;
-    }
-
+ 
     #createheader {
         margin-top: 25vh;
         height: 4.6vh;

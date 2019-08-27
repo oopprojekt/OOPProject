@@ -28,8 +28,6 @@ include_once "./scripte/php/DB.php";
 
     <!-- Mein CSS -->
 
-
-    <link rel="stylesheet" href="style/...">
     <link rel="stylesheet" href="style/style.css">
 
 </head>
@@ -37,10 +35,10 @@ include_once "./scripte/php/DB.php";
 <body>
 
  
-  <div class="box gridtop">
+  <div class="box livetickergridtop">
     
 <div class="container-fluid liveresultcontainer">
-  <div class="row">
+  <div class="row liveresultcontainerrow">
     <div class="tickertopcolumns">
       
     </div>
@@ -70,7 +68,7 @@ include_once "./scripte/php/DB.php";
                 
 
   </div>
-  <div class="box gridmiddle">
+  <div class="box livetickergridmiddle">
   <div class="row">
     <div class="tickercolumns">
 
@@ -85,11 +83,10 @@ include_once "./scripte/php/DB.php";
     </div>
   </div>
 </div>
- <div class="box gridbottom">
+ <div class="box livetickergridbottom">
   <div class="row">
-    <div class="tickercontinuerow">
-      <button id="livetickercontinue">Weiter</button> 
-    </div>
+    <div><a href="http://localhost/OOPProject/home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
+    
   </div>
 </div>
                 <!--für die auflistung der aktuellen aktion-->
@@ -186,9 +183,12 @@ body {
   background-color: #000;
   background-size: 100% 100%;
   overflow-y: hidden;
+  background-image: url("https://wallpapercave.com/wp/wp2878440.jpg")!important;
+  background-color: #000;
+  background-size: 100% 100%;
 }
 
-.gridtop {
+.livetickergridtop {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
@@ -201,7 +201,7 @@ body {
   background-size: 100% 100%;
 }
 
-.gridmiddle {
+.livetickergridmiddle {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
@@ -216,24 +216,19 @@ body {
   overflow-x: hidden;
 }
 
-.gridbottom {
+.livetickergridbottom {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 1vh;
   margin-bottom: 3vh;
   height: 7vh;
-  float: left;
-  background-image: url("/OOPProject/Bilder/livetickerbg4.png"); opacity: ; border-radius: 6px;
-  background-size: 100% 100%;opacity: 0.95;
+  background-image: url("/OOPProject/Bilder/livetickerbg4.png"); 
+  border-radius: 6px;
+  background-size: 100% 100%;
+  opacity: 0.95;
   overflow: hidden;
   }
-
-body {
-  background-image: url("https://wallpapercave.com/wp/wp2878440.jpg")!important;
-  background-color: #000;
-  background-size: 100% 100%;
-}
 
 .tickertopcolumns {
   width: 14.2%;
@@ -268,9 +263,9 @@ body {
   font-size: 1.5vh;
   font-weight: bold;
 }
-.row {
-margin-right: 0px;
-margin-left: 0px;
+.livetickerresultrow {
+  margin-right: 0px;
+  margin-left: 0px;
 }
 .ticker {
   margin-left: 4%;
@@ -278,7 +273,7 @@ margin-left: 0px;
 #anpfiff {
   font-size: 3vh;
 }
-.tickercontinuerow {
+.liveresultcontainerrow {
   width: 100%;
 }
 #livetickercontinue {
@@ -289,4 +284,14 @@ margin-left: 0px;
   width: 70px;
   font-size: 2vh;
 }
+
+#backhomebutton {  
+  margin-top: 1.25vh;
+  height: 4.5vh;
+  margin-bottom: 1.25vh;
+  margin-left: 0.1vh;
+  margin-right: 2vh;
+  float: right;
+}
+
 </style>

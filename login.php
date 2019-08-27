@@ -36,7 +36,7 @@ include_once "./scripte/php/DB.php";
 
 <body>
 
-        <div id="loginheader"><b>Wähle dein Team!</b></div>  
+        <div id="loginheader"><b>LOGINBEREICH</b></div>  
         <div class="maincontentrowtemplatelogin">
              <div id="infoteamandtrainer">
                <div class="wrapper">
@@ -44,34 +44,34 @@ include_once "./scripte/php/DB.php";
   <div class="box b"></div>
   <div class="box c">                    
 
-  <button id="btn_login" class="buttons">login</button>
-  <button id="btn_regist" class="buttons">registrieren</button>
+  <input type="image" name="submit" src="login.png" id="btn_login" alt="Submit"/>
+  <input type="image" name="submit" src="register.png" id="btn_regist" alt="Submit"/>
 
 <body onload="show_login();">
 
 
  
 
-                    <div id="div_login" class="index_content">login
+                    <div id="div_login" class="index_content"><b>LOGIN</b>
                         <form action="home.php" method="post">
-                            <input type="text" name="name" placeholder="***username***"><br>
-                            <input type="text" name="passwort" placeholder="***passwort***"><br>
-                            <input type="submit" class="buttons" value="spielen">
+                            <input type="text" name="name" id="logininputstyle" placeholder="***username***"><br>
+                            <input type="text" name="passwort" id="logininputstyle" placeholder="***passwort***"><br>
+                            <input type="image" name="submit" src="login.png" id="navbutton" alt="Submit"/>
+  
                         </form>
                     </div>
 
-                    <div id="div_regist" class="index_content">registrieren
+                    <div id="div_regist" class="index_content"><b>REGISTRIEREN</b>
                         <form action="create.php" method="post">
-                            <input type="text" name="email" placeholder="***email***"><br>
-                            <input type="text" name="name" placeholder="***username***"><br>
-                            <input type="text" name="passwort" placeholder="***passwort***"><br>
-                            <input type="text" name="passwort_2" placeholder="***passwort***"><br>
-                            <input type="submit" class="buttons" value="anmelden">
+                            <input type="text" name="email" id="logininputstyle" placeholder="***email***"><br>
+                            <input type="text" name="name" id="logininputstyle" placeholder="***username***"><br>
+                            <input type="text" name="passwort" id="logininputstyle" placeholder="***passwort***"><br>
+                            <input type="text" name="passwort_2" id="logininputstyle" placeholder="***passwort***"><br>
+                            <input type="image" name="submit" src="register.png" id="navbutton" alt="Submit"/>
                         </form>
                     </div>
 </div>
 </div></div>
-
 
 </div>
    </div></div> </div>         
@@ -93,76 +93,6 @@ include_once "./scripte/php/DB.php";
 </body>
 
 </html>
-
-
-
-<style type="text/css">
-
-
-    #infoteamandtrainer {
-        text-align: center; 
-        padding: 2vh;
-             display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #team_logo {
-
-        margin-bottom: 3vh;
-        width: auto;
-        height: 20vh;
-    }
-    
-#nachname, #vorname {
-    margin-bottom: 3vh;
-}
-
-#selectteam {
-    font-size: 1.5vh;
-    margin-top: 1vh;
-}
-
-
-  #loginheader {
-    padding-top: 1.2vh;
-    padding-left: 1%;
-  }
-
-#createfooter {
-
-    height: 7vh;
-    background-image: url("../OOPProject/bilder/livetickerbg1.png");
-    opacity: 0.95;
-    border-radius: 6px;
-    background-size: 100% 100%;
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 1vh;
-    margin-bottom: 22vh;
-}
-#loginheader {
-        margin-top:  25vh;
-    height: 4.6vh;
-    background-image: url("../OOPProject/bilder/livetickerbg1.png");
-    opacity: 0.95;
-    border-radius: 6px;
-    background-size: 100% 100%;
-    margin-left: 65%;
-    margin-right: 5%;
-    margin-top: 20vh;
-    margin-bottom: 1vh;
-}
-
-#gamebutton {
-        margin-top: 1.25vh;
-        height: 4.5vh;
-        margin-bottom: 1.25vh;
-        margin-left: 0.1vh;
-        margin-right: 2vh;
-        float: right;
- }
-</style>
         </div>
 </div>
 

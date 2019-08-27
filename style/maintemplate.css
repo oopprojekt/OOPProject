@@ -73,12 +73,11 @@ body {
 }
 
 
-
 .maincontentrowtemplatecreate {
 
     width: 30%;
-    height: 35vh;
-
+    height: 40vh;
+    margin-bottom: 25vh;
     margin-left: 35%;
     margin-right: 35%;
     background-image: url("livetickerbg1.png");
@@ -88,10 +87,10 @@ body {
     overflow: hidden;
     border: 3px;
     border-color: #000;
-     display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
 }
 
 
@@ -109,112 +108,517 @@ body {
     overflow: hidden;
     border: 3px;
     border-color: #000;
-     display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
 }
 
-  #bltable {
-        color: #222;
-        margin-left: ;
-        margin-top: ; 
-        font-size: 2vh;
-        width: 60%;
-        margin-top: 2vh;
-    }
+#btn_regist, #btn_login {
+    margin-top: 1.25vh;
+    height: 4.5vh;
+    margin-bottom: 1.25vh;
+    margin-left: 0.1vh;
+    margin-right: 0.1vh;
+}
 
-    .wrapbltable {
-        overflow: hidden;
-        width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: left;
-    }
+#infoteamandtrainer {
+    text-align: center; 
+    padding: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    #blresulttabletopic {
-        text-align: center;
-        margin-top: 3vh;
-        margin-bottom: 1vh;
-        font-size: 2vh;
-    }
+#team_logo {
+    margin-bottom: 1.2vh;
+    margin-top: 2.5vh;
+    width: auto;
+    height: 20vh;
+}
+    
+#nachname, #vorname {
+    margin-bottom: 3vh;
+}
 
-    #blresulttabletopicshort {
+#selectteam {
+    font-size: 1.5vh;
+    margin-top: 1vh;
+}
+
+
+#loginheader {
+    padding-top: 1.2vh;
+    padding-left: 1%;
+}
+
+#createfooter {
+
+    height: 7vh;
+    background-image: url("../OOPProject/bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 1vh;
+    margin-bottom: 22vh;
+}
+
+#loginheader {
+        margin-top:  25vh;
+    height: 4.6vh;
+    background-image: url("../bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    margin-left: 65%;
+    margin-right: 5%;
+    margin-top: 20vh;
+    margin-bottom: 1vh;
+}
+
+#gamebutton {
+        margin-top: 1.25vh;
+        height: 4.5vh;
+        margin-bottom: 1.25vh;
+        margin-left: 0.1vh;
+        margin-right: 2vh;
+        float: right;
+ }
+
+ #logininputstyle  {
+    height: 4vh;
+    width: 70%;
+    background-color: #ededed;
+}
+
+
+#bltable {
+    color: #222;
+    margin-left: ;
+    margin-top: ;
+    font-size: 2vh;
+    width: 60%;
+    margin-top: 2vh;
+}
+
+.wrapbltable {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+#blresulttabletopic {
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    font-size: 2vh;
+}
+
+#blresulttabletopicshort {
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 1vh;
     font-size: 1.5vh;
-    }
+}
 
-    .wrapblresulttable {
+.wrapblresulttable {
     overflow: hidden;
     width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
     font-size: 2vh;
-    }
+}
 
-    .wrapblresulttableshort {
+.wrapblresulttableshort {
     overflow: hidden;
     font-size: 2vh;
-    }
+}
 
-    .wrapblresulttableshort td {
+.wrapblresulttableshort td {
     overflow: hidden;
     text-align: center;
     font-size: 2vh;
-    }
+}
 
-    #bltable img {
-        height: 2.2vh;
-    }
+#bltable img {
+    height: 2.2vh;
+}
 
-    #blresults img {
-        height: 2.2vh;
-    }
+#blresults img {
+    height: 2.2vh;
+}
 
-    .wrapbltable tr:nth-of-type(2), .wrapbltable tr:nth-of-type(3), .wrapbltable tr:nth-of-type(4)  {
-        background-image: linear-gradient(to top, #22E312 0%, #1FFB0D 50%);
-        
-    }
-    .wrapbltable tr:nth-of-type(5) {
+.wrapbltable tr:nth-of-type(2), .wrapbltable tr:nth-of-type(3), .wrapbltable tr:nth-of-type(4) {
+    background-image: linear-gradient(to top, #22E312 0%, #1FFB0D 50%);
+
+}
+
+.wrapbltable tr:nth-of-type(5) {
     background-image: linear-gradient(to top, #7EF173 0%, #AAFCA2 50%);
-    
-    }
-    .wrapbltable tr:nth-of-type(6), .wrapbltable tr:nth-of-type(7) {
+
+}
+
+.wrapbltable tr:nth-of-type(6), .wrapbltable tr:nth-of-type(7) {
     background-image: linear-gradient(to top, #D8D8B2 0%, #EDEDC6 50%);
-    
-    }
-    .wrapbltable tr:nth-of-type(8), .wrapbltable tr:nth-of-type(9), .wrapbltable tr:nth-of-type(10), .wrapbltable tr:nth-of-type(11), .wrapbltable tr:nth-of-type(12), .wrapbltable tr:nth-of-type(13), .wrapbltable tr:nth-of-type(14), .wrapbltable tr:nth-of-type(15), .wrapbltable tr:nth-of-type(16){
+
+}
+
+.wrapbltable tr:nth-of-type(8), .wrapbltable tr:nth-of-type(9), .wrapbltable tr:nth-of-type(10), .wrapbltable tr:nth-of-type(11), .wrapbltable tr:nth-of-type(12), .wrapbltable tr:nth-of-type(13), .wrapbltable tr:nth-of-type(14), .wrapbltable tr:nth-of-type(15), .wrapbltable tr:nth-of-type(16) {
     background-image: linear-gradient(to top, #CDCDCD 0%, #DEDEDE 50%);
-    
-    }
-    .wrapbltable tr:nth-of-type(17) {
+
+}
+
+.wrapbltable tr:nth-of-type(17) {
     background-image: linear-gradient(to top, #FF7070 0%, #FF9494 50%);
-    
-    }
-    .wrapbltable tr:nth-of-type(18), .wrapbltable tr:nth-of-type(19){
-        background-image: linear-gradient(to top, #E84141 0%, #FA5555 50%);
-        
-    }
 
-    .wrapblresulttable tr:nth-of-type(3), .wrapblresulttable tr:nth-of-type(5), .wrapblresulttable tr:nth-of-type(7), .wrapblresulttable tr:nth-of-type(9)  {
-    background-image: linear-gradient(to top, #BCBBBB 0%, #E1E1E1 50%);
-        
-    }
-    .wrapblresulttable tr:nth-of-type(2), .wrapblresulttable tr:nth-of-type(4), .wrapblresulttable tr:nth-of-type(6), .wrapblresulttable tr:nth-of-type(8), .wrapblresulttable tr:nth-of-type(10) {
-    background-image: linear-gradient(to top, #CDCDCD 0%, #E3E1E1 50%);
-    
-    }
+}
 
-        .wrapblresulttableshort tr:nth-of-type(3), .wrapblresulttableshort tr:nth-of-type(5), .wrapblresulttableshort tr:nth-of-type(7), .wrapblresulttableshort tr:nth-of-type(9)  {
+.wrapbltable tr:nth-of-type(18), .wrapbltable tr:nth-of-type(19) {
+    background-image: linear-gradient(to top, #E84141 0%, #FA5555 50%);
+
+}
+
+.wrapblresulttable tr:nth-of-type(3), .wrapblresulttable tr:nth-of-type(5), .wrapblresulttable tr:nth-of-type(7), .wrapblresulttable tr:nth-of-type(9) {
     background-image: linear-gradient(to top, #BCBBBB 0%, #E1E1E1 50%);
-        
-    }
-    .wrapblresulttableshort tr:nth-of-type(2), .wrapblresulttableshort tr:nth-of-type(4), .wrapblresulttableshort tr:nth-of-type(6), .wrapblresulttableshort tr:nth-of-type(8), .wrapblresulttableshort tr:nth-of-type(10) {
+
+}
+
+.wrapblresulttable tr:nth-of-type(2), .wrapblresulttable tr:nth-of-type(4), .wrapblresulttable tr:nth-of-type(6), .wrapblresulttable tr:nth-of-type(8), .wrapblresulttable tr:nth-of-type(10) {
     background-image: linear-gradient(to top, #CDCDCD 0%, #E3E1E1 50%);
-    
-    }
+
+}
+
+.wrapblresulttableshort tr:nth-of-type(3), .wrapblresulttableshort tr:nth-of-type(5), .wrapblresulttableshort tr:nth-of-type(7), .wrapblresulttableshort tr:nth-of-type(9) {
+    background-image: linear-gradient(to top, #BCBBBB 0%, #E1E1E1 50%);
+
+}
+
+.wrapblresulttableshort tr:nth-of-type(2), .wrapblresulttableshort tr:nth-of-type(4), .wrapblresulttableshort tr:nth-of-type(6), .wrapblresulttableshort tr:nth-of-type(8), .wrapblresulttableshort tr:nth-of-type(10) {
+    background-image: linear-gradient(to top, #CDCDCD 0%, #E3E1E1 50%);
+
+}
+
+/* INFOTEMPLATE */
+
+#infoteamandtrainer {
+        text-align: center; 
+        padding: 2vh;
+        display: inline-block;
+
+}
+
+#infoteamlogodiv {
+        display: inline-block;
+        float: left;
+        width: 50%;
+}
+
+#infoteamlogo {
+        width: 80%;
+}
+
+#infoteamtrainerdiv {
+        display: inline-block;
+        float: left;
+        width: 50%;
+        margin-bottom:  2vh;
+}
+#infoteamnamediv {
+        margin-top: 30px;
+}
+
+
+#infoteamübersicht {
+        background-color: #ccc;
+        margin-left: 5%;
+        margin-right: 5%;
+}
+
+#infobudget {
+        display: inline-block;
+        float: left;
+        width: 60%;
+        background-image: linear-gradient(to top, #CFCFCF 0%, #EAEAEA 50%);
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+}
+
+#infobudgetcontent {
+    display: inline-block;
+    float: right;
+    width: 40%;
+    background-image: linear-gradient(to top, #CFCFCF 0%, #EAEAEA 50%);
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
+#infospieler {
+    display: inline-block;
+    float: left;
+    width: 60%;
+    margin-bottom:  3vh;
+    background-image: linear-gradient(to top, #CFCFCF 0%, #EAEAEA 50%);
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
+#infospielercontent {
+    display: inline-block;
+    float: right;
+    width: 40%;
+    margin-bottom:  3vh;
+    background-image: linear-gradient(to top, #CFCFCF 0%, #EAEAEA 50%);
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
+
+
+#infolastresults {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* HEADER TEMPLATE */
+
+
+#calendardiv {
+    background-image: url("http://localhost/OOPProject/bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+
+    height: 100%;
+}
+
+
+.calendar {
+    display: inline-block;
+    float: left;
+    width: 19%;
+    background-image: url("http://localhost/OOPProject/bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    height: 100%;
+    border-left: 1px dotted #999;
+}
+
+.calendarlogo {
+    display: inline-block;
+    float: left;
+    width: 21%;
+    height: 100%;
+}
+
+#fumasilogo {
+    height: 15vh;
+    margin-top: ;
+    margin-bottom: 2vh;
+    max-width: 100%;
+}
+
+/* FOOTER TEMPLATE */
+
+
+#marquee {
+    display: inline-block;
+    float: left;
+    width: 85%;
+}
+
+#marqueetext {
+    width: 72%;
+    margin-left: 15%;
+    margin-top: 2.2vh;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#btn_anpfiff {
+    display: inline-block;
+    float: right;
+    width: 15%;
+}
+
+#gamebutton {
+    margin-top: 1.25vh;
+    height: 4.5vh;
+    margin-bottom: 1.25vh;
+    margin-left: 0.1vh;
+    margin-right: 2vh;
+    float: right;
+}
+
+#fumasifooterlogo {
+    margin-top: 1.25vh;
+    height: 4vh;
+    margin-bottom: 1.25vh;
+    margin-left: 2vh;
+    float: left;
+}
+
+/* NAV TEMPLATE */
+
+#navbutton {
+    margin-top: 1.25vh;
+    height: 4.5vh;
+    margin-bottom: 1.25vh;
+    margin-left: 0.1vh;
+    margin-right: 0.1vh;
+}
+
+.navpoint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HOME TEMPLATE */
+
+.homeformationcolumn {
+    display: inline-block;
+    width: 38%;
+    background-color: #;
+    height: 54.5vh;
+    float: left;
+
+}
+
+.homelineupdiv {
+    display: inline-block;
+    width: 62%;
+    background-color: #;
+    height: 20px;
+    float: right;
+    height: 54.5vh;
+    overflow-y: scroll;
+}
+
+.homeselectformationdiv {
+    width: 38%;
+    display: inline-block;
+        float: left;
+}
+
+.homesendlineupdiv {
+    width: 62%;
+    display: inline-block;
+    float: right;
+}
+
+.homemaindiv {
+    width: 100%;
+    padding-left: 2vh;
+    padding-top: 1vh;
+}
+
+.homemaindiv:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+/* LIVETICKER */
+
+
+.livetickergridtop {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 30vh;
+  margin-top: 3vh;
+  text-align: center; 
+  font-size: 3vh;
+  overflow: hidden;
+  background-image: url("/OOPProject/Bilder/livetickerbg1.png"); opacity: 0.95; border-radius: 6px;
+  background-size: 100% 100%;
+}
+
+.livetickergridmiddle {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+  height: 55vh;
+  float: left;
+  background-image: url("/OOPProject/Bilder/livetickerbg2.png");border-radius: 6px;
+  background-size: 100% 100%;
+  opacity: 0.95;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.livetickergridbottom {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  height: 7vh;
+  float: left;
+  background-image: url("/OOPProject/Bilder/livetickerbg4.png"); opacity: ; border-radius: 6px;
+  background-size: 100% 100%;opacity: 0.95;
+  overflow: hidden;
+  }
+
+.tickertopcolumns {
+  width: 14.2%;
+  display: inline-block; 
+  height: 22vh;
+  padding-top: 20px;
+}
+
+#myProgress {
+  align-items: center;
+  width: 78%; 
+  margin-left: 11%;
+  margin-right: 11%;
+  height: 5vh;
+
+}
+#myBar {
+  width: 0;
+  height: 5vh;
+  background-color: green;
+}
+#tore_a, #tore_b, #ergebnispoint {
+  font-weight: bold;
+  font-size: 6vh;
+}
+
+.tickercolumns {
+  width: 22%;
+  margin-left: 3vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  font-size: 1.5vh;
+  font-weight: bold;
+}
+.livetickerresultrow {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.ticker {
+  margin-left: 4%;
+}
+#anpfiff {
+  font-size: 3vh;
+}
+.liveresultcontainerrow {
+  width: 100%;
+}
+#livetickercontinue {
+  float: right;
+  margin-right: 7px;
+  margin-top: 1.1vh;
+  height: 4vh;
+  width: 70px;
+  font-size: 2vh;
+}
+

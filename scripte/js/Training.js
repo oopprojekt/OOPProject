@@ -1,5 +1,6 @@
 class Training
 {
+    //team_player = <?php echo json_encode($db->create_player_array(), JSON_PRETTY_PRINT);?>
     constructor(team_players)
     {
         this._team_players = team_players;

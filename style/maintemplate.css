@@ -38,9 +38,6 @@ body {
     width: 79%;
     padding-left: 1%;
     padding-top: 1vh;
-    height: 69vh;
-    overflow: hidden;
-    border-radius: 6px;
 }
 
 .navrowtemplate {

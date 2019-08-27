@@ -37,9 +37,9 @@ class DB
      */
     public function create_user($name, $email, $passwort)
     {
-        $team     = 0;
-        $transfer = 0;
-        $sql_anmeldung = "INSERT INTO `tbl_user` (`usr_email`, `usr_name`, `usr_passwort`, `usr_fs_team`, `usr_fs_transfer`) VALUES ('" . $email . "', '" . $name . "', '" . $passwort . "', " . $team ."," . $transfer . ");";
+        $team     = 1;
+        $transfer = 1;
+        $sql_anmeldung = "INSERT INTO tbl_user (usr_email, usr_name, usr_passwort, usr_fs_team, usr_fs_transfer) VALUES ('" . $email . "', '" . $name . "', '" . $passwort . "', " . $team ."," . $transfer . ");";
         $this->execute($sql_anmeldung);
     }
 

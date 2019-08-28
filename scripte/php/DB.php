@@ -4,24 +4,30 @@ include_once "Config.php";
 
 class DB
 {
-    private $connection  = null;
-    private $id_class    = null;
+    private $connection = null;
+    private $id_class = null;
     private $email_class = null;
-    private $team_id     = null;
+    private $team_id = null;
 
     /**
+     * Stefan Senftleben
      * DB constructor.
      * @param $mail
      */
     function __construct($mail)
     {
-        $this->connection  = mysqli_connect(Config::$HOST, Config::$NUTZER, Config::$PASSWORT, Config::$DB);
+        $this->connection = mysqli_connect(
+            Config::$HOST,
+            Config::$NUTZER,
+            Config::$PASSWORT,
+            Config::$DB);
         $this->email_class = $mail;
         $this->get_user_id($this->email_class);
         $this->get_team_id($this->email_class);
     }
 
     /**
+     * Stefan Senftleben
      * @param $sql
      * @return bool|mysqli_result
      */
@@ -37,15 +43,15 @@ class DB
      */
     public function create_user($name, $email, $passwort)
     {
-        $team     = 1;
+        $team = 1;
         $transfer = 1;
-        $sql_anmeldung = "INSERT INTO tbl_user (usr_email, usr_name, usr_passwort, usr_fs_team, usr_fs_transfer) VALUES ('" . $email . "', '" . $name . "', '" . $passwort . "', " . $team ."," . $transfer . ");";
+        $sql_anmeldung = "INSERT INTO tbl_user (usr_email, usr_name, usr_passwort, usr_fs_team, usr_fs_transfer) VALUES ('" . $email . "', '" . $name . "', '" . $passwort . "', " . $team . "," . $transfer . ");";
         $this->execute($sql_anmeldung);
     }
 
     public function update_team_to_user($id)
     {
-        $sql ="UPDATE tbl_user SET usr_fs_team = " . $id . " WHERE usr_email = '" . $this->email_class . "';";
+        $sql = "UPDATE tbl_user SET usr_fs_team = " . $id . " WHERE usr_email = '" . $this->email_class . "';";
         $this->execute($sql);
     }
 
@@ -55,7 +61,7 @@ class DB
      */
     public function get_user_id($email)
     {
-        $sql = "SELECT `usr_id` FROM `tbl_user` WHERE `usr_email` = '". $email . "';";
+        $sql = "SELECT `usr_id` FROM `tbl_user` WHERE `usr_email` = '" . $email . "';";
         $res = $this->execute($sql);
         $this->set_id((int)mysqli_fetch_assoc($res)["usr_id"]);
         return $this->id_class;
@@ -82,7 +88,7 @@ class DB
     /**
      * @param $id
      */
-    private  function set_team_id($id)
+    private function set_team_id($id)
     {
         $this->team_id = $id;
     }
@@ -93,7 +99,7 @@ class DB
      */
     public function get_team_id($email)
     {
-        $sql = "SELECT `usr_fs_team` FROM `tbl_user` WHERE `usr_email` = '". $email . "';";
+        $sql = "SELECT `usr_fs_team` FROM `tbl_user` WHERE `usr_email` = '" . $email . "';";
         $res = $this->execute($sql);
         $this->set_team_id((int)mysqli_fetch_assoc($res)["usr_fs_team"]);
         return $this->team_id;
@@ -109,6 +115,7 @@ class DB
     }
 
     /**
+     * Stefan Senftleben
      * @return array
      */
     private function get_fieldnames()
@@ -117,38 +124,39 @@ class DB
         $sql = "SHOW COLUMNS FROM tbl_spieler;";
         $res = $this->execute($sql);
 
-        while ($row = mysqli_fetch_assoc($res))
-        {
+        while ($row = mysqli_fetch_assoc($res)) {
             array_push($result, $row["Field"]);
         }
         return $result;
     }
 
     /**
+     * Stefan Senftleben
      * @param $feild
      * @return bool|string
      */
     private function clear_fieldname($feild)
     {
-        return substr($feild , 4);
+        return substr($feild, 4);
     }
 
     /**
+     * Stefan Senftleben
      * @return array
      */
     public function create_player_array()
     {
-        $players     = [];
+        $players = [];
         $all_players = $this->get_all_teamplayers();
-        $fields      = $this->get_fieldnames(); array_shift($fields);
+        $fields = $this->get_fieldnames();
+        array_shift($fields);
 
-        while ($row = mysqli_fetch_assoc($all_players))
-        {
-            $keys = []; $values = [];
+        while ($row = mysqli_fetch_assoc($all_players)) {
+            $keys = [];
+            $values = [];
             $players[$row["spl_id"]] = [];
 
-            for($i = 0; $i < 15; $i++)
-            {
+            for ($i = 0; $i < 15; $i++) {
                 array_push($keys, $this->clear_fieldname($fields[$i]));
                 array_push($values, $row[$fields[$i]]);
             }
@@ -195,8 +203,7 @@ class DB
     {
         $sql = "SELECT * FROM tbl_team JOIN tbl_trainer ON tbl_team.tm_fs_trainer = tbl_trainer.tr_id;";
         $trainer = [];
-        foreach ($this->execute($sql) as $item)
-        {
+        foreach ($this->execute($sql) as $item) {
             $trainer[$item["tm_id"]] = [utf8_encode($item["tr_vorname"]), utf8_encode($item["tr_nachname"])];
         }
         return $trainer;
@@ -212,18 +219,20 @@ class DB
     }
 
     /**
+     * Stefan Senftleben
      * @param $user
      * @return string
      */
     public function get_trainer($user)
     {
-        $sql = "SELECT tbl_trainer.tr_vorname, tbl_trainer.tr_nachname FROM tbl_trainer JOIN tbl_team 
+        $sql = "SELECT tbl_trainer.tr_vorname, tbl_trainer.tr_nachname 
+                FROM tbl_trainer JOIN tbl_team 
                 ON 
                 tbl_trainer.tr_id = tbl_team.tm_fs_trainer JOIN tbl_user 
                 ON 
                 tbl_team.tm_id = tbl_user.usr_fs_team 
                 WHERE tbl_user.usr_name = '" . $user . "';";
-        $vorname  = $this->execute($sql)->fetch_row()[0];
+        $vorname = $this->execute($sql)->fetch_row()[0];
         $nachname = $this->execute($sql)->fetch_row()[1];
         return $vorname . " " . $nachname;
     }
@@ -242,42 +251,53 @@ class DB
     }
 
 
- /**
+    /**
+     * Stefan Senftleben
      * @return bool|mysqli_result
      */
     private function get_spieler_staerke_pos()
     {
-        $sql = "SELECT spl_vorname AS vorname, spl_nachname AS nachname, spl_ausdauer, spl_technik, spl_torgefahr, spl_zweikampf, pos_kurzel AS posi 
-                FROM tbl_spieler JOIN tbl_position ON spl_fs_position = pos_id WHERE spl_fs_team = " . $this->team_id . ";";
+        $sql = "SELECT spl_vorname AS vorname, spl_nachname AS nachname, 
+                spl_ausdauer, spl_technik, spl_torgefahr, spl_zweikampf, 
+                pos_kurzel AS posi 
+                FROM tbl_spieler JOIN tbl_position 
+                ON spl_fs_position = pos_id 
+                WHERE spl_fs_team = " . $this->team_id . ";";
         return $this->execute($sql);
     }
+
     /**
+     * Stefan Senftleben
      * @return array
      */
     public function create_array_player_staerke_pos()
     {
         $players = [];
         $all_players = $this->get_spieler_staerke_pos();
-        while ($row = mysqli_fetch_assoc($all_players))
-        {
+        while ($row = mysqli_fetch_assoc($all_players)) {
             $staerken = $row["spl_ausdauer"] + $row["spl_technik"] + $row["spl_torgefahr"] + $row["spl_zweikampf"];
             $stark = intval($staerken / 4);
-            $spieler = ["vorname" => $row["vorname"],
-                        "nachname" => $row["nachname"],
-                        "position" => $row["posi"],
-                        "stärke" => $stark];
-            array_push($players, $spieler); 
+            $spieler = [
+                "vorname" => $row["vorname"],
+                "nachname" => $row["nachname"],
+                "position" => $row["posi"],
+                "stärke" => $stark];
+            array_push($players, $spieler);
         }
         return $players;
     }
 
+    /**
+     * Stefan Senftleben
+     * @param $id
+     * @param $ergebnis
+     */
     public function set_spiel_ergebnis($id, $ergebnis)
     {
-        $sql ="UPDATE tbl_spielplan SET sp_ergebnis = '" . $ergebnis . "' WHERE sp_id = " . $id . ";";
+        $sql = "UPDATE tbl_spielplan SET sp_ergebnis = '" . $ergebnis . "' 
+                WHERE sp_id = " . $id . ";";
         $this->execute($sql);
     }
-
-
 
 
     /* zum leeren des alten standes
@@ -292,9 +312,9 @@ class DB
     /* schreibt die tbl_statistik
     *
     */
-    public function setze_tbl_statistik($i,$team_id, $diff, $punkte)
+    public function setze_tbl_statistik($i, $team_id, $diff, $punkte)
     {
-        $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (". $i ."," . $team_id . "," . $diff . "," . $punkte . ");";
+        $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (" . $i . "," . $team_id . "," . $diff . "," . $punkte . ");";
         $this->execute($sql);
     }
 
@@ -319,7 +339,7 @@ class DB
         echo("<th></th>");
         echo("<th></th>");
         echo("<tr>");
-        echo ("<td></td>
+        echo("<td></td>
             <td>&nbsp</td>
             <td>&nbsp</td>
             <td>&nbsp</td>
@@ -331,15 +351,15 @@ class DB
             ");
         echo("<tr>");
         foreach ($playerlist as $i => $record) {
-            echo (
-                "<td>" .  $record['spl_fs_position'] . "</td>" .
+            echo(
+                "<td>" . $record['spl_fs_position'] . "</td>" .
                 "<td>" . $record['spl_vorname'] . "</td>" .
-                "<td>".  $record['spl_nachname'] . "</td>" .
-                "<td>" .  $record['spl_ausdauer'] . "</td>" .
-                "<td>" .  $record['spl_technik'] . "</td>" .
-                "<td>" .   $record['spl_torgefahr'] . "</td>" .
-                "<td>" .  $record['spl_zweikampf'] . "</td>" . 
-                "<td>" .  $record['spl_fs_team'] . "</td>" .
+                "<td>" . $record['spl_nachname'] . "</td>" .
+                "<td>" . $record['spl_ausdauer'] . "</td>" .
+                "<td>" . $record['spl_technik'] . "</td>" .
+                "<td>" . $record['spl_torgefahr'] . "</td>" .
+                "<td>" . $record['spl_zweikampf'] . "</td>" .
+                "<td>" . $record['spl_fs_team'] . "</td>" .
                 "<td>" . "<input type='checkbox'/>" . "</td>" .
                 "<tr>");
         }

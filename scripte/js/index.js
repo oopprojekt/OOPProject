@@ -1,3 +1,4 @@
+//Stefan Senftleben
 //elemente aus dem dom holen
 let btn_regist = document.getElementById("btn_regist");
 let btn_login  = document.getElementById("btn_login");

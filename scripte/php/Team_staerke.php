@@ -1,29 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ssenftleben
- * Date: 19.08.19
- * Time: 05:32
- */
+
 include_once "DB.php";
 
 /**
+ * Stefan Senftleben
+ *
  * Class Team_staerke
+ *
+ * es wird eine gesamtteamstärke ermittelt
+ * diese setzt sich aus den eigenschaften der
+ * einzelnen spieler im team zusammen
  */
 class Team_staerke
 {
     private $team_staerke = null;
     private $all_team_players = null;
-    private $eigenschaften = [  "alter",
-                                "ausdauer",
-                                "technik",
-                                "torgefahr",
-                                "zweikampf",
-                                "rote",
-                                "gelbe",
-                                "verletzt",
-                                "preis",
-                                "tore"];
+    private $eigenschaften = [
+        "alter",
+        "ausdauer",
+        "technik",
+        "torgefahr",
+        "zweikampf",
+        "rote",
+        "gelbe",
+        "verletzt",
+        "preis",
+        "tore"];
     private $sum_eigenschaften = [];
     private $durchschnitt_preis = null;
 
@@ -43,8 +45,7 @@ class Team_staerke
      */
     private function init_sum_eigenschaften_array()
     {
-        foreach($this->eigenschaften as $prop)
-        {
+        foreach ($this->eigenschaften as $prop) {
             $this->sum_eigenschaften[$prop] = 0;
         }
     }
@@ -63,10 +64,8 @@ class Team_staerke
      */
     private function summe_eigenschaften()
     {
-        foreach($this->all_team_players as $item)
-        {
-            foreach($this->eigenschaften as $prop)
-            {
+        foreach ($this->all_team_players as $item) {
+            foreach ($this->eigenschaften as $prop) {
                 $this->sum_eigenschaften[$prop] += $item[0][$prop];
             }
         }
@@ -96,10 +95,10 @@ class Team_staerke
      */
     private function negativ()
     {
-        return ($this->sum_eigenschaften["gelbe"]    * 10) +
-               ($this->sum_eigenschaften["rote"]     * 20) +
-               ($this->sum_eigenschaften["verletzt"] * 10) +
-               ($this->sum_eigenschaften["alter"]);
+        return ($this->sum_eigenschaften["gelbe"] * 10) +
+            ($this->sum_eigenschaften["rote"] * 20) +
+            ($this->sum_eigenschaften["verletzt"] * 10) +
+            ($this->sum_eigenschaften["alter"]);
     }
 
     /**
@@ -107,12 +106,12 @@ class Team_staerke
      */
     private function berechne_staerke()
     {
-        $this->team_staerke = $this->sum_eigenschaften["ausdauer"]    +
-                                $this->sum_eigenschaften["technik"]   +
-                                $this->sum_eigenschaften["torgefahr"] +
-                                $this->sum_eigenschaften["zweikampf"] +
-                                $this->bonus() -
-                                $this->negativ();
+        $this->team_staerke = $this->sum_eigenschaften["ausdauer"] +
+            $this->sum_eigenschaften["technik"] +
+            $this->sum_eigenschaften["torgefahr"] +
+            $this->sum_eigenschaften["zweikampf"] +
+            $this->bonus() -
+            $this->negativ();
     }
 
     /**

@@ -1,3 +1,4 @@
+//Stefan Senftleben
 class Training
 {
     //team_player = <?php echo json_encode($db->create_player_array(), JSON_PRETTY_PRINT);?>

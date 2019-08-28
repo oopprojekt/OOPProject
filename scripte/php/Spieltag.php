@@ -22,9 +22,10 @@ class Spieltag
     }
 
     /**
+     * Stefan Senftleben
      * @return array
      */
-    public function get_saisonarray()
+    private function get_saisonarray()
     {
         $spielergebnisse = $this->connection->get_spielgergebnis();
 
@@ -43,9 +44,10 @@ class Spieltag
     }
 
     /**
+     * Stefan Senftleben
      * @return int
      */
-    public function set_erstes_spiel()
+    private function set_erstes_spiel()
     {
         for ($i = 0; $i < count($this->saisonarray); $i++)
         {
@@ -57,7 +59,7 @@ class Spieltag
     }
 
     /**
-     *
+     * Stefan Senftleben
      */
     public function set_letztes_spiel()
     {
@@ -65,7 +67,7 @@ class Spieltag
     }
 
     /**
-     *
+     * Stefan Senftleben
      */
     public function play()
     {
@@ -78,6 +80,7 @@ class Spieltag
     }
 
     /**
+     * Stefan Senftleben
      * @param $heim_id
      * @param $gast_id
      * @return string
@@ -103,7 +106,9 @@ class Spieltag
         return (string)$heim_tore . ":" . (string)$gast_tore;
     }
 
-    /** berechnet den den aktuellen spieltag
+    /**
+     * Tobias Bräuer
+     * berechnet den den aktuellen spieltag
      * @param
      * @return $spieltag
      */
@@ -125,9 +130,8 @@ class Spieltag
         return $spieltag;
     }
 
-    /** schreibt ergebnis
-     * @param
-     * @return
+    /**
+     * Stefan Senftleben
      */
     public function schreibe_ergebnis()
     {

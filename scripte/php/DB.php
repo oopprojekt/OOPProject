@@ -324,9 +324,11 @@ class DB
         return mysqli_fetch_assoc($this->execute($sql))["pos_kurzel"];
     }
 
-    public function gets_spieler_array()
+    public function gets_spieler_array($id)
     {
-        $sql = "SELECT spl_vorname, spl_nachname, spl_fs_team,spl_fs_position,spl_ausdauer,spl_technik,spl_torgefahr,spl_zweikampf FROM tbl_spieler;";
+        $sql = "SELECT spl_vorname, spl_nachname, spl_fs_team,
+                spl_fs_position,spl_ausdauer,spl_technik,spl_torgefahr,
+                spl_zweikampf FROM tbl_spieler WHERE spl_fs_team = " . $id . ";";
         $res = $this->execute($sql);
 
         $playerlist = array();

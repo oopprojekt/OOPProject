@@ -11,7 +11,7 @@ if (!$_SESSION['team']) {
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
 
-echo $db->get_team_id($_SESSION['user_mail']);
+$team_id = $db->get_team_id($_SESSION['user_mail']);
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +36,7 @@ echo $db->get_team_id($_SESSION['user_mail']);
             </div>
             <div class="homelineupdiv">
                 <?php
-                include_once "./scripte/php/DB.php";
-                $db_test = new DB("grete@il.de");
-                $db_test->gets_spieler_array();
+                $db->gets_spieler_array($team_id);
                 //welche werte da im array stehen siehst du unter DB.php methode gets_array ;)
                 ?>
             </div>

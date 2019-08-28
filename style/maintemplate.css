@@ -168,7 +168,7 @@ body {
 #loginheader {
         margin-top:  25vh;
     height: 4.6vh;
-    background-image: url("../bilder/livetickerbg1.png");
+    background-image: url("../bilder/bglogin.png")!important;
     opacity: 0.95;
     border-radius: 6px;
     background-size: 100% 100%;

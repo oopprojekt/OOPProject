@@ -379,10 +379,11 @@ class DB
      */
     public function get_next_game()
     {
+        $id = $this->get_team_id($this->email_class);
         $sql = "SELECT sp_fs_auswaerts, sp_fs_heim, sp_datum
                 FROM tbl_spielplan 
-                WHERE sp_fs_auswaerts = " . $this->id_class . " 
-                OR sp_fs_heim = " . $this->id_class . " 
+                WHERE sp_fs_auswaerts = " . $id . " 
+                OR sp_fs_heim = " . $id . " 
                 AND sp_ergebnis = 'TBD' ORDER BY sp_id LIMIT 1;";
         $sql_result = mysqli_fetch_assoc($this->execute($sql));
 

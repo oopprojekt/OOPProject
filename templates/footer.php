@@ -3,7 +3,7 @@
     <marquee id="marqueetext"></marquee>
 </div>
 <div id="btn_anpfiff">
-    <a href="/OOPProject/liveticker.php"> <img src="zumspielbutton.png" id="gamebutton" height="100%">
+    <a href="liveticker.php"> <img src="zumspielbutton.png" id="gamebutton" height="100%">
 </div>
 
 <script src="scripte/js/Config.js"></script>

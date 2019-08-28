@@ -1,8 +1,16 @@
 <?php
+session_start();
 
-//datenbankanbindungstetst
 include_once "./scripte/php/DB.php";
 
+$db = new DB($_SESSION['user_mail']);
+
+
+$game = $db->get_next_game();
+$heim = $game["heim"];
+$gast = $game["gast"];
+$heim_id = $game["heim_id"];
+$gast_id = $game["gast_id"];
 ?>
 
 <!doctype html>
@@ -43,19 +51,19 @@ include_once "./scripte/php/DB.php";
       
     </div>
     <div class="tickertopcolumns">
-      <img src="/OOPProject/Bilder/livetickerlogo/logo1.png" height="80%">
+      <img src="bilder/logo/<?php echo $heim_id; ?>.png" height="80%">
     </div>
     <div class="tickertopcolumns">
-     FC Bayern München
+     <?php echo $heim; ?>
     </div>
         <div class="tickertopcolumns">
       <span id="tore_a"></span><span id="ergebnispoint"> : </span><span id="tore_b"><br/><button id="anpfiff">Anpfiff</button> 
     </div>
     <div class="tickertopcolumns">
-      FC Schalke 04
+        <?php echo $gast; ?>
     </div>
     <div class="tickertopcolumns">
-     <img src="/OOPProject/Bilder/livetickerlogo/logo2.png" height="80%">
+     <img src="bilder/logo/<?php echo $gast_id; ?>.png" height="80%">
     </div>
     <div class="tickertopcolumns">
     </div>
@@ -85,7 +93,7 @@ include_once "./scripte/php/DB.php";
 </div>
  <div class="box livetickergridbottom">
   <div class="row">
-    <div><a href="/OOPProject/home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
+    <div><a href="home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
     
   </div>
 </div>

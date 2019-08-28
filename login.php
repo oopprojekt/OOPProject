@@ -110,3 +110,11 @@ include_once "./scripte/php/DB.php";
 
     </body>
 </html>
+
+<style type="text/css">
+body {
+  background-image: url("bilder/loginbg.png");
+  background-color: #000;
+  background-size: 100% 102%;
+}
+</style>

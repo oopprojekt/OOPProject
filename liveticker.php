@@ -1,11 +1,8 @@
 <?php
 session_start();
-
+//datenbankanbindungstetst
 include_once "./scripte/php/DB.php";
-
 $db = new DB($_SESSION['user_mail']);
-
-
 $game = $db->get_next_game();
 $heim = $game["heim"];
 $gast = $game["gast"];
@@ -54,13 +51,13 @@ $gast_id = $game["gast_id"];
       <img src="bilder/logo/<?php echo $heim_id; ?>.png" height="80%">
     </div>
     <div class="tickertopcolumns">
-     <?php echo $heim; ?>
+      <?php echo $heim; ?>
     </div>
         <div class="tickertopcolumns">
       <span id="tore_a"></span><span id="ergebnispoint"> : </span><span id="tore_b"><br/><button id="anpfiff">Anpfiff</button> 
     </div>
     <div class="tickertopcolumns">
-        <?php echo $gast; ?>
+      <?php echo $gast; ?>
     </div>
     <div class="tickertopcolumns">
      <img src="bilder/logo/<?php echo $gast_id; ?>.png" height="80%">

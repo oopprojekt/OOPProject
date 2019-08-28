@@ -3,12 +3,24 @@
 //welches ja auf jeder seite anders ist und immer auch nur den content
 //betrifft
 include_once "./scripte/php/show_errors.php";
+include_once "./scripte/php/DB.php";
 
 session_start();
-error_reporting(0);
+//error_reporting(0);
 $_SESSION['username'] = $_POST['name'];
 $_SESSION['passwort'] = $_POST['passwort'];
+
+$db = new DB($_SESSION['user_mail']);
+//error_reporting(0);
+
+if (!$_SESSION['team']) {
+    $db->update_team_to_user($_POST['teams']);
+    $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
+}
+
+echo $db->get_team_id($_SESSION['user_mail']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,8 +1,8 @@
 <div id="infoteamandtrainer">
 
-    <div id="infoteamlogodiv"><img src="http://localhost/OOPProject/bilder/logo/1.png" id="infoteamlogo"></div>
-    <div id="infoteamtrainerdiv"><img src="http://localhost/OOPProject/bilder/infotrainer1.png" id="infoteamlogo"></div>
-    <div id="infoteamnamediv"><?php echo $_SESSION["team"]; ?></div>
+    <div id='infoteamlogodiv'><img src='http://localhost/OOPProject/bilder/infologos/logo<?php echo $db->get_team_id($_SESSION['user_mail']); ?>.png' id='infoteamlogo'></div>
+    <div id='infoteamtrainerdiv'><img src='http://localhost/OOPProject/bilder/infotrainer1.png' id='infoteamlogo'></div>
+    <div id='infoteamnamediv'> <?php echo $_SESSION["team"]; ?></div>
     <div>(Trainername)</div>
 </div>
 <div id="infoteamübersicht">

@@ -1,10 +1,13 @@
 <?php
-session_start();
+//an dieser stelle kommt immer das benötigte php zeugs
+//welches ja auf jeder seite anders ist und immer auch nur den content
+//betrifft
 include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
-//error_reporting(0);
 
+session_start();
 $db = new DB($_SESSION['user_mail']);
+//error_reporting(0);
 
 if (!$_SESSION['team']) {
     $db->update_team_to_user($_POST['teams']);
@@ -30,7 +33,7 @@ $team_id = $db->get_team_id($_SESSION['user_mail']);
     <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
     <div class="maincontentrowtemplate">
 
-        <div class="homemaindiv">
+      <div class="homemaindiv">
             <div class="homeformationcolumn">
                 <img src="bilder/spielfeld.jpg" id="bild" height="100%">
             </div>
@@ -41,7 +44,7 @@ $team_id = $db->get_team_id($_SESSION['user_mail']);
                 ?>
             </div>
             <div class="homeselectformationdiv">
-                <p>Wähle deine Formation:
+                <p>Wähle deine Formation: 
 
                     <select name="formGender" id="formation" onchange="myFunction()">
 
@@ -49,9 +52,9 @@ $team_id = $db->get_team_id($_SESSION['user_mail']);
 
                         <option value="bilder/spielfeld433.jpg">4-3-3</option>
 
-                        <option value="4321">4-3-2-1</option>
+                        <option value="bilder/spielfeld4321.jpg">4-3-2-1</option>
 
-                        <option value="F">3-4-2</option>
+                        <option value="bilder/spielfeld343.jpg">3-4-2</option>
 
                     </select>
 
@@ -85,9 +88,11 @@ test = x.options[i].text;
     }
     if (test == "4-3-2-1") {
         formation = 4321;
+        document.getElementById("bild").src = "http://localhost/OOPProject/bilder/spielfeld4321.jpg";
     }
     if (test == "3-4-2") {
         formation = 342;
+        document.getElementById("bild").src = "http://localhost/OOPProject/bilder/spielfeld343.jpg";
     }
 
 
@@ -95,14 +100,18 @@ test = x.options[i].text;
         //Assign Click event to Button.
         $("#btnGet").click(function () {
             var message = "";
-
+            var posmessage = "";
             //Loop through all checked CheckBoxes in GridView.
-            $("#Table1 input[type=checkbox]:checked").each(function () {
+            $("#playerstable input[type=checkbox]:checked").each(function () {
                 var row = $(this).closest("tr")[0];
                 message += row.cells[0].innerHTML;
                 message += "\n";
             });
-
+            $("#playerstable input[type=checkbox]:checked").each(function () {
+                var row = $(this).closest("tr")[0];
+                posmessage += row.cells[7].innerHTML;
+            });
+            console.log(posmessage);
 
             //Display selected Row data in Alert Box.
             var TWexists = message.includes("TW");

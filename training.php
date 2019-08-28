@@ -32,7 +32,16 @@ $db = new DB($_SESSION['user_mail']);
 
             <?php
 
-                var_dump($db->create_player_array());
+                $players = $db->create_array_player_staerke_pos();
+
+                var_dump($players);
+
+                echo "<br><br>";
+                echo "der spieler: " . $players[0]["vorname"] . " " . $players[0]["nachname"];
+                echo  " spielt auf der position: " . $players[0]["position"];
+
+
+
 
             ?>
 

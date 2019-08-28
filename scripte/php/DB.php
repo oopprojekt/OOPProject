@@ -347,43 +347,31 @@ class DB
         echo("</table>");
     }
 
+    /**
+     * Stefan Senftleben
+     * @return array
+     */
+    public function get_next_game()
+    {
+        $sql = "SELECT sp_fs_auswaerts, sp_fs_heim, sp_datum
+                FROM tbl_spielplan 
+                WHERE sp_fs_auswaerts = " . $this->id_class . " 
+                OR sp_fs_heim = " . $this->id_class . " 
+                AND sp_ergebnis = 'TBD' ORDER BY sp_id LIMIT 1;";
+        $sql_result = mysqli_fetch_assoc($this->execute($sql));
 
-    /*  methode welche das budget unseres teams holt aus der tbl_team
-        benötigt keinen parameter, da die id des users ja schon als
-        klassenvariable vorhanden ist ($this->id_class)
-        im sql-befehl musst du wieder JOIN nutzen
-        und einen integer returnen */
+        $heim = $this->get_team_by_id($sql_result["sp_fs_heim"]);
+        $gast = $this->get_team_by_id($sql_result["sp_fs_auswaerts"]);
 
+        $result = [
+            "datum" => $sql_result["sp_datum"],
+            "heim_id" => $sql_result["sp_fs_heim"],
+            "heim" => $heim,
+            "gast_id" => $sql_result["sp_fs_auswaerts"],
+            "gast" => $gast
+        ];
 
-    /*  methode zum ändern des budget in der tbl_team
-        ein parameter als integer (also das neue budget)
-        für den sql-string benötigst du wieder die id des users und
-        wieder JOINen
-        tip: sql-befehl UPDATE
-        */
+        return $result;
+    }
 
-
-    /*  methode zum ändern der formation
-        ein parameter als string der formation
-        aber das passiert nicht in der tbl_formation, sondern in der
-        tbl_team wird der wert des fremdschlüssels tm_fs_formation
-        geändert */
-
-
-    /*  und natürlich auch noch eine methode zum auslesen der formation
-        ein parameter als integer für die team_id
-        und es wird ein string returnt */
-
-
-    /*  eine methode welche dir die komplette tabelle
-        tbl_spielplan returnt */
-
-
-    /*  ausserdem kommen dann noch einige methoden
-        getter und setter
-        für die eigenschaften der speiler */
-
-    /*  ĥier angelangt sollte der grossteil dieser klasse fertig sein
-        dann ist gehirnschmalz gefordert wenn du die klasse für die
-        ligatabelle baust ;) */
 }

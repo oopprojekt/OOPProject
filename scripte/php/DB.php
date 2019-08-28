@@ -318,6 +318,12 @@ class DB
         $this->execute($sql);
     }
 
+    private function get_pos_by_id($id)
+    {
+        $sql = "SELECT pos_kurzel FROM tbl_position WHERE pos_id = " . $id . ";";
+        return mysqli_fetch_assoc($this->execute($sql))["pos_kurzel"];
+    }
+
     public function gets_spieler_array()
     {
         $sql = "SELECT spl_vorname, spl_nachname, spl_fs_team,spl_fs_position,spl_ausdauer,spl_technik,spl_torgefahr,spl_zweikampf FROM tbl_spieler;";
@@ -352,7 +358,7 @@ class DB
         echo("<tr>");
         foreach ($playerlist as $i => $record) {
             echo(
-                "<td>" . $record['spl_fs_position'] . "</td>" .
+                "<td>" . $this->get_pos_by_id($record['spl_fs_position']) . "</td>" .
                 "<td>" . $record['spl_vorname'] . "</td>" .
                 "<td>" . $record['spl_nachname'] . "</td>" .
                 "<td>" . $record['spl_ausdauer'] . "</td>" .

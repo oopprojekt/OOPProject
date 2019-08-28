@@ -1,18 +1,17 @@
 <?php
-//an dieser stelle kommt immer das benötigte php zeugs
-//welches ja auf jeder seite anders ist und immer auch nur den content
-//betrifft
+session_start();
 include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
-
-session_start();
-$db = new DB($_SESSION['user_mail']);
 //error_reporting(0);
+
+$db = new DB($_SESSION['user_mail']);
 
 if (!$_SESSION['team']) {
     $db->update_team_to_user($_POST['teams']);
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
+
+echo $db->get_team_id($_SESSION['user_mail']);
 ?>
 
 <!DOCTYPE html>

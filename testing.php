@@ -53,14 +53,15 @@ include_once "./scripte/php/Ligatabelle.php";
 
 
 <?php
+/*
+include_once "./scripte/php/Fixtures.php";
+    echo "<br>vor ress<br>";
 
-    echo "vor ress";
+        $fix = new Fixtures();
+        $fix->fuelle_ressourcen();
 
-        $db_test->set_ressourcen("foo", "bar", 23, 888,
-            23, 33, 44, 55);
-
-    echo "nachn ress";
-
+    echo "<br>nachn ress";
+*/
 ?>
 
 

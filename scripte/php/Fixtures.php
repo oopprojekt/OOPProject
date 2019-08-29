@@ -182,11 +182,29 @@ class Fixtures
         }
     }
 
+    /**
+     * Stefan Senftleben
+     */
     public function fuelle_ressourcen()
     {
+        $this->connection->delete_ressourcen();
+        $this->connection->inkrement_ressources();
 
+        $json_file = file_get_contents("db/spieler.json");
+        $ress = json_decode($json_file);
+
+        for($i = 0; $i < count($ress); $i++)
+        {
+            $this->connection->set_ressourcen(
+                $ress[$i]->Vorname,
+                $ress[$i]->Nachname,
+                $ress[$i]->Alter,
+                $ress[$i]->Preis,
+                rand(0, 88),        /*ausdauer*/
+                rand(0, 88),        /*technik*/
+                rand(0, 88),        /*torgefahr*/
+                rand(0, 88));       /*zweikampf*/
+        }
+        echo "spieler sollten im pool sein!!!";
     }
-
-
-
 }

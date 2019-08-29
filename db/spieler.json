@@ -1,0 +1,114 @@
+[
+  {
+    "Vorname": "Frenkie ",
+    "Nachname": "de Jong",
+    "Position": "IV",
+    "Alter": "21",
+    "Preis": "42500000"
+  },
+  {
+    "Vorname": "Kylian ",
+    "Nachname": "Mbappé ",
+    "Position": "LF",
+    "Alter": "19",
+    "Preis": "82000000"
+  },
+  {
+    "Vorname": "Ousmane ",
+    "Nachname": "Dembélé",
+    "Position": "RF",
+    "Alter": "21",
+    "Preis": "46000000"
+  },
+  {
+    "Vorname": "Lionel",
+    "Nachname": "Messi",
+    "Position": "ST",
+    "Alter": "31",
+    "Preis": "110500000"
+  },
+  {
+    "Vorname": "Neymar",
+    "Nachname": "Jr",
+    "Position": "LF",
+    "Alter": "26",
+    "Preis": "108000000"
+  },
+  {
+    "Vorname": "Renato",
+    "Nachname": "Sanches",
+    "Position": "ZOM",
+    "Alter": "20",
+    "Preis": "10000000"
+  },
+  {
+    "Vorname": "Martin",
+    "Nachname": "Ødegaard",
+    "Position": "ZOM",
+    "Alter": "19",
+    "Preis": "13500000"
+  },
+  {
+    "Vorname": "Marco",
+    "Nachname": "Asensio",
+    "Position": "ZOM",
+    "Alter": "22",
+    "Preis": "41500000"
+  },
+  {
+    "Vorname": "Steven",
+    "Nachname": "Bergwijn",
+    "Position": "ZOM",
+    "Alter": "20",
+    "Preis": "24500000"
+  },
+  {
+    "Vorname": "Virgil",
+    "Nachname": "van Dijk",
+    "Position": "IV",
+    "Alter": "26",
+    "Preis": "86000000"
+  },
+  {
+    "Vorname": "H",
+    "Nachname": "Son",
+    "Position": "ST",
+    "Alter": "25",
+    "Preis": "61000000"
+  },
+  {
+    "Vorname": "Harry",
+    "Nachname": "Kane",
+    "Position": "ST",
+    "Alter": "24",
+    "Preis": "96500000"
+  },
+  {
+    "Vorname": "Eden",
+    "Nachname": "Hazard",
+    "Position": "LF",
+    "Alter": "27",
+    "Preis": "93000000"
+  },
+  {
+    "Vorname": "Kepa",
+    "Nachname": "Arrizabalaga",
+    "Position": "TW",
+    "Alter": "23",
+    "Preis": "31000000"
+  },
+  {
+    "Vorname": "Stephan",
+    "Nachname": "El Shaarawy",
+    "Position": "ST",
+    "Alter": "25",
+    "Preis": "24000000"
+  },
+  {
+    "Vorname": "Zinédine Yazid",
+    "Nachname": "Zidane",
+    "Position": "ZOM",
+    "Alter": "47",
+    "Preis": "2300000"
+  }
+]

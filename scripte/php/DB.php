@@ -403,6 +403,35 @@ class DB
         return $result;
     }
 
+    /**
+     * Stefan Senftleben
+     */
+    public function delete_ressourcen()
+    {
+        $sql = "DELETE FROM tbl_ressource;";
+        $this->execute($sql);
+    }
+
+    /**
+     * Stefan Senftleben
+     */
+    public function inkrement_ressources()
+    {
+        $sql = "ALTER TABLE tbl_ressource AUTO_INCREMENT = 1;";
+        $this->execute($sql);
+    }
+
+    /**
+     * Stefan Senftleben
+     * @param $name
+     * @param $nachname
+     * @param $alter
+     * @param $preis
+     * @param $ausdauer
+     * @param $technik
+     * @param $torgefahr
+     * @param $zweikampf
+     */
     public function set_ressourcen($name, $nachname, $alter, $preis, $ausdauer, $technik, $torgefahr, $zweikampf)
     {
         $sql = "INSERT INTO tbl_ressource(res_vorname, res_nachname, res_alter, 
@@ -412,5 +441,4 @@ class DB
                 " . $technik . ", " . $torgefahr . ", " . $zweikampf . ");";
         $this->execute($sql);
     }
-
 }

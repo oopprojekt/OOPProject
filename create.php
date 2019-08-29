@@ -1,6 +1,7 @@
 <?php
 include_once "./scripte/php/show_errors.php";
 error_reporting(0);
+
 session_start();
 $_SESSION['user_name'] = $_POST['name'];
 $_SESSION['user_mail'] = $_POST['email'];
@@ -8,7 +9,7 @@ $_SESSION['passwort'] = $_POST['passwort'];
 
 include_once "./scripte/php/DB.php";
 
-$db = new DB("else@gmx.com");
+$db = new DB($_SESSION['user_mail']);
 $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['passwort']);
 
 //echo $_SESSION['user_name'];

@@ -1,0 +1,105 @@
+{
+  "Vorname": "Frenkie ",
+  "Nachname": "de Jong",
+  "Position": "IV",
+  "Alter": "21",
+  "Preis": "42.500.000"
+}
+{
+  "Vorname": "Kylian ",
+  "Nachname": "Mbappé ",
+  "Position": "LF",
+  "Alter": "19 ",
+  "Preis": "82.000.000"
+}
+{
+  "Vorname": "Ousmane ",
+  "Nachname": "Dembélé",
+  "Position": "RF",
+  "Alter": "21",
+  "Preis": "46.000.000"
+}
+{
+  "Vorname": "Lionel",
+  "Nachname": "Messi",
+  "Position": "ST",
+  "Alter": "31",
+  "Preis": "110.500.000"
+}
+{
+  "Vorname": "Neymar",
+  "Nachname": "Jr",
+  "Position": "LF",
+  "Alter": "26",
+  "Preis": "108.000.000"
+}
+{
+  "Vorname": "Renato",
+  "Nachname": "Sanches",
+  "Position": "ZOM",
+  "Alter": "20",
+  "Preis": "10.000.000"
+}
+{
+  "Vorname": "Martin",
+  "Nachname": "Ødegaard",
+  "Position": "ZOM",
+  "Alter": "19",
+  "Preis": "13.500.000"
+}
+{
+  "Vorname": "Marco",
+  "Nachname": "Asensio",
+  "Position": "ZOM",
+  "Alter": "22",
+  "Preis": "41.500.000"
+}
+{
+  "Vorname": "Steven",
+  "Nachname": "Bergwijn",
+  "Position": "ZOM",
+  "Alter": "20",
+  "Preis": "24.500.000"
+}
+{
+  "Vorname": "Virgil",
+  "Nachname": "van Dijk",
+  "Position": "IV",
+  "Alter": "26",
+  "Preis": "86.000.000"
+}
+{
+  "Vorname": "H",
+  "Nachname": "Son",
+  "Position": "ST",
+  "Alter": "25",
+  "Preis": "61.000.000"
+}
+{
+  "Vorname": "Harry",
+  "Nachname": "Kane",
+  "Position": "ST",
+  "Alter": "96.500.000",
+  "Preis": "24.000.000"
+}
+{
+  "Vorname": "Eden",
+  "Nachname": "Hazard",
+  "Position": "LF",
+  "Alter": "27",
+  "Preis": "93.000.000"
+}
+{
+  "Vorname": "Kepa",
+  "Nachname": "Arrizabalaga",
+  "Position": "TW",
+  "Alter": "23",
+  "Preis": "31.000.000"
+}
+{
+  "Vorname": "Stephan",
+  "Nachname": "El Shaarawy",
+  "Position": "ST",
+  "Alter": "25",
+  "Preis": "24.000.000"
+}

@@ -6,6 +6,7 @@ $db = new DB($_SESSION['user_mail']);
 $game = $db->get_next_game();
 $heim = $game["heim"];
 $gast = $game["gast"];
+$datum = $game["datum"];
 $heim_id = $game["heim_id"];
 $gast_id = $game["gast_id"];
 ?>
@@ -89,9 +90,9 @@ $gast_id = $game["gast_id"];
   </div>
 </div>
  <div class="box livetickergridbottom">
-  <div class="row">
-    <div><a href="home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
-    
+    <div id="livetickerfooter">    <img src="fumasifooterlogo.png" id="fumasifooterlogo"> </div>
+    <div class="livetickerfootermiddlecolumn"><img src="bilder/bllogo.png" id="bllogo">Spieltag: <?php echo $datum; ?></div>
+    <div class="livetickerfooterleftcolumn"><a href="home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
   </div>
 </div>
                 <!--für die auflistung der aktuellen aktion-->
@@ -228,7 +229,7 @@ body {
   margin-top: 1vh;
   margin-bottom: 3vh;
   height: 7vh;
-  background-image: url("/OOPProject/Bilder/livetickerbg4.png"); 
+  background-image: url("/OOPProject/Bilder/livetickerbg1.png"); 
   border-radius: 6px;
   background-size: 100% 100%;
   opacity: 0.95;
@@ -290,13 +291,49 @@ body {
   font-size: 2vh;
 }
 
+#livetickerfooter {
+  display: inline-block;
+  float: left;
+  width: 33%;
+}
+
+.livetickerfootermiddlecolumn {
+  display: inline-block;
+  width: 33%;
+  height: 6.5vh;
+     
+  font-size: 2vh;
+  font-weight: bold;
+  text-align: center;
+}
+.livetickerfooterleftcolumn {
+  display: inline-block;
+  width: 33%;
+  height: 6.5vh;
+  margin-top: 0;  
+  float: right;
+}
 #backhomebutton {  
   margin-top: 1.25vh;
   height: 4.5vh;
   margin-bottom: 1.25vh;
   margin-left: 0.1vh;
-  margin-right: 2vh;
+  margin-right: 2%;
   float: right;
+}
+
+#fumasifooterlogo {
+  margin-top: 1.25vh;
+  height: 4vh;
+  margin-bottom: 1.25vh;
+  margin-left: 2vh;
+  float: left;
+}
+
+#bllogo {
+  height: 2.5vh;
+  margin-top: 2vh; 
+  margin-bottom: 2vh;   
 }
 
 </style>

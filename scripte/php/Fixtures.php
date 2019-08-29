@@ -184,6 +184,8 @@ class Fixtures
 
     /**
      * Stefan Senftleben
+     * liest eine json-datei aus, welche zusätzliche spieler enthält
+     * und schreibt diese spielerwerte in die datenbank
      */
     public function fuelle_ressourcen()
     {

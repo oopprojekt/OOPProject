@@ -23,6 +23,7 @@ class Spieltag
 
     /**
      * Stefan Senftleben
+     * baut assoziatives array mit allen spielpaarungen und ergebnissen
      * @return array
      */
     private function get_saisonarray()
@@ -45,6 +46,7 @@ class Spieltag
 
     /**
      * Stefan Senftleben
+     * findet die erste spielpaarung welche noch kein ergebnis hat
      * @return int
      */
     private function set_erstes_spiel()
@@ -60,6 +62,7 @@ class Spieltag
 
     /**
      * Stefan Senftleben
+     * setzt das letzte spiel dieses spieltages
      */
     public function set_letztes_spiel()
     {
@@ -68,6 +71,7 @@ class Spieltag
 
     /**
      * Stefan Senftleben
+     * der spieltag wird durchgespielt und die ergebnisse geschrieben
      */
     public function play()
     {
@@ -81,6 +85,7 @@ class Spieltag
 
     /**
      * Stefan Senftleben
+     * ermittelt mithilfe der teamstärke in kombination mit zufall ein endergebnis
      * @param $heim_id
      * @param $gast_id
      * @return string
@@ -132,6 +137,7 @@ class Spieltag
 
     /**
      * Stefan Senftleben
+     * schreibt den gespielten spieltag in die datenbank
      */
     public function schreibe_ergebnis()
     {

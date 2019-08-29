@@ -116,6 +116,7 @@ class DB
 
     /**
      * Stefan Senftleben
+     * holt alle spaltennamen
      * @return array
      */
     private function get_fieldnames()
@@ -132,6 +133,7 @@ class DB
 
     /**
      * Stefan Senftleben
+     * schneidet die ersten vier zeichen eines strings ab
      * @param $feild
      * @return bool|string
      */
@@ -142,6 +144,7 @@ class DB
 
     /**
      * Stefan Senftleben
+     * baut assoziatives array von allen teamspielern mit sämtlichen eigenschaften
      * @return array
      */
     public function create_player_array()
@@ -282,6 +285,8 @@ class DB
 
     /**
      * Stefan Senftleben
+     * liefert alle spieler des eigenen teams und ermittelt die
+     * durchschnittliche stärke der spieler
      * @return array
      */
     public function create_array_player_staerke_pos()
@@ -391,6 +396,8 @@ class DB
 
     /**
      * Stefan Senftleben
+     * findet das nächste zu spielende spiel mit gegnerischer mannschaft
+     * und liefert diese informationen im assoziativen array
      * @return array
      */
     public function get_next_game()
@@ -445,6 +452,7 @@ class DB
      * @param $technik
      * @param $torgefahr
      * @param $zweikampf
+     * @param $pos
      */
     public function set_ressourcen($name, $nachname, $alter, $preis, $ausdauer, $technik, $torgefahr, $zweikampf, $pos)
     {
@@ -456,12 +464,21 @@ class DB
         $this->execute($sql);
     }
 
+    /**
+     * Stefan Senftleben
+     * @return bool|mysqli_result
+     */
     public function get_player_pool()
     {
         $sql = "SELECT * FROM tbl_ressource;";
         return $this->execute($sql);
     }
 
+    /**
+     * Stefan Senftleben
+     * @param $id
+     * @return array|null
+     */
     public function get_pooler_by_id($id)
     {
         $sql = "SELECT * FROM tbl_ressource WHERE res_id = " . $id . ";";

@@ -182,4 +182,11 @@ class Fixtures
         }
     }
 
+    public function fuelle_ressourcen()
+    {
+
+    }
+
+
+
 }

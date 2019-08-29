@@ -403,4 +403,14 @@ class DB
         return $result;
     }
 
+    public function set_ressourcen($name, $nachname, $alter, $preis, $ausdauer, $technik, $torgefahr, $zweikampf)
+    {
+        $sql = "INSERT INTO tbl_ressource(res_vorname, res_nachname, res_alter, 
+                res_kosten, res_ausdauer, res_technik, res_torgefahr, res_zweikampf) 
+                VALUES('" . $name . "', '" . $nachname . "', 
+                " . $alter . ", " . $preis . ", " . $ausdauer . ", 
+                " . $technik . ", " . $torgefahr . ", " . $zweikampf . ");";
+        $this->execute($sql);
+    }
+
 }

@@ -52,4 +52,16 @@ include_once "./scripte/php/Ligatabelle.php";
 ?>
 
 
+<?php
+
+    echo "vor ress";
+
+        $db_test->set_ressourcen("foo", "bar", 23, 888,
+            23, 33, 44, 55);
+
+    echo "nachn ress";
+
+?>
+
+
 

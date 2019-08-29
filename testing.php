@@ -13,6 +13,7 @@ echo "trainername:";
 //var_dump($db_test->get_trainer("bratob"));
 //$db_test->gets_spieler_array();
 //$db_test->foo();
+echo $db_test->number_of_players(1);
 
 echo "trallali";
 ?>

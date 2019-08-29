@@ -7,8 +7,6 @@ include_once "./scripte/php/DB.php";
 
 session_start();
 //error_reporting(0);
-$_SESSION['username'] = $_POST['name'];
-$_SESSION['passwort'] = $_POST['passwort'];
 
 $db = new DB($_SESSION['user_mail']);
 //error_reporting(0);
@@ -18,7 +16,6 @@ if (!$_SESSION['team']) {
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
 
-echo $db->get_team_id($_SESSION['user_mail']);
 ?>
 
 <!DOCTYPE html>

@@ -15,6 +15,7 @@ if (!$_SESSION['team']) {
 }
 
 $team_id = $db->get_team_id($_SESSION['user_mail']);
+$_SESSION["team_id"] = $team_id;
 ?>
 
 <!DOCTYPE html>

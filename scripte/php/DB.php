@@ -237,6 +237,20 @@ class DB
         return $vorname . " " . $nachname;
     }
 
+    public function number_of_players($id)
+    {
+        $sql = "SELECT COUNT(spl_id) FROM tbl_spieler WHERE spl_fs_team = ". $id .";";
+        return $this->execute($sql)->fetch_row()[0];
+    }
+
+    public function get_trainer_by_team($id)
+    {
+        $sql = "SELECT tr_vorname, tr_nachname FROM tbl_trainer JOIN tbl_team ON tr_id = tm_fs_trainer WHERE tm_id = " . $id . ";";
+        $vorname = $this->execute($sql)->fetch_row()[0];
+        $nachname = $this->execute($sql)->fetch_row()[1];
+        return $vorname . " " . $nachname;
+    }
+
     public function get_spielgergebnis()
     {
         $sql = "SELECT * FROM tbl_spielplan;";

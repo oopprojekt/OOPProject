@@ -203,7 +203,8 @@ class Fixtures
                 rand(0, 88),        /*ausdauer*/
                 rand(0, 88),        /*technik*/
                 rand(0, 88),        /*torgefahr*/
-                rand(0, 88));       /*zweikampf*/
+                rand(0, 88),       /*zweikampf*/
+                $ress[$i]->Position);
         }
         echo "spieler sollten im pool sein!!!";
     }

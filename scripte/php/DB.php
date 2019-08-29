@@ -432,13 +432,25 @@ class DB
      * @param $torgefahr
      * @param $zweikampf
      */
-    public function set_ressourcen($name, $nachname, $alter, $preis, $ausdauer, $technik, $torgefahr, $zweikampf)
+    public function set_ressourcen($name, $nachname, $alter, $preis, $ausdauer, $technik, $torgefahr, $zweikampf, $pos)
     {
         $sql = "INSERT INTO tbl_ressource(res_vorname, res_nachname, res_alter, 
-                res_kosten, res_ausdauer, res_technik, res_torgefahr, res_zweikampf) 
+                res_kosten, res_ausdauer, res_technik, res_torgefahr, res_zweikampf, res_position) 
                 VALUES('" . $name . "', '" . $nachname . "', 
                 " . $alter . ", " . $preis . ", " . $ausdauer . ", 
-                " . $technik . ", " . $torgefahr . ", " . $zweikampf . ");";
+                " . $technik . ", " . $torgefahr . ", " . $zweikampf . ", '" . $pos . "');";
         $this->execute($sql);
+    }
+
+    public function get_player_pool()
+    {
+        $sql = "SELECT * FROM tbl_ressource;";
+        return $this->execute($sql);
+    }
+
+    public function get_pooler_by_id($id)
+    {
+        $sql = "SELECT * FROM tbl_ressource WHERE res_id = " . $id . ";";
+        return mysqli_fetch_assoc($this->execute($sql));
     }
 }

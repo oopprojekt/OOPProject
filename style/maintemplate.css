@@ -93,6 +93,16 @@ body {
     text-align: left;
 }
 
+.flexer
+{
+    display: flex;
+    padding: 0px 55px;
+}
+
+.trans-margin
+{
+    margin: 20px 20px 0px 0px;
+}
 
 .maincontentrowtemplatelogin {
     font-size: 1.6vh;

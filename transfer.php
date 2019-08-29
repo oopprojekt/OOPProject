@@ -1,17 +1,10 @@
 <?php
-//an dieser stelle kommt immer das benötigte php zeugs
-//welches ja auf jeder seite anders ist und immer auch nur den content
-//betrifft
+session_start();
 include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
-
-session_start();
 //error_reporting(0);
-$_SESSION['username'] = $_POST['name'];
-$_SESSION['passwort'] = $_POST['passwort'];
 
 $db = new DB($_SESSION['user_mail']);
-//error_reporting(0);
 
 if (!$_SESSION['team']) {
     $db->update_team_to_user($_POST['teams']);
@@ -19,6 +12,8 @@ if (!$_SESSION['team']) {
 }
 
 echo $db->get_team_id($_SESSION['user_mail']);
+echo ($_SESSION['user_mail']);
+echo "???";
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +30,58 @@ echo $db->get_team_id($_SESSION['user_mail']);
   <div class="leftcolumntemplate"><?php include_once "./templates/info.php"; ?></div>
   <div class="rightcolumntemplate">
         <div class="navrowtemplate"><?php include_once "./templates/nav.php"; ?></div>
-        <div class="maincontentrowtemplate">
-inhalt
+        <div class="maincontentrowtemplate flexer">
+
+            <?php
+            $poolers = $db->get_player_pool();
+            ?>
+
+
+            <form class="trans-margin">
+                <select name="pool_player" onchange="this.form.submit()">
+                    <option value="" disabled selected>***Spielerwahl***</option>
+                    <?php while ($row = mysqli_fetch_assoc($poolers)): ?>
+                        <option value="<?php echo $row["res_id"]; ?>"><?php echo $row["res_vorname"] . " " . $row["res_nachname"]; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </form>
+            <div class="trans-margin">
+                <?php
+                    $vorname = "***"; $nachname = "***"; $alter = "***"; $preis = "***";
+                    $pos = "***"; $ausdauer = "***"; $technik = "***"; $torgefahr = "***"; $zweikampf = "***";
+
+                    if(isset($_GET["pool_player"])){
+                        $man = $db->get_pooler_by_id($_GET["pool_player"]);
+                        $vorname = $man["res_vorname"];
+                        $nachname = $man["res_nachname"];
+                        $alter = $man["res_alter"];
+                        $pos = $man["res_position"];
+                        $ausdauer = $man["res_ausdauer"];
+                        $technik = $man["res_technik"];
+                        $torgefahr = $man["res_torgefahr"];
+                        $zweikampf = $man["res_zweikampf"];
+                        $preis = $man["res_kosten"];
+                    }
+                ?>
+                 <table>
+                    <tr>
+                        <th>Vorname</th><th>Nachname</th><th>Alter</th><th>Position</th><th>Ausdauer</th><th>Technik</th><th>Torgefahr</th><th>Zweikampf</th><th>Preis</th>
+                    </tr>
+                    <tr>
+                        <td><?php echo $vorname; ?></td>
+                        <td><?php echo $nachname; ?></td>
+                        <td><?php echo $alter; ?></td>
+                        <td><?php echo $pos; ?></td>
+                        <td><?php echo $ausdauer; ?></td>
+                        <td><?php echo $technik; ?></td>
+                        <td><?php echo $torgefahr; ?></td>
+                        <td><?php echo $zweikampf; ?></td>
+                        <td><strong><?php echo $preis; ?> €</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+
         </div>
 </div>
 <div class="footertemplate"><?php include_once "./templates/footer.php"; ?></div>

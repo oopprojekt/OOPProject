@@ -47,9 +47,9 @@ echo("</br>");
 ?>
 
 <?php
-include_once "./scripte/php/Ligatabelle.php";
-//$lgatabelle = new Ligatabelle();
-//$lgatabelle->display_head_to_head();
+    include_once "./scripte/php/Ligatabelle.php";
+    $ligatabelle = new Ligatabelle();
+    $ligatabelle->display_ligatabelle();
 ?>
 
 

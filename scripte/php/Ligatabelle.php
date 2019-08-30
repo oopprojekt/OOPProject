@@ -1,7 +1,8 @@
 <?php
 include_once "DB.php";
 include_once "Spieltag.php";
-/** Tobias Bräuer
+/** Tobias Bräuer, alle wichtigen methoden welche für die erstellung einer tabelle
+ * und einem vergleich der spieltage benötigt werden
  * Class Ligatabelle
  */
 class Ligatabelle
@@ -114,7 +115,7 @@ class Ligatabelle
         return $tabelle_universal;
     }
 
-    /** konvertiert id zu vereinsnamen
+    /** konvertiert team_id zu vereinsnamen
      * @param
      *@return $team_name
      * */
@@ -147,7 +148,7 @@ class Ligatabelle
         return $punkte_arr;
     }
 
-    /** zerlegt das ergebnis aus der DB, returnt die beiden werte alleine für torverhältnis
+    /** zerlegt das ergebnis aus der db, returnt die beiden werte alleine für torverhältnis
      * @param $ergebnis
      * @return $ergebnis_arr (enthält [0]-heim [1]-gast)
      */
@@ -195,7 +196,7 @@ class Ligatabelle
         echo("</div>");
     }
 
-    /** stellt array in html kode/tabelle dar, für head to head vergleich
+    /** erstellt tabelle/array für head to head vergleich
      * @param
      * @return
      */
@@ -223,6 +224,10 @@ class Ligatabelle
         return $head_to_head_tabelle;
     }
 
+    /** stellt array in html kode/tabelle dar, für head to head vergleich
+     * @param
+     * @return
+     */
     public function display_head_to_head()
     {
         $head_to_head_tabelle = $this->head_to_head_tabelle();
@@ -248,6 +253,10 @@ class Ligatabelle
         echo("</table></div>");
     }
 
+    /** Tobias Kinder, stellt array in html kode/tabelle dar, für head to head vergleich, nur ergebnis und logo
+     * @param
+     * @return
+     */
       public function display_head_to_head_only_logos()
     {
         $head_to_head_tabelle = $this->head_to_head_tabelle();
@@ -262,7 +271,6 @@ class Ligatabelle
         for ($j = 0; $j <= 8; $j++) {
             echo("<tr>");
             echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_heim'] . ".png'" . "</td>");
-
             echo("<td><b>" . $head_to_head_tabelle[$j]['ergebnis'] . "</b></td>");  
             echo("<td >" . "<img src='../OOPProject/bilder/logo/" . $head_to_head_tabelle[$j]['team_id_gast'] . ".png'" . "</td>");
             echo ("</tr>");

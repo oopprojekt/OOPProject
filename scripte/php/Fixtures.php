@@ -2,7 +2,7 @@
 include_once "Config.php";
 include_once "DB.php";
 
-/**
+/** Tobias Bräuer, verschiedene methoden generieren Daten zum Testen, letzte methode von Stefan Senftleben
  * Class Fixtures
  */
 class Fixtures
@@ -26,8 +26,8 @@ class Fixtures
         $this->connection->execute($sql);
     }
 
-    /**
-     * damit die id's mit 1 beginnen
+    /** damit die id's mit 1 beginnen
+     *
      */
     private function set_increment()
     {
@@ -35,7 +35,7 @@ class Fixtures
         $this->connection->execute($sql);
     }
 
-    /** schreibt für alle teams jeweils 11 spieler
+    /** schreibt für alle teams jeweils 11 spieler und zufälligen skills
      *
      */
     public function set_player_data()

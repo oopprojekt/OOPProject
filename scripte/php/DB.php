@@ -254,12 +254,20 @@ class DB
         return $vorname . " " . $nachname;
     }
 
+    /** Tobias Bräuer
+     * liest spielergebnisse aus tbl_spielplan
+     *
+     */
     public function get_spielgergebnis()
     {
         $sql = "SELECT * FROM tbl_spielplan;";
         return $this->execute($sql);
     }
 
+    /** Tobias Bräuer
+     * liest spielergebnis aus tbl_spielplan pro spiel identifikation
+     * @param $id
+     */
     public function get_sp_ergebnis_by_row($id)
     {
         $sql = "SELECT `sp_id`,`sp_fs_heim`,`sp_fs_auswaerts`,`sp_ergebnis` FROM `tbl_spielplan` WHERE `sp_id` = " . $id . ";";
@@ -319,30 +327,41 @@ class DB
     }
 
 
-    /* zum leeren des alten standes
-    *
-    */
+    /** Tobias Bräuer
+     *zum leeren des alten standes
+     *
+     */
     public function delete_tbl_statistik()
     {
         $sql = "DELETE FROM tbl_statistik;";
         $this->execute($sql);
     }
 
-    /* schreibt die tbl_statistik
-    *
-    */
+    /** Tobias Bräuer
+     * schreibt die tbl_statistik
+     *
+     */
     public function setze_tbl_statistik($i, $team_id, $diff, $punkte)
     {
         $sql = "INSERT INTO `tbl_statistik`(`id`,`team_id`,`diff`,`punkte`) VALUES (" . $i . "," . $team_id . "," . $diff . "," . $punkte . ");";
         $this->execute($sql);
     }
 
+    /** Tobias Bräuer
+     * lädt spielerposition nach id
+     * @param $id
+     * @return
+     */
     private function get_pos_by_id($id)
     {
         $sql = "SELECT pos_kurzel FROM tbl_position WHERE pos_id = " . $id . ";";
         return mysqli_fetch_assoc($this->execute($sql))["pos_kurzel"];
     }
 
+    /** Tobias Bräuer
+     * erzeugt spieler array und erzeugt html kode
+     *
+     */
     public function gets_spieler_array($id)
     {
         $sql = "SELECT spl_vorname, spl_nachname, spl_fs_team,

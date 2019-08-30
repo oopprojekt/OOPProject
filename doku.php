@@ -239,8 +239,8 @@ if (!$_SESSION['team']) {
 
         <h1 id="7_0">Anhang</h1>
         <h2 id="7_a">Klassendiagramm</h2>
-        <img src="/bilder/doku/klassen_tb.png">
-        <img src="/bilder/doku/klassen_ss.png">
+        <img src="bilder/doku/klassen_tb.png">
+        <img src="bilder/doku/klassen_ss.png">
 
         <h2 id="7_b">Dia</h2>
         <p>

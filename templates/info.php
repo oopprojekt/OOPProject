@@ -1,10 +1,24 @@
-<div id="infoteamandtrainer">
 
-    <div id='infoteamlogodiv'><img src='http://localhost/OOPProject/bilder/infologos/logo<?php echo $db->get_team_id($_SESSION['user_mail']); ?>.png' id='infoteamlogo'></div>
+<div id="infoteamandtrainerbilder">
+
+    <div id='infoteamlogodiv'>
+        <img src='http://localhost/OOPProject/bilder/infologos/logo<?php echo $db->get_team_id($_SESSION['user_mail']); ?>.png' id='infoteamlogo'>
+    </div>
     <div id='infoteamtrainerdiv'><img src='http://localhost/OOPProject/bilder/infotrainer1.png' id='infoteamlogo'></div>
-    <div id='infoteamnamediv'> <?php echo $_SESSION["team"]; ?></div>
-    <div><?php echo $db->get_trainer_by_team($_SESSION["team_id"]); ?></div>
 </div>
+
+
+<div id="infoteamname">
+    <div id='infoteamnamediv'> <?php echo $_SESSION["team"]; ?>
+    </div>
+</div>
+<div id="infoteamname">
+    <div id='infotrainernamediv'>
+        <?php echo $db->get_trainer_by_team($_SESSION["team_id"]); ?>
+    </div>
+</div>
+
+
 <div id="infoteamübersicht">
 
     <div id="infobudget">Budget:</div>
@@ -22,3 +36,4 @@
     ?>
 
 </div>
+ 

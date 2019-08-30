@@ -19,7 +19,7 @@ $db = new DB($_SESSION['user_mail']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/maintemplate.css">
-    <title>Start Page</title>
+    <title>Training</title>
 </head>
 <body>
 <div class="calendartemplate"> <?php include_once "./templates/header.php"; ?></div>
@@ -39,9 +39,6 @@ $db = new DB($_SESSION['user_mail']);
                 echo "<br><br>";
                 echo "der spieler: " . $players[0]["vorname"] . " " . $players[0]["nachname"];
                 echo  " spielt auf der position: " . $players[0]["position"];
-
-
-
 
             ?>
 
@@ -63,6 +60,6 @@ $db = new DB($_SESSION['user_mail']);
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-    </body>
+</body>
 </html>
 

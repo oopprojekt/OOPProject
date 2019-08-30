@@ -6,10 +6,9 @@ include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
 
 session_start();
-//error_reporting(0);
+error_reporting(0);
 
 $db = new DB($_SESSION['user_mail']);
-//error_reporting(0);
 
 if (!$_SESSION['team']) {
     $db->update_team_to_user($_POST['teams']);
@@ -284,16 +283,4 @@ if (!$_SESSION['team']) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </body>
 </html>
-
-<style type="text/css">
-    
-a:link { 
-    color: #444;  
-    font-weight: bold;
-}
-a:visited { 
-    color: #888; 
-    font-weight: bold;
-}
-
-</style>
+ 

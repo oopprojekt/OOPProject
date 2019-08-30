@@ -7,7 +7,7 @@ include_once "./scripte/php/DB.php";
 
 session_start();
 $db = new DB($_SESSION['user_mail']);
-//error_reporting(0);
+error_reporting(0);
 
 if (!$_SESSION['team']) {
     $db->update_team_to_user($_POST['teams']);
@@ -151,7 +151,6 @@ test = x.options[i].text;
             if (STexists) {
                 var ST = (message.match(/ST/g)).length;
             }
-
 
             var numTW = "0";
             var numLV = "0";

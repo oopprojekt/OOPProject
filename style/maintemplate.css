@@ -317,47 +317,61 @@ body {
 
 /* INFOTEMPLATE */
 
-#infoteamandtrainer {
-        text-align: center; 
-        padding: 2vh;
-        display: inline-block;
-
+#infoteamandtrainerbilder {
+    width: 83%;
+    display: inline-block;
+    padding-left: 2vh;
+    padding-top: 1vh;
 }
 
 #infoteamlogodiv {
-        display: inline-block;
-        float: left;
-        width: 50%;
-}
-
-#infoteamlogo {
-        width: 80%;
+    display: inline-block;
+    float: left;
+    width: 45%;
 }
 
 #infoteamtrainerdiv {
-        display: inline-block;
-        float: left;
-        width: 50%;
-        margin-bottom:  2vh;
-}
-#infoteamnamediv {
-        margin-top: 30px;
+    display: inline-block;
+    float: right;
+    width: 45%;
 }
 
+#infoteamlogo {
+    width: 100%;
+}
+
+#infoteamandtrainer {
+    display: inline-block;
+    width: 100%;
+}
+
+#infoteamname, #infoteamname {
+    width: 100%;
+}
+
+#infoteamnamediv {
+    width: 100%;
+    padding-top: 1.5vh; 
+    text-align: center;
+}
+#infotrainernamediv {
+    width: 100%;
+    padding-bottom: 1.5vh; 
+    text-align: center;
+}
 
 #infoteamübersicht {
-        background-color: #ccc;
-        margin-left: 5%;
-        margin-right: 5%;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 
 #infobudget {
-        display: inline-block;
-        float: left;
-        width: 60%;
-        background-image: linear-gradient(to top, #CFCFCF 0%, #EAEAEA 50%);
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
+    display: inline-block;
+    float: left;
+    width: 60%;
+    background-image: linear-gradient(to top, #CFCFCF 0%, #EAEAEA 50%);
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
 }
 
 #infobudgetcontent {
@@ -392,6 +406,8 @@ body {
     margin-left: 5%;
     margin-right: 5%;
 }
+
+
 
 /* HEADER TEMPLATE */
 
@@ -632,3 +648,67 @@ body {
   font-size: 2vh;
 }
 
+
+/* CREATE */
+
+
+#infoteamandtrainer {
+    text-align: center;
+    padding: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#team_logo {
+
+    margin-bottom: 3vh;
+    width: auto;
+    height: 20vh;
+}
+
+#nachname, #vorname {
+    margin-bottom: 3vh;
+}
+
+#selectteam {
+    font-size: 1.5vh;
+    margin-top: 1vh;
+}
+
+
+#createheader {
+    margin-top: 25vh;
+    height: 4.6vh;
+    background-image: url("../bilder/livetickerbg1.png");
+    opacity: 0.95;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 20vh;
+    margin-bottom: 1vh;
+    padding-top: 2.4vh;
+    padding-left: 1%;
+}
+
+#gamebutton {
+    margin-top: 1.25vh;
+    height: 4.5vh;
+    margin-bottom: 1.25vh;
+    margin-left: 0.1vh;
+    margin-right: 2vh;
+    float: right;
+}
+
+
+/*  DOKU */
+
+#dokumentation a:link { 
+    color: #444;  
+    font-weight: bold;
+}
+#dokumentation a:visited { 
+    color: #888; 
+    font-weight: bold;
+}

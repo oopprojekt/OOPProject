@@ -35,7 +35,7 @@ $gast_id = $game["gast_id"];
     <!-- Mein CSS -->
 
     <link rel="stylesheet" href="style/style.css">
-
+    <link rel="stylesheet" href="style/liveticker.css">
 </head>
 
 <body>
@@ -90,15 +90,11 @@ $gast_id = $game["gast_id"];
   </div>
 </div>
  <div class="box livetickergridbottom">
-    <div id="livetickerfooter">    <img src="fumasifooterlogo.png" id="fumasifooterlogo"> </div>
+    <div id="livetickerfooter">    <img src="bilder/fumasifooterlogo.png" id="fumasifooterlogo"> </div>
     <div class="livetickerfootermiddlecolumn"><img src="bilder/bllogo.png" id="bllogo">Spieltag: <?php echo $datum; ?></div>
-    <div class="livetickerfooterleftcolumn"><a href="home.php"> <img src="homemenu.png" id="backhomebutton" ></a></div>
+    <div class="livetickerfooterleftcolumn"><a href="home.php"> <img src="bilder/homemenu.png" id="backhomebutton" ></a></div>
   </div>
 </div>
-                <!--für die auflistung der aktuellen aktion-->
-      
-
-
 
 
   <!-- Optional JavaScript -->
@@ -181,159 +177,4 @@ $gast_id = $game["gast_id"];
     }
 
 </script>
-
-<style type="text/css">
-
-body {
-  background-image: url("/OOPProject/Bilder/indexbg.png");
-  background-color: #000;
-  background-size: 100% 100%;
-  overflow-y: hidden;
-  background-image: url("https://wallpapercave.com/wp/wp2878440.jpg")!important;
-  background-color: #000;
-  background-size: 100% 100%;
-}
-
-.livetickergridtop {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  height: 30vh;
-  margin-top: 3vh;
-  text-align: center; 
-  font-size: 3vh;
-  overflow: hidden;
-  background-image: url("/OOPProject/Bilder/livetickerbg1.png"); opacity: 0.95; border-radius: 6px;
-  background-size: 100% 100%;
-}
-
-.livetickergridmiddle {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 1vh;
-  margin-bottom: 0.5vh;
-  height: 55vh;
-  float: left;
-  background-image: url("/OOPProject/Bilder/livetickerbg2.png");border-radius: 6px;
-  background-size: 100% 100%;
-  opacity: 0.95;
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
-.livetickergridbottom {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 1vh;
-  margin-bottom: 3vh;
-  height: 7vh;
-  background-image: url("/OOPProject/Bilder/livetickerbg1.png"); 
-  border-radius: 6px;
-  background-size: 100% 100%;
-  opacity: 0.95;
-  overflow: hidden;
-  }
-
-.tickertopcolumns {
-  width: 14.2%;
-  display: inline-block; 
-  height: 22vh;
-  padding-top: 20px;
-}
-
-#myProgress {
-  align-items: center;
-  width: 78%; 
-  margin-left: 11%;
-  margin-right: 11%;
-  height: 5vh;
-
-}
-#myBar {
-  width: 0;
-  height: 5vh;
-  background-color: green;
-}
-#tore_a, #tore_b, #ergebnispoint {
-  font-weight: bold;
-  font-size: 6vh;
-}
-
-.tickercolumns {
-  width: 22%;
-  margin-left: 3vh;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  font-size: 1.5vh;
-  font-weight: bold;
-}
-.livetickerresultrow {
-  margin-right: 0px;
-  margin-left: 0px;
-}
-.ticker {
-  margin-left: 4%;
-}
-#anpfiff {
-  font-size: 3vh;
-}
-.liveresultcontainerrow {
-  width: 100%;
-}
-#livetickercontinue {
-  float: right;
-  margin-right: 7px;
-  margin-top: 1.1vh;
-  height: 4vh;
-  width: 70px;
-  font-size: 2vh;
-}
-
-#livetickerfooter {
-  display: inline-block;
-  float: left;
-  width: 33%;
-}
-
-.livetickerfootermiddlecolumn {
-  display: inline-block;
-  width: 33%;
-  height: 6.5vh;
-     
-  font-size: 2vh;
-  font-weight: bold;
-  text-align: center;
-}
-.livetickerfooterleftcolumn {
-  display: inline-block;
-  width: 33%;
-  height: 6.5vh;
-  margin-top: 0;  
-  float: right;
-}
-#backhomebutton {  
-  margin-top: 1.25vh;
-  height: 4.5vh;
-  margin-bottom: 1.25vh;
-  margin-left: 0.1vh;
-  margin-right: 2%;
-  float: right;
-}
-
-#fumasifooterlogo {
-  margin-top: 1.25vh;
-  height: 4vh;
-  margin-bottom: 1.25vh;
-  margin-left: 2vh;
-  float: left;
-}
-
-#bllogo {
-  height: 2.5vh;
-  margin-top: 2vh; 
-  margin-bottom: 2vh;   
-}
-
-</style>
+ 

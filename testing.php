@@ -50,6 +50,7 @@ echo("</br>");
     include_once "./scripte/php/Ligatabelle.php";
     $ligatabelle = new Ligatabelle();
     $ligatabelle->display_ligatabelle();
+    $ligatabelle->display_head_to_head();
 ?>
 
 

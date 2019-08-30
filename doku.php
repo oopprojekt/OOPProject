@@ -171,11 +171,9 @@ if (!$_SESSION['team']) {
 
         <h2 id="3_e">3.e. Klassen</h2>
         <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Eine Testphase und Fehlerüberprüfung der Kode-Bausteine ist einer der wichtigsten Schritte in der Programmentwicklung.
+            Deswegen wurden alle Weiterentwicklungen der Teammitglieder vor jedem Commit bei Github, von dem verantwortlichem Entwickler
+            der Kode-Bausteine auf Funktion und Fehler überprüft und sollten erst dann veröffentlicht und zur Weiterverarbeitung freigegeben werden.
         </p>
 
         <h2 id="3_f">3.f. Frontend</h2>

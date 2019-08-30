@@ -160,11 +160,8 @@ if (!$_SESSION['team']) {
 
         <h2 id="3_d">3.d. Datenbank</h2>
         <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Datenbanken haben sich als fester Bestandteil von IT-Landschaften etabliert.
+            Wo auch immer Software-Applikationen zum Einsatz kommen und auf eine gemeinsame, integrierte Datenbasis zugreifen, spielen sie eine wesentliche Rolle.
         </p>
 
         <h2 id="3_e">3.e. Klassen</h2>
@@ -214,11 +211,8 @@ if (!$_SESSION['team']) {
 
         <h1 id="4_0">Schlussbetrachtung</h1>
         <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Das zeitgleiche Arbeiten an verschiedenen Projektteilen, die Zusammenführung einzelner Kode-Bausteine und der Umfang unserer
+            Aufgabe hat uns vor größere Probleme gestellt als wir erwartet haben.
         </p>
 
 
@@ -234,11 +228,9 @@ if (!$_SESSION['team']) {
 
         <h1 id="6_0">Präsentation</h1>
         <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            PHP/Projekt -> Tobias Bräuer
+            Frontend/Templates -> Tobias Kinder
+            JavaScript/Datenbanken -> Stefan Senftleben
         </p>
 
 

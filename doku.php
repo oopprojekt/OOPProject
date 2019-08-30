@@ -73,7 +73,7 @@ if (!$_SESSION['team']) {
 
             <a href="#7_0"><li>Anhang</a>
             <ol class="li-alpha">
-                <a href="#7_a"><li>Dia</li></a>
+                <a href="#7_a"><li>Klassendiagramm</li></a>
                 <a href="#7_b"><li>Dia</li></a>
                 <a href="#7_c"><li>Dia</li></a>
                 <a href="#7_d"><li>Dia</li></a>
@@ -238,14 +238,9 @@ if (!$_SESSION['team']) {
 
 
         <h1 id="7_0">Anhang</h1>
-        <h2 id="7_a">Dia</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </p>
+        <h2 id="7_a">Klassendiagramm</h2>
+        <img src="/bilder/doku/klassen_tb.png">
+        <img src="/bilder/doku/klassen_ss.png">
 
         <h2 id="7_b">Dia</h2>
         <p>

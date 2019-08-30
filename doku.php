@@ -85,12 +85,15 @@ if (!$_SESSION['team']) {
         <h1 id="1_0">1. Projektvorbereitung</h1>
 
         <h2 id="1_a">1.a. Projektumfeld</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        <br>
+            Für die Entwicklung unserer Webapplikation, haben wir mehrere
+            Arten von Software und Datenbanksystemen verwendet.</br>
+            -	PHP</br>
+            -	JavaScript</br>
+            -	HTML5</br>
+            -	MYSQL</br>
+            -	CSS</br>
+            -	Photoshop</br>
         </p>
 
         <h2 id="1_b">1.b. Projektziel</h2>

@@ -171,9 +171,20 @@ if (!$_SESSION['team']) {
 
         <h2 id="3_e">3.e. Klassen</h2>
         <p>
-            Eine Testphase und Fehlerüberprüfung der Kode-Bausteine ist einer der wichtigsten Schritte in der Programmentwicklung.
-            Deswegen wurden alle Weiterentwicklungen der Teammitglieder vor jedem Commit bei Github, von dem verantwortlichem Entwickler
-            der Kode-Bausteine auf Funktion und Fehler überprüft und sollten erst dann veröffentlicht und zur Weiterverarbeitung freigegeben werden.
+                Für die Wiederverwendbarkeit ist das Konzept der Klassen ideal. Denn alles was der Programmierer wissen muss, sind deren Wirkung und das Verhalten ihrer Methoden.
+                Deswegen haben wir verschiedene objektorientierte Klassen in unserem Projekt implementiert.
+            <p>Class Config:</p>
+                - setzt Parameter der verwendeten Datenbank
+            <p>Class Fixtures:</p>
+                - enthält Methoden zur Erzeugung von Testdaten
+            <p>Class DB:</p>
+                - beinhaltet alle Methoden welche in die Datenbank schreiben und lesen können
+            <p>Class Ligatabelle:</p>
+                - Tabellenberechnung und -ausgabe
+            <p>Class Spieltag:</p>
+                - Spieltagberechnung
+            <p>Class Team_staerke:</p>
+                - ermittelt Gesamtstärke der Teams auf Basis einzelner Spielerfaktoren
         </p>
 
         <h2 id="3_f">3.f. Frontend</h2>
@@ -187,11 +198,9 @@ if (!$_SESSION['team']) {
 
         <h2 id="3_g">3.g. Testphase</h2>
         <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Eine Testphase und Fehlerüberprüfung der Kode-Bausteine ist einer der wichtigsten Schritte in der Programmentwicklung.
+            Deswegen wurden alle Weiterentwicklungen der Teammitglieder vor jedem Commit bei Github, von dem verantwortlichem Entwickler
+            der Kode-Bausteine auf Funktion und Fehler überprüft und sollten erst dann veröffentlicht und zur Weiterverarbeitung freigegeben werden.
         </p>
 
         <h2 id="3_h">3.h. Bugliste</h2>

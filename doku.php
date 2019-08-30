@@ -95,11 +95,9 @@ if (!$_SESSION['team']) {
 
         <h2 id="1_b">1.b. Projektziel</h2>
         <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Im Rahmen unserer theoretischen Ausbildung im Modul objektorientierte Programmierung und Entwicklung, hatten
+            wir die Aufgabe eine objektorientierte Applikation zu entwickeln. Wir haben uns für die Entwicklung einer
+            Fußball-Manager-Simulation entschieden. Diese haben wir versucht als Webapplikation umzusetzen.
         </p>
 
         <h2 id="1_c">1.c. Projektabgrenzung</h2>

@@ -45,7 +45,7 @@ $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['pass
                         }
                         ?>
                     </select>
-                    ´<p><input type="image" src="register.png" id="navbutton" alt="Submit"/></p>
+                    ´<p><input type="image" src="bilder/karrierestarten.png" id="navbutton" alt="Submit"/></p>
                     
 
                 </form>
@@ -56,14 +56,6 @@ $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['pass
 
     </div>
 </div>
-<!--
-<div id="createfooter">
-
-    <input form="form" type="submit" class="buttons" value="Karriere starten"><br><a
-            href="http://localhost/OOPProject/liveticker.php">
-
-        <img src="karrierestarten.png" form="form" type="submit" class="buttons" id="gamebutton" height="100%"></div>
--->
 
 <script>
 
@@ -83,58 +75,6 @@ $db->create_user($_SESSION['user_name'], $_SESSION['user_mail'], $_SESSION['pass
 
 </script>
 
-<style type="text/css">
-    #infoteamandtrainer {
-        text-align: center;
-        padding: 2vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #team_logo {
-
-        margin-bottom: 3vh;
-        width: auto;
-        height: 20vh;
-    }
-
-    #nachname, #vorname {
-        margin-bottom: 3vh;
-    }
-
-    #selectteam {
-        font-size: 1.5vh;
-        margin-top: 1vh;
-    }
-
-    #createheader {
-        padding-top: 2.4vh;
-        padding-left: 1%;
-    }
- 
-    #createheader {
-        margin-top: 25vh;
-        height: 4.6vh;
-        background-image: url("../OOPProject/bilder/livetickerbg1.png");
-        opacity: 0.95;
-        border-radius: 6px;
-        background-size: 100% 100%;
-        margin-left: 35%;
-        margin-right: 35%;
-        margin-top: 20vh;
-        margin-bottom: 1vh;
-    }
-
-    #gamebutton {
-        margin-top: 1.25vh;
-        height: 4.5vh;
-        margin-bottom: 1.25vh;
-        margin-left: 0.1vh;
-        margin-right: 2vh;
-        float: right;
-    }
-</style>
 
 
 <!-- Optional JavaScript -->

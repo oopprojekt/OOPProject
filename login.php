@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -27,29 +23,30 @@
             <div class="box b"></div>
             <div class="box c">
 
-                <input type="image" name="submit" src="login.png" id="btn_login" alt="Submit"/>
-                <input type="image" name="submit" src="register.png" id="btn_regist" alt="Submit"/>
+                <input type="image" name="submit" src="bilder/login.png" id="btn_login" alt="Submit"/>
+                <input type="image" name="submit" src="bilder/register.png" id="btn_regist" alt="Submit"/>
 
                 <body onload="show_login();">
 
 
                 <div id="div_login" class="index_content"><b>LOGIN</b>
-                    <form action="home.php" method="post">
+                    <form action="home.php" name="test" method="post">
                         <input type="text" name="name" id="logininputstyle" placeholder="***username***"><br>
                         <input type="text" name="passwort" id="logininputstyle" placeholder="***passwort***"><br>
-                        <input type="image" name="submit" src="login.png" id="navbutton" alt="Submit"/>
-
+                        <input type="image" name="submit" src="bilder/login.png" id="navbutton" alt="Submit"/>
                     </form>
                 </div>
 
                 <div id="div_regist" class="index_content"><b>REGISTRIEREN</b>
                     <form action="create.php" method="post">
-                        <input type="text" name="email" id="logininputstyle" placeholder="***email***"><br>
+                        <input type="text" name="email" id="logininputstyle" placeholder="***email***"><br>                 
                         <input type="text" name="name" id="logininputstyle" placeholder="***username***"><br>
                         <input type="text" name="passwort" id="logininputstyle" placeholder="***passwort***"><br>
                         <input type="text" name="passwort_2" id="logininputstyle" placeholder="***passwort***"><br>
-                        <input type="image" name="submit" src="register.png" id="navbutton" alt="Submit"/>
+                        <input type="image" name="submit" src="bilder/register.png" id="navbutton" alt="Submit"/>
                     </form>
+
+
                 </div>
             </div>
         </div>
@@ -72,11 +69,6 @@
 
 </html>
 
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
 <style type="text/css">
     body {

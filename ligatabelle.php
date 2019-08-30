@@ -6,19 +6,18 @@ include_once "./scripte/php/show_errors.php";
 include_once "./scripte/php/DB.php";
 
 session_start();
-//error_reporting(0);
+error_reporting(0);
 $_SESSION['username'] = $_POST['name'];
 $_SESSION['passwort'] = $_POST['passwort'];
 
 $db = new DB($_SESSION['user_mail']);
-//error_reporting(0);
+
 
 if (!$_SESSION['team']) {
     $db->update_team_to_user($_POST['teams']);
     $_SESSION['team'] = $db->get_team_by_id($_POST['teams']);
 }
 
-echo $db->get_team_id($_SESSION['user_mail']);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,7 @@ echo $db->get_team_id($_SESSION['user_mail']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/maintemplate.css">
-    <title>Start Page</title>
+    <title>Ligatabelle</title>
 </head>
 <body>
 <!DOCTYPE html>
